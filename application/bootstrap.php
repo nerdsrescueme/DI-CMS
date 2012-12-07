@@ -10,12 +10,13 @@
 
 namespace Nerd;
 
-require __DIR__.'/../vendor/autoload.php';
+$loader    = require __DIR__.'/../vendor/autoload.php';
+$container = new Container\Container();
+$container->set('loader', $loader);
 
 $kernel = new Kernel\Kernel(
     new Event\Dispatcher(),
-    new Bundle\Manager(),
-    new Container\Container()
+    $container
 );
 
 $kernel->setRoot(dirname(__DIR__));

@@ -16,13 +16,15 @@
 
     "require": {
         "nerdsrescueme/core": "*",
-        "symfony/http-foundation": "2.0.x-dev"
+        "symfony/http-foundation": "2.2.x-dev",
+        "monolog/monolog": "*",
+        "swiftmailer/swiftmailer": "4.3.x-dev"
     },
 
     "repositories": [
         {
             "type": "vcs",
-            "url": "C:\\Users\\bardonf\\Documents\\GitHub\\NerdCore"
+            "url": "https://github.com/nerdsrescueme/DI.git"
         }
     ]
 }
