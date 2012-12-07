@@ -10,11 +10,13 @@
     ],
 
     "require-dev": {
-        "phpunit/phpunit": "3.7.x-dev"
+        "phpunit/phpunit": "3.7.x-dev",
+        "symfony/console": "2.1.x-dev"
     },
 
     "require": {
-        "nerdsrescueme/core": "*"
+        "nerdsrescueme/core": "*",
+        "symfony/http-foundation": "2.0.x-dev"
     },
 
     "repositories": [
