@@ -1,0 +1,5 @@
+.komodotools
+*.komodoproject
+
+composer.phar
+vendor
