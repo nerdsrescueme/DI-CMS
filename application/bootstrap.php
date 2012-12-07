@@ -1,25 +1,23 @@
 <?php
 
+/**
+ * Application bootstrapper
+ *
+ * The bootstrap file should initialize the autoloader & Nerd Kernel, set
+ * requirements and return the Kernel to the calling file.
+ *
+ */
+
+namespace Nerd;
+
 require __DIR__.'/../vendor/autoload.php';
 
-use Nerd\Kernel\Kernel
-  , Nerd\Event\Listener
-  , Nerd\Event\Dispatcher
-  , Nerd\Bundle\Manager as BundleManager
-  , Nerd\Container\Container
-  , Nerd\Bundle\Bundle;
+$kernel = new Kernel\Kernel(
+    new Event\Dispatcher(),
+    new Bundle\Manager(),
+    new Container\Container()
+);
 
-$bundle  = new Bundle();
-$manager = new BundleManager();
-    $manager->register($bundle);
-
-$dispatcher = new Dispatcher();
-    $dispatcher->register(Kernel::START, new Listener());
-    $dispatcher->dispatch(Kernel::START);
-
-$container = new Container();
-
-$kernel = new Kernel($dispatcher, $manager, $container);
 $kernel->setRoot(dirname(__DIR__));
 
 return $kernel;
