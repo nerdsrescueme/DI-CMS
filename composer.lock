@@ -65,20 +65,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI.git",
-                "reference": "9c48e009480ef031755a75f6157bf371a5121355"
+                "reference": "a3b6f6a549a3c90aa9dd59c4f2305bfd6baf789e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/9c48e009480ef031755a75f6157bf371a5121355",
-                "reference": "9c48e009480ef031755a75f6157bf371a5121355",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/a3b6f6a549a3c90aa9dd59c4f2305bfd6baf789e",
+                "reference": "a3b6f6a549a3c90aa9dd59c4f2305bfd6baf789e",
                 "shasum": ""
             },
-            "time": "2012-12-07 20:52:00",
+            "time": "2012-12-07 21:06:17",
             "type": "library",
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
-                    "Nerd\\": ""
+                    "Nerd\\Core\\": ""
                 }
             },
             "authors": [

@@ -11,11 +11,11 @@
 namespace Nerd;
 
 $loader    = require __DIR__.'/../vendor/autoload.php';
-$container = new Container\Container();
+$container = new Core\Container\Container();
 $container->set('loader', $loader);
 
-$kernel = new Kernel\Kernel(
-    new Event\Dispatcher(),
+$kernel = new Core\Kernel\Kernel(
+    new Core\Event\Dispatcher(),
     $container
 );
 

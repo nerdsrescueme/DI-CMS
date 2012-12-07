@@ -1,8 +1,8 @@
 <?php
 
-use Nerd\Kernel\KernelInterface
-  , Nerd\Bundle\Bundle
-  , Nerd\Kernel\Aware as KernelAware
+use Nerd\Core\Kernel\KernelInterface
+  , Nerd\Core\Bundle\Bundle
+  , Nerd\Core\Kernel\Aware as KernelAware
   , Symfony\Component\HttpFoundation\Request
   , Symfony\Component\HttpFoundation\Response
   , Symfony\Component\HttpFoundation\Session\Session
