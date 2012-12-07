@@ -1,5 +1,5 @@
 {
-    "hash": "696811ed7834a2364e0bb91e7eba1748",
+    "hash": "f4bc09266e26bfda1a58b3378c827f01",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -63,10 +63,16 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "C:\\Users\\bardonf\\Documents\\GitHub\\NerdCore",
-                "reference": "843e2eef08e953b4683cd55c08b5f0c916bed13d"
+                "url": "https://github.com/nerdsrescueme/DI.git",
+                "reference": "d39226705443d48f89c99a655e637be140049fdd"
             },
-            "time": "2012-12-07 14:53:04",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/d39226705443d48f89c99a655e637be140049fdd",
+                "reference": "d39226705443d48f89c99a655e637be140049fdd",
+                "shasum": ""
+            },
+            "time": "2012-12-07 20:08:23",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -80,7 +86,11 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Core Library"
+            "description": "Nerd Core Library",
+            "support": {
+                "source": "https://github.com/nerdsrescueme/DI/tree/master",
+                "issues": "https://github.com/nerdsrescueme/DI/issues"
+            }
         },
         {
             "name": "swiftmailer/swiftmailer",
