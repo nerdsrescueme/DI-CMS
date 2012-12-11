@@ -2,3 +2,9 @@
 [2012-12-07 21:50:05] App.INFO: Application initialized by client [] {"url":"/di/public/tester","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
 [2012-12-07 22:04:37] App.INFO: Application initialized by client [] {"url":"/di/public/tester","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
 [2012-12-07 22:07:21] App.INFO: Application initialized by client [] {"url":"/di/public/tester","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 14:16:20] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 14:45:27] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 14:46:01] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 14:47:24] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 14:48:01] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}
+[2012-12-10 16:04:15] App.INFO: Application initialized by client [] {"url":"/di/public/test","ip":"::1","http_method":"GET","server":"localhost","referrer":"NULL"}

@@ -1,0 +1,1 @@
+<?= $data1 ?> This is a view rendered from myview.php!!!!

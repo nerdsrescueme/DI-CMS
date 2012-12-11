@@ -1,5 +1,5 @@
 {
-    "hash": "f4bc09266e26bfda1a58b3378c827f01",
+    "hash": "cf87be8fdd7239cbc94f5bcc2af97487",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -91,6 +91,41 @@
             "support": {
                 "source": "https://github.com/nerdsrescueme/DI/tree/master",
                 "issues": "https://github.com/nerdsrescueme/DI/issues"
+            }
+        },
+        {
+            "name": "nerdsrescueme/view",
+            "version": "dev-master",
+            "target-dir": "Nerd",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nerdsrescueme/DI-View.git",
+                "reference": "1874f9879ca2467280a44f33aa354e6f9e8f08b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI-View/zipball/1874f9879ca2467280a44f33aa354e6f9e8f08b6",
+                "reference": "1874f9879ca2467280a44f33aa354e6f9e8f08b6",
+                "shasum": ""
+            },
+            "time": "2012-12-10 20:03:50",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Nerd\\View\\": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Frank Bardon Jr",
+                    "email": "frankbardon@gmail.com"
+                }
+            ],
+            "description": "Nerd View component",
+            "support": {
+                "source": "https://github.com/nerdsrescueme/DI-View/tree/master",
+                "issues": "https://github.com/nerdsrescueme/DI-View/issues"
             }
         },
         {
