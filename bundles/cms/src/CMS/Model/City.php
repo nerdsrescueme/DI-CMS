@@ -3,7 +3,7 @@
 namespace CMS\Model;
 
 /**
- * @Entity
+ * @Entity(readOnly=true)
  * @Table(name="nerd_cities")
  */
 class City

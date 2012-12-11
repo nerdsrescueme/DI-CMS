@@ -5,7 +5,7 @@ namespace CMS\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity
+ * @Entity(readOnly=true)
  * @Table(name="nerd_states")
  */
 class State
