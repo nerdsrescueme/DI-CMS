@@ -2,6 +2,8 @@
 
 namespace CMS\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * +---------------------+------------------------------------+------+-----+---------------------+-----------------------------+
  * | Field               | Type                               | Null | Key | Default             | Extra                       |
@@ -28,6 +30,7 @@ namespace CMS\Model;
  */
 class User
 {
+	// Constants
 	const STATUS_DEFAULT  = 'inactive';
 	const STATUS_INACTIVE = 'inactive';
 	const STATUS_ACTIVE   = 'active';
@@ -116,6 +119,19 @@ class User
 	 */
 	private $metadata;
 
+	/**
+	 * @ManyToMany(targetEntity="Role", inversedBy="users")
+     * @JoinTable(name="nerd_users_roles")
+     */
+	private $roles;
+
+	private $permissionsCache;
+
+
+	public function __construct()
+	{
+		$this->roles = new ArrayCollection();
+	}
 
 	public function getId()
 	{
@@ -287,8 +303,43 @@ class User
 		$this->lastLogin = $lastLogin;
 	}
 
+	/**
+	 * Metadata association
+	 */
 	public function getMetadata()
 	{
 		return $this->metadata;
+	}
+
+	/**
+	 * Role association
+	 */
+	public function getRoles()
+	{
+		return $this->roles;
+	}
+
+	/**
+	 * Permission association by proxy
+	 */
+	public function getPermissions()
+	{
+		$permissions = new ArrayCollection();
+		foreach ($this->getRoles() as $role) {
+			foreach ($role->getPermissions() as $perm) {
+				$permissions->add($perm);
+			}
+		}
+
+		return $permissions;
+	}
+
+	public function hasPermission($permission)
+	{
+		foreach ($this->getRoles() as $role) {
+			if ($role->hasPermission($permission)) return true;
+		}
+
+		return false;
 	}
 }

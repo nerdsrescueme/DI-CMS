@@ -24,13 +24,30 @@ $em = EntityManager::create([
 	'dbname' => 'new_nerd',
 ], $config);
 
+
 //$page  = $em->getRepository('\\CMS\\Model\\Page')->findAll()[0];
-//$user  = $em->getRepository('\\CMS\\Model\\User')->findAll();
 //$site  = $em->getRepository('\\CMS\\Model\\Site')->findAll()[0];
 
+/*
 $user = $em->getRepository('\\CMS\\Model\\User')->findAll()[0];
+foreach ($user->getPermissions() as $permission) {
+    echo $permission->getName().'<br>';
+}
+die('');
+*/
 
-//var_dump($user->getMetadata()->getFirstName());
+
+$role = $em->getRepository('\\CMS\\Model\\Role')->findAll()[0];
+echo '<b>'.$role->getName().'</b>\'s allowed to<br>';
+foreach ($role->getPermissions() as $perm) {
+    echo $perm->getName().'<br>';
+}
+echo '<br>';
+echo '<b>'.$role->getName().'</b>\'s users<br>';
+foreach ($role->getUsers() as $user) {
+    echo $user->getUsername().'<br>';
+}
+die('');
 
 $query = $em->createQueryBuilder();
 $state = $query->select('s')

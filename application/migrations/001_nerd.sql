@@ -417,7 +417,78 @@ CREATE TABLE IF NOT EXISTS `nerd_user_metadata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+INSERT INTO `nerd_users` (`id`, `super`, `username`, `email`, `password`, `password_reset_hash`, `temp_password`, `remember`, `activation_hash`, `ip`, `status`, `activated`, `updated_at`, `created_at`, `last_login`) VALUES
+(1, 1, 'nerdsrescueme', 'nerdsrescueme@gmail.com', 'test', NULL, NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00');
 
+INSERT INTO `nerd_user_metadata` (`user_id`, `first_name`, `last_name`, `zip`) VALUES
+(1, 'Nerds', 'Rescue Me', 08093);
+
+
+--
+-- Nerd Role Based Access Control!
+--
+
+DROP TABLE IF EXISTS `nerd_roles`;
+CREATE TABLE IF NOT EXISTS `nerd_roles` (
+  `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(32) NOT NULL,
+  `description` char(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `nerd_users_roles`;
+CREATE TABLE IF NOT EXISTS `nerd_users_roles` (
+  `user_id` int(5) unsigned NOT NULL,
+  `role_id` int(4) unsigned NOT NULL,
+  PRIMARY KEY (`user_id`, `role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `nerd_permissions`;
+CREATE TABLE IF NOT EXISTS `nerd_permissions` (
+  `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(32) NOT NULL,
+  `description` char(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `nerd_roles_permissions`;
+CREATE TABLE IF NOT EXISTS `nerd_roles_permissions` (
+  `role_id` int(4) unsigned NOT NULL,
+  `permission_id` int(4) unsigned NOT NULL,
+  PRIMARY KEY (`role_id`, `permission_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+ALTER TABLE `nerd_users_roles`
+  ADD CONSTRAINT `nerd_users_roles-role_id-nerd_roles-id` FOREIGN KEY (`role_id`) REFERENCES `nerd_roles` (`id`);
+
+ALTER TABLE `nerd_users_roles`
+  ADD CONSTRAINT `nerd_users_roles-user_id-nerd_users-id` FOREIGN KEY (`user_id`) REFERENCES `nerd_users` (`id`);
+
+ALTER TABLE `nerd_roles_permissions`
+  ADD CONSTRAINT `nerd_roles_permissions-role_id-nerd_roles-id` FOREIGN KEY (`role_id`) REFERENCES `nerd_roles` (`id`);
+
+ALTER TABLE `nerd_roles_permissions`
+  ADD CONSTRAINT `nerd_roles_permissions-user_id-nerd_permissions-id` FOREIGN KEY (`permission_id`) REFERENCES `nerd_permissions` (`id`);
+
+INSERT INTO `nerd_permissions` (`id`, `name`, `description`) VALUES
+(1, 'blog.create', 'Allowed to create a new blog posts'),
+(2, 'blog.delete', 'Allowed to delete existing blog posts'),
+(3, 'blog.edit', 'Allowed to edit existing blog posts'),
+(4, 'blog.view', 'Allowed to view existing blog posts');
+
+INSERT INTO `nerd_roles` (`id`, `name`, `description`) VALUES
+(1, 'Superuser', 'All permissions are overridden and allowed.'),
+(2, 'Admin', 'Allowed low level site administration permissions.');
+
+INSERT INTO `nerd_roles_permissions` (`role_id`, `permission_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4);
+
+INSERT INTO `nerd_users_roles` (`user_id`, `role_id`) VALUES
+(1, 1);
 
 --
 -- Constraints for table `nerd_sessions`
