@@ -108,7 +108,6 @@ class User
 	 */
 	private $updatedAt;
 
-
 	public function getId()
 	{
 		return $this->id;
