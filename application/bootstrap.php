@@ -10,8 +10,15 @@
 
 namespace Nerd;
 
-$loader = require __DIR__.'/../vendor/autoload.php';
+error_reporting(E_ALL);
+set_exception_handler(function($e) {
+	die(var_dump($e));
+});
+set_error_handler(function ($no, $str, $file, $line) {
+    throw new \ErrorException($str,$no,0,$file,$line);
+});
 
+$loader    = require __DIR__.'/../vendor/autoload.php';
 $container = new Core\Container\Container();
 $container->set('loader', $loader);
 

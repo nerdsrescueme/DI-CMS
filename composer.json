@@ -19,7 +19,9 @@
         "nerdsrescueme/view": "*",
         "symfony/http-foundation": "2.2.x-dev",
         "monolog/monolog": "*",
-        "swiftmailer/swiftmailer": "4.3.x-dev"
+        "swiftmailer/swiftmailer": "4.3.x-dev",
+        "doctrine/orm": "*",
+        "doctrine/migrations": "*"
     },
 
     "repositories": [
