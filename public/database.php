@@ -7,7 +7,7 @@ use Doctrine\ORM\Tools\Setup
 $kernel = require '../application/bootstrap.php';
 $kernel->registerBundle('CMS');
 
-$cache = new \Doctrine\Common\Cache\ArrayCache;
+$cache  = new \Doctrine\Common\Cache\ArrayCache;
 $config = new Configuration;
 $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../application/migrations');
 $config->setMetadataCacheImpl($cache);
@@ -35,6 +35,12 @@ foreach ($user->getPermissions() as $permission) {
 }
 die('');
 */
+
+
+$currentUser = new CMS\CurrentUser($em);
+$currentUser->login('nerdsrescueme', 'test');
+
+die(var_dump($currentUser->getUser()));
 
 
 $role = $em->getRepository('\\CMS\\Model\\Role')->findAll()[0];
