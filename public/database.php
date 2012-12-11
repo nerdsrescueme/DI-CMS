@@ -12,8 +12,8 @@ require '../application/Model/Page.php';
 
 $cache = new \Doctrine\Common\Cache\ArrayCache;
 $config = new Configuration;
-$config->setMetadataCacheImpl($cache);
 $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../application/migrations');
+$config->setMetadataCacheImpl($cache);
 $config->setMetadataDriverImpl($driver);
 $config->setQueryCacheImpl($cache);
 $config->setProxyDir(__DIR__.'/../application/Proxies');

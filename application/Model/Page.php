@@ -103,17 +103,104 @@ class Page
 
 
 
-	/**
-	 * Site association
-	 */
-	public function getSite()
+	public function getId()
 	{
-		return $this->site;
+		return $this->id;
 	}
 
-	/**
-	 * Accomodate ENUM on changeFrequency column
-	 */
+	public function setId($id)
+	{
+		if ($this->id !== null) {
+			throw new \RuntimeException('Id cannot be reset');
+		}
+
+		if (!is_int($id)) {
+			throw new \InvalidArgumentException('Id must be an integer');
+		}
+
+		$this->id = $id;
+	}
+
+	public function getSiteId()
+	{
+		return $this->siteId;
+	}
+
+	public function setSiteId($siteId)
+	{
+		if (!is_int($siteId)) {
+			throw new \InvalidArgumentException('Id must be an integer');
+		}
+
+		$this->id = $siteId;
+	}
+
+	public function getLayoutId()
+	{
+		return $this->layoutId;
+	}
+
+	public function setLayoutId($layoutId)
+	{
+		$this->layoutId = $layoutId;
+	}
+
+	public function getTitle()
+	{
+		return $this->title;
+	}
+
+	public function setTitle($title)
+	{
+		$this->title = $title;
+	}
+
+	public function getSubtitle()
+	{
+		return $this->subtitle;
+	}
+
+	public function setSubtitle($subtitle)
+	{
+		$this->subtitle = $subtitle;
+	}
+
+	public function getUri()
+	{
+		return $this->uri;
+	}
+
+	public function setUri($uri)
+	{
+		$this->uri = trim($uri, '/');
+	}
+
+	public function getDescription()
+	{
+		return $this->description;
+	}
+
+	public function setDescription($description)
+	{
+		$this->description = $description;
+	}
+
+	public function getStatus()
+	{
+		return $this->status;
+	}
+
+	public function setStatus($status)
+	{
+		// Need to use enum prediction
+		$this->status = $status;
+	}
+
+	public function getChangeFrequency()
+	{
+		return $this->changeFrequency;
+	}
+
 	public function setChangeFrequency($frequency)
 	{
 		$possibilities = [
@@ -131,5 +218,33 @@ class Page
 		}
 
 		$this->changeFrequency = $frequency;
+	}
+
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	public function setCreatedAt()
+	{
+		throw new \RuntimeException('Created at is automatically set by the database');
+	}
+
+	public function getUpdatedAt()
+	{
+		return $this->updatedAt;
+	}
+
+	public function setUpdatedAt()
+	{
+		throw new \RuntimeException('Updated at is automatically set by the database');
+	}
+
+	/**
+	 * Site association
+	 */
+	public function getSite()
+	{
+		return $this->site;
 	}
 }
