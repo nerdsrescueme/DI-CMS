@@ -325,15 +325,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI.git",
-                "reference": "027323d7a8e574a54e1482e4cc3147e064051e49"
+                "reference": "23bb67f4dfe3befd34ed0e3e80e1ed5e4f83f29a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/027323d7a8e574a54e1482e4cc3147e064051e49",
-                "reference": "027323d7a8e574a54e1482e4cc3147e064051e49",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/23bb67f4dfe3befd34ed0e3e80e1ed5e4f83f29a",
+                "reference": "23bb67f4dfe3befd34ed0e3e80e1ed5e4f83f29a",
                 "shasum": ""
             },
-            "time": "2012-12-11 01:24:42",
+            "time": "2012-12-11 14:00:26",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -349,7 +349,7 @@
             ],
             "description": "Nerd Core Library",
             "support": {
-                "source": "https://github.com/nerdsrescueme/DI/tree/master",
+                "source": "https://github.com/nerdsrescueme/DI/tree/develop",
                 "issues": "https://github.com/nerdsrescueme/DI/issues"
             }
         },
