@@ -1,5 +1,7 @@
 <?php
 
+namespace CMS\Model;
+
 /**
  * +---------------------+------------------------------------+------+-----+---------------------+-----------------------------+
  * | Field               | Type                               | Null | Key | Default             | Extra                       |
@@ -107,6 +109,13 @@ class User
 	 * @Column(name="updated_at", type="datetime", nullable=false)
 	 */
 	private $updatedAt;
+
+	/**
+	 * @OneToOne(targetEntity="CMS\Model\User\Metadata")
+     * @JoinColumn(name="id", referencedColumnName="user_id")
+	 */
+	private $metadata;
+
 
 	public function getId()
 	{
@@ -233,9 +242,22 @@ class User
 		return $this->status;
 	}
 
-	// Status ENUM
+	public function getStatuses()
+	{
+		return [
+			self::STATUS_DEFAULT,
+			self::STATUS_INACTIVE,
+			self::STATUS_ACTIVE,
+			self::STATUS_BANNED,
+		];
+	}
+
 	public function setStatus($status)
 	{
+		if (!in_array($status, $this->getStatuses())) {
+			throw new \InvalidArgumentException('Invalid status');
+		}
+
 		$this->status = $status;
 	}
 
@@ -263,5 +285,10 @@ class User
 	public function setLastLogin($lastLogin)
 	{
 		$this->lastLogin = $lastLogin;
+	}
+
+	public function getMetadata()
+	{
+		return $this->metadata;
 	}
 }

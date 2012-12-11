@@ -1,5 +1,7 @@
 <?php
 
+namespace CMS\Model;
+
 /**
  * +------------------+---------------------------+------+-----+---------------------+-----------------------------+
  * | Field            | Type                      | Null | Key | Default             | Extra                       |
@@ -46,7 +48,7 @@ class Page
 	private $siteId;
 
 		/**
-		 * @ManyToOne(targetEntity="Site")
+		 * @ManyToOne(targetEntity="Site", inversedBy="pages")
 		 * @JoinColumn(name="site_id", referencedColumnName="id")
 		 */
 		 private $site;
@@ -101,7 +103,11 @@ class Page
 	 */
 	private $updatedAt;
 
-
+    /**
+     * @ManyToMany(targetEntity="Keyword", inversedBy="pages")
+     * @JoinTable(name="nerd_page_keywords")
+     */
+    private $keywords;
 
 	public function getId()
 	{
@@ -201,9 +207,9 @@ class Page
 		return $this->changeFrequency;
 	}
 
-	public function setChangeFrequency($frequency)
-	{
-		$possibilities = [
+    public function getChangeFrequencies()
+    {
+        return [
 			self::FREQ_ALWAYS,
 			self::FREQ_HOURLY,
 			self::FREQ_DAILY,
@@ -212,8 +218,11 @@ class Page
 			self::FREQ_YEARLY,
 			self::FREQ_NEVER,
 		];
+    }
 
-		if (!in_array($frequency, $possibilities)) {
+	public function setChangeFrequency($frequency)
+	{
+		if (!in_array($frequency, $this->getChangeFrequencies())) {
 			throw new \InvalidArgumentException('Invalid change frequency');
 		}
 
@@ -247,4 +256,12 @@ class Page
 	{
 		return $this->site;
 	}
+
+    /**
+     * Keyword association
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
+    }
 }

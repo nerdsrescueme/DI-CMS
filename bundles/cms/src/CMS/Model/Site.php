@@ -1,5 +1,7 @@
 <?php
 
+namespace CMS\Model;
+
 /**
  * +-------------+-----------------+------+-----+---------+----------------+
  * | Field       | Type            | Null | Key | Default | Extra          |
@@ -49,6 +51,16 @@ class Site
 	 */
 	private $description;
 
+	/**
+	 * @OneToMany(targetEntity="Page", mappedBy="site")
+	 */
+	private $pages;
+
+	/**
+     * @ManyToMany(targetEntity="Keyword", inversedBy="sites")
+     * @JoinTable(name="nerd_site_keywords")
+     */
+    private $keywords;
 
 	public function getId()
 	{
@@ -125,5 +137,21 @@ class Site
 	public function setDescription($description)
 	{
 		$this->description = $description;
+	}
+
+	/**
+	 * Page association
+	 */
+	public function getPages()
+	{
+		return $this->pages;
+	}
+
+	/**
+	 * Keyword association
+	 */
+	public function getKeywords()
+	{
+		return $this->keywords;
 	}
 }

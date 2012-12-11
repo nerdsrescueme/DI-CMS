@@ -18,6 +18,8 @@ set_error_handler(function ($no, $str, $file, $line) {
     throw new \ErrorException($str,$no,0,$file,$line);
 });
 
+ini_set('date.timezone', 'America/New_York');
+
 $loader    = require __DIR__.'/../vendor/autoload.php';
 $container = new Core\Container\Container();
 $container->set('loader', $loader);
