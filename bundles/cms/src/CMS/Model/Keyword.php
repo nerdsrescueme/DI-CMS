@@ -2,6 +2,8 @@
 
 namespace CMS\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @Entity
  * @Table(name="nerd_keywords")
@@ -29,4 +31,11 @@ class Keyword
      * @ManyToMany(targetEntity="Site", mappedBy="keywords")
      */
     private $sites;
+
+
+    public function __construct()
+    {
+        $this->pages = new ArrayCollection();
+        $this->sites = new ArrayCollection();
+    }
 }

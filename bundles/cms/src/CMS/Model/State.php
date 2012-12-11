@@ -2,6 +2,8 @@
 
 namespace CMS\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @Entity
  * @Table(name="nerd_states")
@@ -24,6 +26,11 @@ class State
      */
     private $name;
 
+
+	public function __construct()
+	{
+		$this->cities = new ArrayCollection();
+	}
 
     public function getCode()
     {

@@ -2,6 +2,8 @@
 
 namespace CMS\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * +------------------+---------------------------+------+-----+---------------------+-----------------------------+
  * | Field            | Type                      | Null | Key | Default             | Extra                       |
@@ -108,6 +110,12 @@ class Page
      * @JoinTable(name="nerd_page_keywords")
      */
     private $keywords;
+
+
+    public function __construct()
+    {
+        $this->keywords = new ArrayCollection();
+    }
 
 	public function getId()
 	{
