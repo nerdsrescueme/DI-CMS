@@ -19,14 +19,14 @@ $kernel->setEnvironment($environment);
 $kernel->registerBundle('CMS');
 
 // Register Kernel/Application Events
-$dispatcher->register('startup', new \CMS\Event\KernelStartupListener($kernel));
-$dispatcher->register('request', new \CMS\Event\KernelRequestListener($kernel));
-$dispatcher->register('response', new \CMS\Event\KernelResponseListener($kernel));
-$dispatcher->register('shutdown', new \CMS\Event\KernelShutdownListener($kernel));
-$dispatcher->register('startup', new ApplicationStartupListener($application));
-$dispatcher->register('request', new ApplicationRequestListener($application));
-$dispatcher->register('response', new ApplicationResponseListener($application));
-$dispatcher->register('shutdown', new ApplicationShutdownListener($application));
+$dispatcher->register('startup', new \CMS\Event\KernelStartupListener($kernel))
+	->register('request', new \CMS\Event\KernelRequestListener($kernel))
+	->register('response', new \CMS\Event\KernelResponseListener($kernel))
+	->register('shutdown', new \CMS\Event\KernelShutdownListener($kernel))
+	->register('startup', new ApplicationStartupListener($application))
+	->register('request', new ApplicationRequestListener($application))
+	->register('response', new ApplicationResponseListener($application))
+	->register('shutdown', new ApplicationShutdownListener($application));
 
 // Start Kernel/Application
 $dispatcher->dispatch('startup');
