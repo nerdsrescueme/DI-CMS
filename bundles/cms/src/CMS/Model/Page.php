@@ -5,23 +5,6 @@ namespace CMS\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * +------------------+---------------------------+------+-----+---------------------+-----------------------------+
- * | Field            | Type                      | Null | Key | Default             | Extra                       |
- * +------------------+---------------------------+------+-----+---------------------+-----------------------------+
- * | id               | int(8) unsigned           | NO   | PRI | NULL                | auto_increment              |
- * | site_id          | int(2) unsigned           | NO   | MUL | NULL                |                             |
- * | layout_id        | char(32)                  | NO   |     | default             |                             |
- * | title            | char(160)                 | NO   |     | NULL                |                             |
- * | subtitle         | char(160)                 | YES  |     | NULL                |                             |
- * | uri              | char(200)                 | NO   | UNI | NULL                |                             |
- * | description      | char(200)                 | YES  |     | NULL                |                             |
- * | status           | enum('one','two')         | YES  |     | one                 |                             |
- * | priority         | int(2) unsigned zerofill  | NO   |     | 05                  |                             |
- * | change_frequency | enum('always'…)           | YES  |     | weekly              |                             |
- * | updated_at       | timestamp                 | NO   |     | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP |
- * | created_at       | timestamp                 | NO   |     | 0000-00-00 00:00:00 |                             |
- * +------------------+---------------------------+------+-----+---------------------+-----------------------------+
- *
  * @Entity
  * @Table(name="nerd_pages")
  */
@@ -106,10 +89,25 @@ class Page
 	private $updatedAt;
 
     /**
-     * @ManyToMany(targetEntity="Keyword", inversedBy="pages")
+     * @ManyToMany(targetEntity="Keyword", inversedBy="page")
      * @JoinTable(name="nerd_page_keywords")
      */
     private $keywords;
+
+	/**
+	 * @OneToMany(targetEntity="Component", mappedBy="page")
+	 */
+	private $components;
+
+	/**
+	 * @OneToMany(targetEntity="Region", mappedBy="page")
+	 */
+	private $regions;
+
+	/**
+	 * @OneToMany(targetEntity="Snippet", mappedBy="page")
+	 */
+	private $snippets;
 
 
     public function __construct()
@@ -272,4 +270,28 @@ class Page
     {
         return $this->keywords;
     }
+
+	/**
+	 * Component association
+	 */
+	public function getComponents()
+	{
+		return $this->components;
+	}
+
+	/**
+	 * Region association
+	 */
+	public function getRegions()
+	{
+		return $this->regions;
+	}
+
+	/**
+	 * Snippet association
+	 */
+	public function getSnippets()
+	{
+		return $this->snippets;
+	}
 }

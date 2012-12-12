@@ -5,17 +5,6 @@ namespace CMS\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * +-------------+-----------------+------+-----+---------+----------------+
- * | Field       | Type            | Null | Key | Default | Extra          |
- * +-------------+-----------------+------+-----+---------+----------------+
- * | id          | int(2) unsigned | NO   | PRI | NULL    | auto_increment |
- * | host        | char(180)       | NO   |     | NULL    |                |
- * | theme       | char(32)        | NO   |     | default |                |
- * | active      | tinyint(1)      | NO   |     | 1       |                |
- * | maintaining | tinyint(1)      | NO   |     | 0       |                |
- * | description | char(200)       | YES  |     | NULL    |                |
- * +-------------+-----------------+------+-----+---------+----------------+
- *
  * @Entity
  * @Table(name="nerd_sites")
  */

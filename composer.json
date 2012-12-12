@@ -16,7 +16,6 @@
 
     "require": {
         "nerdsrescueme/core": "*",
-        "nerdsrescueme/view": "*",
         "symfony/http-foundation": "2.2.x-dev",
         "monolog/monolog": "*",
         "swiftmailer/swiftmailer": "4.3.x-dev",
@@ -28,10 +27,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/nerdsrescueme/DI.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/nerdsrescueme/DI-View.git"
         }
     ]
 }

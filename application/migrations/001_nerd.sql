@@ -375,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `nerd_users` (
   `username` char(32) NOT NULL COMMENT 'username',
   `email` char(255) NOT NULL COMMENT 'email',
   `password` char(81) NOT NULL COMMENT 'password',
-  `password_reset_hash` char(81) DEFAULT NULL,
+  `salt` char(81) DEFAULT NULL,
   `temp_password` char(81) DEFAULT NULL,
   `remember` char(81) DEFAULT NULL,
   `activation_hash` char(81) DEFAULT NULL,
@@ -417,8 +417,8 @@ CREATE TABLE IF NOT EXISTS `nerd_user_metadata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-INSERT INTO `nerd_users` (`id`, `super`, `username`, `email`, `password`, `password_reset_hash`, `temp_password`, `remember`, `activation_hash`, `ip`, `status`, `activated`, `updated_at`, `created_at`, `last_login`) VALUES
-(1, 1, 'nerdsrescueme', 'nerdsrescueme@gmail.com', 'test', NULL, NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00');
+INSERT INTO `nerd_users` (`id`, `super`, `username`, `email`, `password`, `hash`, `temp_password`, `remember`, `activation_hash`, `ip`, `status`, `activated`, `updated_at`, `created_at`, `last_login`) VALUES
+(1, 1, 'nerdsrescueme', 'nerdsrescueme@gmail.com', '64047e87ba25e091c420030e6a379899d68c0e6afbcd28248069ae7cadf24572', '38ec18c00bbd4dca25795f7518fbf613', NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00');
 
 INSERT INTO `nerd_user_metadata` (`user_id`, `first_name`, `last_name`, `zip`) VALUES
 (1, 'Nerds', 'Rescue Me', 08093);

@@ -5,26 +5,6 @@ namespace CMS\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * +---------------------+------------------------------------+------+-----+---------------------+-----------------------------+
- * | Field               | Type                               | Null | Key | Default             | Extra                       |
- * +---------------------+------------------------------------+------+-----+---------------------+-----------------------------+
- * | id                  | int(5) unsigned                    | NO   | PRI | NULL                | auto_increment              |
- * | super               | tinyint(1)                         | NO   |     | 0                   |                             |
- * | username            | char(32)                           | NO   | UNI | NULL                |                             |
- * | email               | char(255)                          | NO   | UNI | NULL                |                             |
- * | password            | char(81)                           | NO   |     | NULL                |                             |
- * | password_reset_hash | char(81)                           | YES  |     | NULL                |                             |
- * | temp_password       | char(81)                           | YES  |     | NULL                |                             |
- * | remember            | char(81)                           | YES  |     | NULL                |                             |
- * | activation_hash     | char(81)                           | YES  |     | NULL                |                             |
- * | ip                  | char(45)                           | NO   |     | NULL                |                             |
- * | status              | enum('inactive','active','banned') | NO   |     | inactive            |                             |
- * | activated           | tinyint(1)                         | NO   |     | 0                   |                             |
- * | updated_at          | timestamp                          | NO   |     | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP |
- * | created_at          | timestamp                          | NO   |     | 0000-00-00 00:00:00 |                             |
- * | last_login          | timestamp                          | YES  |     | 0000-00-00 00:00:00 |                             |
- * +---------------------+------------------------------------+------+-----+---------------------+-----------------------------+
- *
  * @Entity
  * @Table(name="nerd_users")
  */
@@ -64,9 +44,9 @@ class User
 	private $password;
 
 	/**
-	 * @Column(name="password_reset_hash", type="string", length=81, nullable=true)
+	 * @Column(name="salt", type="string", length=81, nullable=true)
 	 */
-	private $passwordResetHash;
+	private $salt;
 
 	/**
 	 * @Column(name="temp_password", type="string", length=81, nullable=true)
@@ -199,14 +179,14 @@ class User
 		$this->password = $password;
 	}
 
-	public function getPasswordResetHash()
+	public function getSalt()
 	{
-		return $this->passwordResetHash;
+		return $this->salt;
 	}
 
-	public function setPasswordResetHash($passwordResetHash)
+	public function setSalt($salt)
 	{
-		$this->passwordResetHash = $passwordResetHash;
+		$this->salt = $salt;
 	}
 
 	public function getTempPassword()

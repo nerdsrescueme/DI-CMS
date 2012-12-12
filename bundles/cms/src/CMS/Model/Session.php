@@ -3,16 +3,6 @@
 namespace CMS\Model;
 
 /**
- * +------------+-----------------+------+-----+---------------------+-----------------------------+
- * | Field      | Type            | Null | Key | Default             | Extra                       |
- * +------------+-----------------+------+-----+---------------------+-----------------------------+
- * | id         | char(50)        | NO   | PRI | NULL                |                             |
- * | user_id    | int(5) unsigned | YES  | MUL | NULL                |                             |
- * | data       | text            | NO   |     | NULL                |                             |
- * | updated_at | timestamp       | NO   | MUL | CURRENT_TIMESTAMP   | on update CURRENT_TIMESTAMP |
- * | created_at | timestamp       | NO   |     | 0000-00-00 00:00:00 |                             |
- * +------------+-----------------+------+-----+---------------------+-----------------------------+
- *
  * @Entity
  * @Table(name="nerd_sessions")
  */

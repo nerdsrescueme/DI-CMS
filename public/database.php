@@ -2,7 +2,10 @@
 
 use Doctrine\ORM\Tools\Setup
   , Doctrine\ORM\EntityManager
-  , Doctrine\ORM\Configuration;
+  , Doctrine\ORM\Configuration
+  , Symfony\Component\HttpFoundation\Request
+  , Symfony\Component\HttpFoundation\Session\Session
+  , Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
 $kernel = require '../application/bootstrap.php';
 $kernel->registerBundle('CMS');
@@ -37,12 +40,36 @@ die('');
 */
 
 
-$currentUser = new CMS\CurrentUser($em);
-$currentUser->login('nerdsrescueme', 'test');
+/*
+$sessionStore = new NativeSessionStorage([
+    'save_path' => $kernel->getRoot().'/application/storage/sessions/',
+    'name' => 'NERDSESS',
+]);
 
-die(var_dump($currentUser->getUser()));
+$request = Request::createFromGlobals();
+$request->setSession(new Session($sessionStore));
+$request->getSession()->start();
 
+$currentUser = new CMS\CurrentUser($em, $request->getSession());
 
+if ($currentUser->check()) {
+	echo 'Logged in from session<br>';
+} else {
+	echo 'Not logged in<br>';
+
+	if ($currentUser->login('nerdsrescueme', 'nrmc1ph3r$')) {
+		echo 'Logged in with credentials<br>';
+	}
+}
+
+//$currentUser->logout();
+//echo 'Logged out';
+
+$request->getSession()->save();
+die('');
+*/
+
+/*
 $role = $em->getRepository('\\CMS\\Model\\Role')->findAll()[0];
 echo '<b>'.$role->getName().'</b>\'s allowed to<br>';
 foreach ($role->getPermissions() as $perm) {
@@ -54,7 +81,9 @@ foreach ($role->getUsers() as $user) {
     echo $user->getUsername().'<br>';
 }
 die('');
+*/
 
+/*
 $query = $em->createQueryBuilder();
 $state = $query->select('s')
                ->from('\\CMS\\Model\\State', 's')
@@ -72,3 +101,4 @@ $cities = $query->select('c')
                ->getResult();
 
 die(var_dump($cities));
+*/
