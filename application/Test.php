@@ -27,6 +27,7 @@ class Application
     protected $logger;
     protected $kernel;
     protected $viewManager;
+    protected $currentUser;
 
     public function __construct(Kernel $kernel, $request, $response = null)
     {
@@ -39,6 +40,16 @@ class Application
 
         $this->response = $response;
     }
+
+	public function getCurrentUser()
+	{
+		return $this->currentUser;
+	}
+
+	public function setCurrentUser(\CMS\Model\User $user)
+	{
+		$this->currentUser = $currentUser;
+	}
 
     public function getDirectory()
     {
@@ -118,7 +129,7 @@ class ApplicationStartupListener extends ApplicationBaseListener
         $request->getSession()->start();
 
         $this->_initializeLogger();
-        $this->_initializeViewManager();
+        //$this->_initializeViewManager();
     }
 
     private function _initializeLogger()
