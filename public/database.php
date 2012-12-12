@@ -40,7 +40,7 @@ die('');
 */
 
 
-/*
+
 $sessionStore = new NativeSessionStorage([
     'save_path' => $kernel->getRoot().'/application/storage/sessions/',
     'name' => 'NERDSESS',
@@ -67,7 +67,7 @@ if ($currentUser->check()) {
 
 $request->getSession()->save();
 die('');
-*/
+
 
 /*
 $role = $em->getRepository('\\CMS\\Model\\Role')->findAll()[0];

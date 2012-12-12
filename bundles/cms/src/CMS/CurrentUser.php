@@ -81,6 +81,7 @@ class CurrentUser
 				}
 
 				return true;
+            }
 		}
 
         return false;

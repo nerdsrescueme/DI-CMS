@@ -417,11 +417,14 @@ CREATE TABLE IF NOT EXISTS `nerd_user_metadata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-INSERT INTO `nerd_users` (`id`, `super`, `username`, `email`, `password`, `hash`, `temp_password`, `remember`, `activation_hash`, `ip`, `status`, `activated`, `updated_at`, `created_at`, `last_login`) VALUES
-(1, 1, 'nerdsrescueme', 'nerdsrescueme@gmail.com', '64047e87ba25e091c420030e6a379899d68c0e6afbcd28248069ae7cadf24572', '38ec18c00bbd4dca25795f7518fbf613', NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00');
+INSERT INTO `nerd_users` (`id`, `super`, `username`, `email`, `password`, `salt`, `temp_password`, `remember`, `activation_hash`, `ip`, `status`, `activated`, `updated_at`, `created_at`, `last_login`) VALUES
+(1, 1, 'nerdsrescueme', 'nerdsrescueme@gmail.com', '64047e87ba25e091c420030e6a379899d68c0e6afbcd28248069ae7cadf24572', '38ec18c00bbd4dca25795f7518fbf613', NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00'),
+(2, 0, 'administrator', 'your@email.com', '64047e87ba25e091c420030e6a379899d68c0e6afbcd28248069ae7cadf24572', '38ec18c00bbd4dca25795f7518fbf613', NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00'),
+(3, 0, 'user', 'user@email.com', '64047e87ba25e091c420030e6a379899d68c0e6afbcd28248069ae7cadf24572', '38ec18c00bbd4dca25795f7518fbf613', NULL, NULL, NULL, '::1', 'active', 1, '2012-12-11 17:28:48', '2012-12-11 17:28:48', '0000-00-00 00:00:00');
 
 INSERT INTO `nerd_user_metadata` (`user_id`, `first_name`, `last_name`, `zip`) VALUES
-(1, 'Nerds', 'Rescue Me', 08093);
+(1, 'Nerds', 'Rescue Me', 08093),
+(2, 'Admin', NULL, NULL);
 
 
 --
@@ -458,6 +461,30 @@ CREATE TABLE IF NOT EXISTS `nerd_roles_permissions` (
   PRIMARY KEY (`role_id`, `permission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+INSERT INTO `nerd_roles` (`id`, `name`, `description`) VALUES
+(1, 'Superuser', 'Full access role'),
+(2, 'Administrator', 'Website admin role'),
+(3, 'User', 'Website user role'),
+(4, 'Guest', 'Limited access role'),
+(5, 'Banned', 'No access role');
+
+INSERT INTO `nerd_permissions` (`id`, `name`, `description`) VALUES
+(1, 'elavated.login', 'Allows user to perform an elevated login'),
+(2, 'admin.login', 'Allows user to perform an admin login'),
+(3, 'user.login', 'Allows user to perform a basic login'),
+(4, 'site.read', 'Allows read access to site admin area'),
+(5, 'site.create', 'Allows creation of sites'),
+(6, 'site.update', 'Allows updating of sites'),
+(7, 'site.delete', 'Allows deletion of sites');
+
+INSERT INTO `nerd_users_roles` (`user_id`, `role_id`) VALUES
+(1, 1), (2, 2), (3, 3);
+
+INSERT INTO `nerd_roles_permissions` (`role_id`, `permission_id`) VALUES
+(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7),
+(2, 2), (2, 3), (2, 4),
+(3, 3);
+
 
 ALTER TABLE `nerd_users_roles`
   ADD CONSTRAINT `nerd_users_roles-role_id-nerd_roles-id` FOREIGN KEY (`role_id`) REFERENCES `nerd_roles` (`id`);
@@ -471,24 +498,6 @@ ALTER TABLE `nerd_roles_permissions`
 ALTER TABLE `nerd_roles_permissions`
   ADD CONSTRAINT `nerd_roles_permissions-user_id-nerd_permissions-id` FOREIGN KEY (`permission_id`) REFERENCES `nerd_permissions` (`id`);
 
-INSERT INTO `nerd_permissions` (`id`, `name`, `description`) VALUES
-(1, 'blog.create', 'Allowed to create a new blog posts'),
-(2, 'blog.delete', 'Allowed to delete existing blog posts'),
-(3, 'blog.edit', 'Allowed to edit existing blog posts'),
-(4, 'blog.view', 'Allowed to view existing blog posts');
-
-INSERT INTO `nerd_roles` (`id`, `name`, `description`) VALUES
-(1, 'Superuser', 'All permissions are overridden and allowed.'),
-(2, 'Admin', 'Allowed low level site administration permissions.');
-
-INSERT INTO `nerd_roles_permissions` (`role_id`, `permission_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4);
-
-INSERT INTO `nerd_users_roles` (`user_id`, `role_id`) VALUES
-(1, 1);
 
 --
 -- Constraints for table `nerd_sessions`

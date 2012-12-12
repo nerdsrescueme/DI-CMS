@@ -1,19 +1,21 @@
 <?php
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
-
-use Nerd\Core\Kernel\Kernel
+  , Nerd\Core\Event\EventInterface
+  , Nerd\Core\Kernel\Kernel
   , Nerd\Core\Kernel\KernelInterface
   , Nerd\Core\Bundle\Bundle
-  , Nerd\Core\Kernel\Aware as KernelAware
   , Symfony\Component\HttpFoundation\Request
   , Symfony\Component\HttpFoundation\Response
   , Symfony\Component\HttpFoundation\Session\Session
   , Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage
   , Monolog\Logger
   , Monolog\Handler\StreamHandler
-  , Monolog\Processor\WebProcessor;
+  , Monolog\Processor\WebProcessor
+  , CMS\CurrentUser
+  , Doctrine\ORM\Tools\Setup
+  , Doctrine\ORM\EntityManager
+  , Doctrine\ORM\Configuration;
 
 class Application
 {
@@ -24,10 +26,7 @@ class Application
 
     protected $request;
     protected $response;
-    protected $logger;
     protected $kernel;
-    protected $viewManager;
-    protected $currentUser;
 
     public function __construct(Kernel $kernel, $request, $response = null)
     {
@@ -40,16 +39,6 @@ class Application
 
         $this->response = $response;
     }
-
-	public function getCurrentUser()
-	{
-		return $this->currentUser;
-	}
-
-	public function setCurrentUser(\CMS\Model\User $user)
-	{
-		$this->currentUser = $currentUser;
-	}
 
     public function getDirectory()
     {
@@ -73,31 +62,22 @@ class Application
 
     public function getLogger()
     {
-        return $this->logger;
+        return $this->kernel->getContainer()->get('logger');
     }
 
-    public function getView($view, array $data = [])
+    public function getEntityManager()
     {
-        return $this->viewManager->get($view, $data);
+        return $this->kernel->getContainer()->get('entityManager');
     }
 
     public function getViewManager()
     {
-        return $this->viewManager;
+        return $this->kernel->getContainer()->get('viewManager');
     }
 
-    public function setViewManager(\Nerd\View\Manager $viewManager)
+    public function getCurrentUser()
     {
-        $this->viewManager = $viewManager;
-
-        return $this;
-    }
-
-    public function setLogger($logger)
-    {
-        $this->logger = $logger;
-
-        return $this;
+        return $this->kernel->getContainer()->get('currentUser');
     }
 }
 
@@ -118,6 +98,7 @@ class ApplicationStartupListener extends ApplicationBaseListener
     {
         $kernel     = $this->application->getKernel();
         $dispatcher = $kernel->getDispatcher();
+        $container  = $kernel->getContainer();
         $request    = $this->application->getRequest();
 
         $sessionStore = new NativeSessionStorage([
@@ -128,11 +109,13 @@ class ApplicationStartupListener extends ApplicationBaseListener
         $request->setSession(new Session($sessionStore));
         $request->getSession()->start();
 
-        $this->_initializeLogger();
-        //$this->_initializeViewManager();
+        $container->set('logger', $this->_logger());
+        $container->set('viewManager', $this->_viewManager());
+        $container->set('entityManager', $this->_entityManager());
+        $container->set('currentUser', $this->_currentUser());
     }
 
-    private function _initializeLogger()
+    private function _logger()
     {
         $loggerStore = new StreamHandler(
             $this->application->getKernel()->getRoot().'/application/storage/logs/log.php'
@@ -142,16 +125,46 @@ class ApplicationStartupListener extends ApplicationBaseListener
         $logger->pushHandler($loggerStore);
         $logger->pushProcessor(new WebProcessor());
 
-        $this->application->setLogger($logger);
+        return $logger;
     }
 
-    private function _initializeViewManager()
+    private function _viewManager()
     {
-        $this->application->setViewManager(new Nerd\View\Manager(
+        return new Nerd\View\Manager(
             new Nerd\View\Locator\FileLocator(
                 $this->application->getDirectory().DIRECTORY_SEPARATOR.'views'
             )
-        ));
+        );
+    }
+
+    private function _entityManager()
+    {
+        $cache  = new \Doctrine\Common\Cache\ApcCache;
+        $config = new Configuration;
+        $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../bundles/cms/src/CMS/Model');
+        $config->setMetadataDriverImpl($driver);
+        $config->setMetadataCacheImpl($cache);
+        $config->setQueryCacheImpl($cache);
+        $config->setProxyDir(__DIR__.'/storage/proxies');
+        $config->setProxyNamespace('Proxies');
+        $config->setAutoGenerateProxyClasses(true);
+
+        $entityManager = EntityManager::create([
+            'driver' => 'pdo_mysql',
+            'user' => 'root',
+            'password' => '',
+            'dbname' => 'new_nerd',
+        ], $config);
+
+        return $entityManager;
+    }
+
+    private function _currentUser()
+    {
+        $entityManager = $this->application->getKernel()->getContainer()->get('entityManager');
+        $session = $this->application->getRequest()->getSession();
+
+        return new CurrentUser($entityManager, $session);
     }
 }
 
@@ -159,7 +172,11 @@ class ApplicationRequestListener extends ApplicationBaseListener
 {
     public function __invoke(EventInterface $event)
     {
-        $request = $event->getArgument('request');
+        $request     = $event->getArgument('request');
+        $currentUser = $this->application->getCurrentUser();
+
+        // Do a login check before we initialize anything!
+        $authenticated = $currentUser->check();
     }
 }
 
@@ -167,7 +184,9 @@ class ApplicationResponseListener extends ApplicationBaseListener
 {
     public function __invoke(EventInterface $event)
     {
-        $view = $this->application->getView('myview.php', ['data1' => 'Hello World!']);
+        $viewManager = $this->application->getViewManager();
+
+        $view = $viewManager->get('myview.php', ['data1' => 'Hello World!']);
         $response = $event->getArgument('response');
         $response->setContent($view->render());
     }

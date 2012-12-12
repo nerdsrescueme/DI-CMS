@@ -34,6 +34,8 @@ $em = EntityManager::create([
 
 $page = $em->find('\\CMS\\Model\\Page', 1);
 
+echo '<h1>'.$page->getTitle().'</h1>';
+
 echo '<strong>Components</strong><br>';
 foreach ($page->getComponents() as $component) {
 	echo $component->getKey().'<br>';

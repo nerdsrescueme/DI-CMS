@@ -11,11 +11,13 @@
 namespace Nerd;
 
 error_reporting(E_ALL);
+
 set_exception_handler(function($e) {
 	die(var_dump($e));
 });
+
 set_error_handler(function ($no, $str, $file, $line) {
-    throw new \ErrorException($str,$no,0,$file,$line);
+    throw new \ErrorException($str, $no, 0, $file, $line);
 });
 
 ini_set('date.timezone', 'America/New_York');

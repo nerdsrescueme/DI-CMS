@@ -336,12 +336,12 @@ AddCharset utf-8 .html .css .js .xml .json .rss .atom
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ development.php/$1 [L]
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
 
 # If we don't have mod_rewrite installed, all 404's can be sent to index.php,
 # and everything works as normal.
 
 <IfModule !mod_rewrite.c>
-    ErrorDocument 404 /development.php
+    ErrorDocument 404 /index.php
 </IfModule> 
