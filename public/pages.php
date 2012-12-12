@@ -16,7 +16,7 @@ $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../application/migration
 $config->setMetadataCacheImpl($cache);
 $config->setMetadataDriverImpl($driver);
 $config->setQueryCacheImpl($cache);
-$config->setProxyDir(__DIR__.'/../application/Proxies');
+$config->setProxyDir(__DIR__.'/../application/storage/proxies');
 $config->setProxyNamespace('Proxies');
 
 
