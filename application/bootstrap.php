@@ -11,11 +11,6 @@
 namespace Nerd;
 
 error_reporting(E_ALL);
-
-set_error_handler(function ($no, $str, $file, $line) {
-    throw new \ErrorException($str, $no, 0, $file, $line);
-});
-
 ini_set('date.timezone', 'America/New_York');
 
 $loader    = require __DIR__.'/../vendor/autoload.php';

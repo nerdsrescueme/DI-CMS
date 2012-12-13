@@ -1,0 +1,274 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"getView",
+				"getViewManager"
+			],
+			[
+				"_init",
+				"_initializeViewManager"
+			],
+			[
+				"shut",
+				"shutdownEvent"
+			],
+			[
+				"start",
+				"startupEvent"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 173.0,
+		"selected_items":
+		[
+			[
+				"ssyn js",
+				"Set Syntax: JSON"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git statu",
+				"Git: Status"
+			],
+			[
+				"Git add",
+				"Git: Add Current File"
+			],
+			[
+				"git",
+				"Git: Commit history"
+			],
+			[
+				"composer",
+				"Composer: Update"
+			],
+			[
+				"Cont instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Con",
+				"Package Control: Install Package"
+			],
+			[
+				"Sublime",
+				"SublimeLinter: Extract Annotations"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"PHPC",
+				"PHP Code Sniffer: Sniff this file"
+			],
+			[
+				"PHPUn",
+				"PHPUnit: Run All Tests"
+			],
+			[
+				"Package Cont",
+				"Package Control: Install Package"
+			],
+			[
+				"Palle",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/XAMPP/htdocs/di/DI.sublime-project",
+		"/C/XAMPP/htdocs/di/public/development.php",
+		"/C/XAMPP/htdocs/di/application/Test.php",
+		"/C/XAMPP/htdocs/di/public/database.php",
+		"/C/XAMPP/htdocs/di/bundles/cms/src/CMS/CurrentUser.php",
+		"/C/XAMPP/htdocs/di/application/storage/cache/.gitignore",
+		"/C/xampp54/tmp/mysql.log",
+		"/C/XAMPP/htdocs/di/application/storage/proxies/__CG__CMSModelSite.php",
+		"/C/XAMPP/htdocs/di/application/storage/proxies/__CG__CMSModelUserMetadata.php",
+		"/C/XAMPP/htdocs/di/vendor/nerdsrescueme/view/Nerd/View/Manager.php",
+		"/C/XAMPP/htdocs/di/application/bootstrap.php",
+		"/C/XAMPP/htdocs/di/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php",
+		"/C/XAMPP/htdocs/di/public/.htaccess",
+		"/C/XAMPP/htdocs/di/public/index.php",
+		"/C/XAMPP/htdocs/di/bundles/cms/src/CMS/Model/PageHistory.php",
+		"/C/XAMPP/htdocs/di/bundles/cms/src/CMS/Event/KernelBaseListener.php",
+		"/C/XAMPP/htdocs/di/bundles/cms/src/CMS/Model/Component.php",
+		"/C/XAMPP/htdocs/di/COMMIT_EDITMSG.COMMIT_EDITMSG",
+		"/C/XAMPP/htdocs/di/DI.sublime-workspace",
+		"/C/XAMPP/htdocs/di/cli-config.php",
+		"/C/XAMPP/htdocs/di/.gitignore",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/Composer/composer-sublime.sublime-settings",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/C/XAMPP/htdocs/di/composer.lock",
+		"/C/XAMPP/htdocs/di/composer.phar",
+		"/C/XAMPP/htdocs/di/composer.json",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/PHPUnit/PHPUnit.sublime-settings",
+		"/C/XAMPP/htdocs/di/doctrine",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/User/PHP.sublime-settings",
+		"/C/Users/bardonf/AppData/Roaming/Sublime Text 2/Packages/User/Distraction Free.sublime-settings"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"_init",
+			"_initialize",
+			"_initializ",
+			"_initialize",
+			"KernelAware",
+			"development",
+			"Core",
+			"Nerd",
+			"NERD",
+			"Nerd",
+			"HttpFoundation"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.composer":
+	{
+		"height": 94.0
+	},
+	"output.git":
+	{
+		"height": 94.0
+	},
+	"output.phpunit":
+	{
+		"height": 94.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"test.php",
+				"application/Test.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 232.0,
+	"status_bar_visible": true
+}

@@ -5,10 +5,6 @@ define('START', microtime(true));
 use Nerd\Core\Kernel\Kernel
   , Nerd\Core\Environment\Environment
   , Nerd\Core\Event\Event
-  , CMS\Event\KernelStartupListener
-  , CMS\Event\KernelRequestListener
-  , CMS\Event\KernelResponseListener
-  , CMS\Event\KernelShutdownListener
   , Symfony\Component\HttpFoundation\Request;
 
 // Register all needed variables
@@ -26,50 +22,49 @@ $kernel->registerBundle('CMS');
 
 // Register Kernel/Application Events
 $dispatcher
-	->register('exception', new ApplicationExceptionMailListener)
-	->register('exception', new ApplicationExceptionDisplayListener)
+    ->register('exception', new ExceptionLogListener)
+    ->register('exception', new ExceptionDisplayListener)
+    ->register('router',    new RouteDbListener)
+    ->register('router',    new RoutePathListener)
+    ->register('router',    new RouteErrorListener)
+    ->register('startup',   new StartupLoggerListener)
+    ->register('startup',   new StartupViewManagerListener)
+    ->register('startup',   new StartupDatabaseListener)
+    ->register('startup',   new StartupListener)
+    ->register('request',   new RequestListener)
+    ->register('response',  new ResponseDbListener)
+    ->register('response',  new ResponsePathListener)
+    ->register('response',  new ResponseCatchListener)
+    ->register('shutdown',  new ShutdownListener);
 
-    ->register('startup',  new KernelStartupListener($kernel))
-    ->register('request',  new KernelRequestListener($kernel))
-    ->register('response', new KernelResponseListener($kernel))
-    ->register('shutdown', new KernelShutdownListener($kernel))
-
-	->register('router',   new ApplicationRouteDbListener($application))
-	->register('router',   new ApplicationRoutePathListener($application))
-	->register('router',   new ApplicationRouteErrorListener($application))
-
-    ->register('startup',  new ApplicationStartupListener($application))
-    ->register('request',  new ApplicationRequestListener($application))
-    ->register('response', new ApplicationResponseListener($application))
-    ->register('shutdown', new ApplicationShutdownListener($application));
-
+$baseEvent = new Event('base', $dispatcher);
+$baseEvent->setArgument('kernel',      $kernel);
+$baseEvent->setArgument('application', $application);
+$baseEvent->setArgument('request',     $request);
+$baseEvent->setArgument('response',    $response);
+$baseEvent->setArgument('container',   $kernel->getContainer());
+$baseEvent->setArgument('uri',         $request->getPathInfo());
 
 // Start Kernel/Application
-$startupEvent = new Event('*.startup', $dispatcher);
-$dispatcher->dispatch('startup', $startupEvent);
+$startupEvent = clone $baseEvent;
+$startupEvent->setName('startup')->dispatch();
+
+$baseEvent->setArgument('em', $kernel->getContainer()->entityManager);
 
 // Process incoming request
-$requestEvent = new Event('*.request', $dispatcher);
-$requestEvent->setArgument('request', $request);
-$dispatcher->dispatch('request', $requestEvent);
+$requestEvent = clone $baseEvent;
+$requestEvent->setName('request')->dispatch();
 
-$routerEvent = new Event('*.router', $dispatcher);
-$routerEvent->setArgument('uri', $request->getPathInfo());
-$routerEvent->setArgument('container', $kernel->getContainer());
-$routerEvent->setArgument('request', $request);
-$routerEvent->setArgument('em', $kernel->getContainer()->get('entityManager'));
-$dispatcher->dispatch('router', $routerEvent);
+$routerEvent = clone $baseEvent;
+$routerEvent->setName('router')->dispatch();
 
 // Format response
-$responseEvent = new Event('*.response', $dispatcher);
-$responseEvent->setArgument('response', $response);
-$dispatcher->dispatch('response', $responseEvent);
+$responseEvent = clone $baseEvent;
+$responseEvent->setName('response')->dispatch();
 
 // Send response
 $response->prepare($request)->send();
 
 // Shutdown Application/Kernel
-$shutdownEvent = new Event('*.shutdown', $dispatcher);
-$dispatcher->dispatch('shutdown', $shutdownEvent);
-
-die((microtime(true) - START).' seconds to render');
+$shutdownEvent = clone $baseEvent;
+$shutdownEvent->setName('shutdown')->dispatch();
