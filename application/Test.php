@@ -19,11 +19,6 @@ use Nerd\Core\Event\ListenerAbstract
 
 class Application
 {
-    const STARTUP  = 'app.startup';
-    const REQUEST  = 'app.request';
-    const RESPONSE = 'app.response';
-    const SHUTDOWN = 'app.shutdown';
-
     const PAGE_HOME = '@@HOME';
 
     const ROUTE_DB = 1;
@@ -65,17 +60,39 @@ class Application
     }
 }
 
-
+/**
+ * Log exceptions via Monolog
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class ExceptionLogListener extends ListenerAbstract
 {
     protected $priority = 1;
 
     public function __invoke(EventInterface $event)
     {
-        // Log exception...
+        $logger = $event->container->logger;
+
+        if (!$logger) {
+            return;
+        }
+
+        $message = $event->exception->getMessage();
+        $line    = $event->exception->getLine();
+        $file    = $event->exception->getFile();
+
+        $logger->addWarning($message, [$file, $line]);
     }
 }
 
+/**
+ * Display exceptions to user
+ * 
+ * @todo Make environment aware? Or simply setup different listeners per env?
+ * @package Application
+ * @subpackage Listeners
+ */
 class ExceptionDisplayListener extends ListenerAbstract
 {
     protected $priority = 10;
@@ -98,6 +115,9 @@ class ExceptionDisplayListener extends ListenerAbstract
 
 use Nerd\Core\Event\Event;
 
+/**
+ * Startup listener
+ */
 class StartupListener extends ListenerAbstract
 {
     protected $priority = 10;
@@ -108,24 +128,21 @@ class StartupListener extends ListenerAbstract
         $site = $em->getRepository('\\CMS\\Model\\Site')
                    ->findOneByHost($event->request->getHost());
 
-        if ($site === null) {
+        if (!$site) {
             throw new \RuntimeException('Site not found');
         }
 
-        $sessionStore = new NativeSessionStorage([
-            'save_path' => '4;'.$event->kernel->getRoot().'/application/storage/sessions/',
-            'name' => 'NERDSESS',
-        ]);
-
-        $event->request->setSession(new Session($sessionStore));
-        $event->request->getSession()->start();
-
-        $event->container->session     = $event->request->getSession();
         $event->container->currentUser = new CurrentUser($em, $event->container->session);
         $event->container->activeSite  = $site;
     }
 }
 
+/**
+ * Initialize the logger
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class StartupLoggerListener extends ListenerAbstract
 {
     protected $priority = 1;
@@ -138,12 +155,18 @@ class StartupLoggerListener extends ListenerAbstract
 
         $logger = new Logger('App');
         $logger->pushHandler($loggerStore);
-        $logger->pushProcessor(new WebProcessor());
+        //$logger->pushProcessor(new WebProcessor());
 
         $event->container->logger = $logger;
     }
 }
 
+/**
+ * View listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class StartupViewManagerListener extends ListenerAbstract
 {
     protected $priority = 2;
@@ -160,6 +183,12 @@ class StartupViewManagerListener extends ListenerAbstract
     }
 }
 
+/**
+ * Database listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class StartupDatabaseListener extends ListenerAbstract
 {
     protected $priority = 3;
@@ -187,17 +216,55 @@ class StartupDatabaseListener extends ListenerAbstract
     }
 }
 
-class RequestListener extends ListenerAbstract
+/**
+ * Session listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
+class StartupSessionListener extends ListenerAbstract
 {
+    protected $priority = 4;
+
     public function __invoke(EventInterface $event)
     {
-        $currentUser = $event->container->currentUser;
+        $sessionStore = new NativeSessionStorage([
+            'save_path' => '4;'.$event->kernel->getRoot().'/application/storage/sessions/',
+            'name' => 'NERDSESS',
+        ]);
 
-        // Do a login check before we initialize anything!
-        $authenticated = $currentUser->check();
+        $event->request->setSession(new Session($sessionStore));
+        $event->request->getSession()->start();
+
+        $event->container->session = $event->request->getSession();
     }
 }
 
+/**
+ * Request listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
+class RequestListener extends ListenerAbstract
+{
+    protected $priority = 1;
+
+    public function __invoke(EventInterface $event)
+    {
+        // If the user is not logged in... don't do anything else with the request
+        if (!$event->container->currentUser->check()) {
+            $this->stopPropogation();
+        }
+    }
+}
+
+/**
+ * Database route listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class RouteDbListener extends ListenerAbstract
 {
     protected $priority = 1;
@@ -226,6 +293,12 @@ use Aura\Router\Map
   , Aura\Router\DefinitionFactory
   , Aura\Router\RouteFactory;
 
+/**
+ * Path route listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class RoutePathListener extends ListenerAbstract
 {
     protected $priority = 2;
@@ -246,6 +319,12 @@ class RoutePathListener extends ListenerAbstract
     }
 }
 
+/**
+ * Error route listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class RouteErrorListener extends ListenerAbstract
 {
     protected $priority = 3;
@@ -256,6 +335,12 @@ class RouteErrorListener extends ListenerAbstract
     }
 }
 
+/**
+ * Database response listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class ResponseDbListener extends ListenerAbstract
 {
     protected $priority = 1;
@@ -272,6 +357,12 @@ class ResponseDbListener extends ListenerAbstract
     }
 }
 
+/**
+ * Path response listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class ResponsePathListener extends ListenerAbstract
 {
     protected $priority = 2;
@@ -288,6 +379,12 @@ class ResponsePathListener extends ListenerAbstract
     }
 }
 
+/**
+ * Catch-all response listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class ResponseCatchListener extends ListenerAbstract
 {
     protected $priority = 10;
@@ -298,6 +395,12 @@ class ResponseCatchListener extends ListenerAbstract
     }
 }
 
+/**
+ * Shutdown listener
+ *
+ * @package Application
+ * @subpackage Listeners
+ */
 class ShutdownListener extends ListenerAbstract
 {
     protected $priority = 1;

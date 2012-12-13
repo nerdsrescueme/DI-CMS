@@ -30,6 +30,7 @@ $dispatcher
     ->register('startup',   new StartupLoggerListener)
     ->register('startup',   new StartupViewManagerListener)
     ->register('startup',   new StartupDatabaseListener)
+    ->register('startup',   new StartupSessionListener)
     ->register('startup',   new StartupListener)
     ->register('request',   new RequestListener)
     ->register('response',  new ResponseDbListener)
