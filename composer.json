@@ -21,7 +21,8 @@
         "monolog/monolog": "*",
         "swiftmailer/swiftmailer": "4.3.x-dev",
         "doctrine/orm": "*",
-        "doctrine/migrations": "*"
+        "doctrine/migrations": "*",
+        "aura/router": "dev-master"
     },
 
     "repositories": [

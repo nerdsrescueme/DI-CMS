@@ -24,9 +24,18 @@ class Application
     const RESPONSE = 'app.response';
     const SHUTDOWN = 'app.shutdown';
 
+	const PAGE_HOME = '@@HOME';
+
+	const ROUTE_DB = 1;
+	const ROUTE_PATH = 2;
+	const ROUTE_ERROR = 3;
+
     protected $request;
     protected $response;
     protected $kernel;
+    protected $site;
+
+	protected $type;
 
     public function __construct(Kernel $kernel, $request, $response = null)
     {
@@ -39,6 +48,16 @@ class Application
 
         $this->response = $response;
     }
+
+	public function getType()
+	{
+		return $this->type;
+	}
+
+	public function setType($type)
+	{
+		$this->type = $type;
+	}
 
     public function getDirectory()
     {
@@ -79,6 +98,11 @@ class Application
     {
         return $this->kernel->getContainer()->get('currentUser');
     }
+
+	public function getActiveSite()
+	{
+		return $this->kernel->getContainer()->get('activeSite');
+	}
 }
 
 abstract class ApplicationBaseListener extends ListenerAbstract
@@ -92,14 +116,53 @@ abstract class ApplicationBaseListener extends ListenerAbstract
     }
 }
 
+
+class ApplicationExceptionMailListener extends ListenerAbstract
+{
+	protected $priority = 2;
+
+	public function __invoke(EventInterface $event)
+	{
+		echo 'MAILING EXCEPTION';
+	}
+}
+
+class ApplicationExceptionDisplayListener extends ListenerAbstract
+{
+	protected $priority = 10;
+
+	public function __invoke(EventInterface $event)
+	{
+		die($event->exception->getMessage());
+	}
+}
+
+use Nerd\Core\Event\Event;
+
 class ApplicationStartupListener extends ApplicationBaseListener
 {
     public function __invoke(EventInterface $event)
     {
+    	set_exception_handler(function($e) use ($event) {
+			$d = $event->getDispatcher();
+			$d->register('exception', new ApplicationExceptionListener);
+
+			$ev = new Event('exception', $d);
+			$ev->exception = $e;
+			$d->dispatch('exception', $ev);
+		});
+
         $kernel     = $this->application->getKernel();
-        $dispatcher = $kernel->getDispatcher();
         $container  = $kernel->getContainer();
         $request    = $this->application->getRequest();
+
+		$em   = $this->_entityManager();
+		$site = $em->getRepository('\\CMS\\Model\\Site')
+			       ->findOneByHost($request->getHost());
+
+		if ($site === null) {
+			throw new \RuntimeException('Site not found');
+		}
 
         $sessionStore = new NativeSessionStorage([
             'save_path' => '4;'.$kernel->getRoot().'/application/storage/sessions/',
@@ -109,10 +172,12 @@ class ApplicationStartupListener extends ApplicationBaseListener
         $request->setSession(new Session($sessionStore));
         $request->getSession()->start();
 
-        $container->set('logger', $this->_logger());
-        $container->set('viewManager', $this->_viewManager());
-        $container->set('entityManager', $this->_entityManager());
-        $container->set('currentUser', $this->_currentUser());
+		$container->entityManager = $em;
+		$container->session       = $request->getSession();
+        $container->logger        = $this->_logger();
+        $container->viewManager   = $this->_viewManager();
+        $container->currentUser   = new CurrentUser($em, $container->session);
+        $container->activeSite    = $site;
     }
 
     private function _logger()
@@ -149,22 +214,22 @@ class ApplicationStartupListener extends ApplicationBaseListener
         $config->setProxyNamespace('Proxies');
         $config->setAutoGenerateProxyClasses(true);
 
-        $entityManager = EntityManager::create([
+        $em = EntityManager::create([
             'driver' => 'pdo_mysql',
             'user' => 'root',
             'password' => '',
             'dbname' => 'new_nerd',
         ], $config);
 
-        return $entityManager;
+        return $em;
     }
 
     private function _currentUser()
     {
-        $entityManager = $this->application->getKernel()->getContainer()->get('entityManager');
+        $em = $this->application->getKernel()->getContainer()->get('entityManager');
         $session = $this->application->getRequest()->getSession();
 
-        return new CurrentUser($entityManager, $session);
+        return new CurrentUser($em, $session);
     }
 }
 
@@ -172,7 +237,6 @@ class ApplicationRequestListener extends ApplicationBaseListener
 {
     public function __invoke(EventInterface $event)
     {
-        $request     = $event->getArgument('request');
         $currentUser = $this->application->getCurrentUser();
 
         // Do a login check before we initialize anything!
@@ -180,15 +244,81 @@ class ApplicationRequestListener extends ApplicationBaseListener
     }
 }
 
+class ApplicationRouteDbListener extends ApplicationBaseListener
+{
+	protected $priority = 1;
+
+	public function __invoke(EventInterface $event)
+	{
+		$uri = $event->uri;
+
+		switch($uri) {
+			case '/' :
+				$uri = Application::PAGE_HOME;
+				break;
+		}
+
+		$page = $event->em->getRepository('\\CMS\\Model\\Page')->findOneByUri($uri);
+
+		if ($page) {
+			$event->stopPropogation();
+			$event->container->activePage = $page;
+			$this->application->setType(Application::ROUTE_DB);
+		}
+	}
+}
+
+use Aura\Router\Map
+  , Aura\Router\DefinitionFactory
+  , Aura\Router\RouteFactory;
+
+class ApplicationRoutePathListener extends ApplicationBaseListener
+{
+	protected $priority = 2;
+
+	public function __invoke(EventInterface $event)
+	{
+		$router = new Map(new DefinitionFactory, new RouteFactory);
+		$router->add(null, '/{:controller}/{:action}/{:id:(\d+)}'); // Get map file?
+
+		$route = $router->match($event->uri, $_SERVER);
+
+		if ($route) {
+			$event->stopPropogation();
+			$event->container->router = $router;
+			$event->container->route  = $route;
+			$this->application->setType(Application::ROUTE_PATH);
+		}
+	}
+}
+
+class ApplicationRouteErrorListener extends ApplicationBaseListener
+{
+	protected $priority = 3;
+
+	public function __invoke(EventInterface $event)
+	{
+		$this->application->setType(Application::ROUTE_ERROR);
+	}
+}
+
 class ApplicationResponseListener extends ApplicationBaseListener
 {
     public function __invoke(EventInterface $event)
     {
-        $viewManager = $this->application->getViewManager();
+    	$response = $event->response;
 
-        $view = $viewManager->get('myview.php', ['data1' => 'Hello World!']);
-        $response = $event->getArgument('response');
-        $response->setContent($view->render());
+    	switch($this->application->getType()) {
+    		case Application::ROUTE_DB :
+    			$response->setContent('Page loaded and rendered from database');
+    			break;
+    		case Application::ROUTE_PATH :
+        		$response->setContent('Page loaded and rendered from file');
+    			break;
+    		case Application::ROUTE_ERROR :
+    		default:
+    			$response->setContent('Page could not be found');
+    	}
     }
 }
 

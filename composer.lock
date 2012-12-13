@@ -1,6 +1,102 @@
 {
-    "hash": "358f844920bce8f83709ec160a62944f",
+    "hash": "66a4360b1e52219308343689c10906f6",
     "packages": [
+        {
+            "name": "aura/installer-default",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/installer-default",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/auraphp/installer-default/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "time": "2012-11-26 21:35:57",
+            "type": "composer-installer",
+            "extra": {
+                "class": "Aura\\Composer\\DefaultInstaller"
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Aura\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul M. Jones",
+                    "email": "pmjones88@gmail.com",
+                    "homepage": "http://paul-m-jones.com"
+                }
+            ],
+            "description": "Installs Aura packages using the Composer defaults.",
+            "keywords": [
+                "installer",
+                "aura"
+            ]
+        },
+        {
+            "name": "aura/router",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Router",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/auraphp/Aura.Router/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "aura/installer-default": ">=1.0.0"
+            },
+            "time": "2012-11-28 16:59:02",
+            "type": "aura-package",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Aura\\Router": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Paul M. Jones",
+                    "email": "pmjones88@gmail.com",
+                    "homepage": "http://paul-m-jones.com"
+                },
+                {
+                    "name": "Hari KT",
+                    "email": "kthari85@gmail.com",
+                    "homepage": "http://harikt.com"
+                },
+                {
+                    "name": "Aura.Router Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Router/contributors"
+                }
+            ],
+            "description": "The Aura Router package implements web routing; given a URI path and a copy of $_SERVER, it will extract controller, action, and parameter values for a specific route.",
+            "homepage": "http://auraphp.github.com/Aura.Router",
+            "keywords": [
+                "route",
+                "routing",
+                "router"
+            ]
+        },
         {
             "name": "doctrine/common",
             "version": "dev-master",
@@ -325,9 +421,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI.git",
-                "reference": "3aa95e556581a4554e0d1aecd172f0ad8e0af0aa"
+                "reference": "85a9cca6829f233a48544a1ad6b3dc4553aa630e"
             },
-            "time": "2012-12-12 14:03:29",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/85a9cca6829f233a48544a1ad6b3dc4553aa630e",
+                "reference": "85a9cca6829f233a48544a1ad6b3dc4553aa630e",
+                "shasum": ""
+            },
+            "time": "2012-12-12 17:02:22",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -341,7 +443,11 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Core Library"
+            "description": "Nerd Core Library",
+            "support": {
+                "source": "https://github.com/nerdsrescueme/DI/tree/master",
+                "issues": "https://github.com/nerdsrescueme/DI/issues"
+            }
         },
         {
             "name": "nerdsrescueme/view",
@@ -351,6 +457,12 @@
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI-View.git",
                 "reference": "34ac445355e96fb33cb12400e1220cf31c19d363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI-View/zipball/34ac445355e96fb33cb12400e1220cf31c19d363",
+                "reference": "34ac445355e96fb33cb12400e1220cf31c19d363",
+                "shasum": ""
             },
             "time": "2012-12-12 14:04:05",
             "type": "library",
@@ -366,7 +478,11 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd View component"
+            "description": "Nerd View component",
+            "support": {
+                "source": "https://github.com/nerdsrescueme/DI-View/tree/master",
+                "issues": "https://github.com/nerdsrescueme/DI-View/issues"
+            }
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -417,6 +533,54 @@
                 "mail",
                 "mailer"
             ]
+        },
+        {
+            "name": "symfony/console",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console",
+                "reference": "73a1613c94eba600b42938360232b8ecf7e76078"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Console/archive/73a1613c94eba600b42938360232b8ecf7e76078.zip",
+                "reference": "73a1613c94eba600b42938360232b8ecf7e76078",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2012-12-11 14:06:57",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com"
         },
         {
             "name": "symfony/http-foundation",
@@ -478,6 +642,7 @@
     "stability-flags": {
         "symfony/http-foundation": 20,
         "swiftmailer/swiftmailer": 20,
+        "aura/router": 20,
         "phpunit/phpunit": 20,
         "symfony/console": 20
     }
