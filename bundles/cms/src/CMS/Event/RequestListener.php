@@ -17,9 +17,6 @@ class RequestListener extends ListenerAbstract
 
     public function __invoke(EventInterface $event)
     {
-        // If the user is not logged in… don't do anything else with the request
-        if (!$event->container->currentUser->check()) {
-            $this->stopPropogation();
-        }
+
     }
 }

@@ -4,6 +4,7 @@ use Nerd\Core\Kernel\Kernel
   , Nerd\Core\Environment\Environment
   , Nerd\Core\Event\Event
   , Symfony\Component\HttpFoundation\Request
+  , Symfony\Component\HttpFoundation\RedirectResponse
   , CMS\Application;
 
 // Register all needed variables
@@ -32,39 +33,30 @@ $dispatcher
     ->register('startup',   new \CMS\Event\StartupSessionListener)
     ->register('startup',   new \CMS\Event\StartupListener)
     ->register('request',   new \CMS\Event\RequestListener)
+    ->register('response',  new \CMS\Event\ResponseForbiddenListener)
     ->register('response',  new \CMS\Event\ResponseDatabaseListener)
     ->register('response',  new \CMS\Event\ResponsePathListener)
+    ->register('response',  new \CMS\Event\ResponseRedirectListener)
     ->register('response',  new \CMS\Event\ResponseCatchListener)
     ->register('shutdown',  new \CMS\Event\ShutdownListener);
 
-$baseEvent = new Event('base', $dispatcher);
-$baseEvent->setArgument('kernel',      $kernel);
-$baseEvent->setArgument('application', $application);
-$baseEvent->setArgument('request',     $request);
-$baseEvent->setArgument('response',    $response);
-$baseEvent->setArgument('container',   $kernel->getContainer());
-$baseEvent->setArgument('uri',         $request->getPathInfo());
+$event = new Event('base', $dispatcher);
+$event->setArgument('kernel',      $kernel);
+$event->setArgument('application', $application);
+$event->setArgument('request',     $request);
+$event->setArgument('response',    $response);
+$event->setArgument('container',   $kernel->getContainer());
+$event->setArgument('uri',         $request->getPathInfo());
 
 // Start Kernel/Application
-$startupEvent = clone $baseEvent;
-$startupEvent->setName('startup')->dispatch();
+$event->setName('startup')->dispatch();
 
-$baseEvent->setArgument('em', $kernel->getContainer()->entityManager);
+$event->setArgument('em', $kernel->getContainer()->entityManager);
 
-// Process incoming request
-$requestEvent = clone $baseEvent;
-$requestEvent->setName('request')->dispatch();
+$event->setName('request')->dispatch();
+$event->setName('router')->dispatch();
+$event->setName('response')->dispatch();
 
-$routerEvent = clone $baseEvent;
-$routerEvent->setName('router')->dispatch();
+$event->response->prepare($request)->send();
 
-// Format response
-$responseEvent = clone $baseEvent;
-$responseEvent->setName('response')->dispatch();
-
-// Send response
-$response->prepare($request)->send();
-
-// Shutdown Application/Kernel
-$shutdownEvent = clone $baseEvent;
-$shutdownEvent->setName('shutdown')->dispatch();
+$event->setName('shutdown')->dispatch();

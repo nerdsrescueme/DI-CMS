@@ -14,7 +14,7 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class ResponseRedirectListener extends ListenerAbstract
+class ResponseForbiddenListener extends ListenerAbstract
 {
     protected $priority = 1;
 

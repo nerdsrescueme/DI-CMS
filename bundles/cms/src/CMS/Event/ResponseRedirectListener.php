@@ -16,7 +16,7 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class ResponseRedirectListener extends ListenerAbstract
 {
-    protected $priority = 2;
+    protected $priority = 90;
 
     public function determine(EventInterface $event)
     {

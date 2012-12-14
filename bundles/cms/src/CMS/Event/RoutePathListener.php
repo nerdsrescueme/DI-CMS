@@ -25,20 +25,16 @@ class RoutePathListener extends ListenerAbstract
         // we need to add role checking to ensure we can get here...
         $allowed = (bool) $event->container->currentUser;
 
-        // Tag this response as forbidden and stop routing...
-        if (!$allowed) {
-            $event->response->setStatusCode(403);
-            $event->application->setType(Application::ROUTE_ERROR);
-            $event->stopPropogation();
-        }
-
         return $allowed;
     }
 
     public function __invoke(EventInterface $event)
     {
         $router = new Map(new DefinitionFactory, new RouteFactory);
-        $router->add(null, '/{:controller}/{:action}/{:id:(\d+)}'); // Get map file?
+        $mapper = require join(DIRECTORY_SEPARATOR, [$event->application->getDirectory(), 'config', 'routes.php']);
+
+        // Closure returned above sets routes on the router object
+        $mapper($router); // Cache object
 
         $route = $router->match($event->uri, $_SERVER);
 
