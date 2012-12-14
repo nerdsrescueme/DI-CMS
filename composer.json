@@ -24,7 +24,8 @@
         "swiftmailer/swiftmailer": "4.3.x-dev",
         "doctrine/orm": "*",
         "doctrine/migrations": "*",
-        "aura/router": "dev-master"
+        "aura/router": "dev-master",
+        "aura/view": "dev-master"
     },
 
     "repositories": [

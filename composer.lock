@@ -1,5 +1,5 @@
 {
-    "hash": "f2f448d911f86d7e52cc13bcc0a6dda7",
+    "hash": "a782aa433c946333143f9855a962f83d",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -95,6 +95,63 @@
                 "route",
                 "routing",
                 "router"
+            ]
+        },
+        {
+            "name": "aura/view",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.View",
+                "reference": "1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/auraphp/Aura.View/archive/1.0.0.zip",
+                "reference": "1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "aura/installer-default": ">=1.0.0"
+            },
+            "time": "2012-11-30 08:40:49",
+            "type": "aura-package",
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Aura\\View": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul M. Jones",
+                    "email": "pmjones88@gmail.com",
+                    "homepage": "http://paul-m-jones.com"
+                },
+                {
+                    "name": "Hari KT",
+                    "email": "kthari85@gmail.com",
+                    "homepage": "http://harikt.com"
+                },
+                {
+                    "name": "Aura.View Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.View/contributors"
+                }
+            ],
+            "description": "The Aura View package provides an implementation of the TemplateView and TwoStepView patterns, with support for helpers and path stacks, using PHP itself as the templating language.",
+            "homepage": "http://auraphp.github.com/Aura.View",
+            "keywords": [
+                "template",
+                "template view",
+                "two step view",
+                "two-step view",
+                "twostep view",
+                "view"
             ]
         },
         {
@@ -741,6 +798,7 @@
         "symfony/filesystem": 20,
         "swiftmailer/swiftmailer": 20,
         "aura/router": 20,
+        "aura/view": 20,
         "phpunit/phpunit": 20,
         "symfony/console": 20
     }

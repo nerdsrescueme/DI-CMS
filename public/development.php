@@ -27,7 +27,7 @@ $dispatcher
     ->register('router',    new \CMS\Event\RoutePathListener)
     ->register('router',    new \CMS\Event\RouteCatchListener)
     ->register('startup',   new \CMS\Event\StartupLoggerListener)
-    ->register('startup',   new \CMS\Event\StartupViewManagerListener)
+    ->register('startup',   new \CMS\Event\StartupTemplateListener)
     ->register('startup',   new \CMS\Event\StartupDatabaseListener)
     ->register('startup',   new \CMS\Event\StartupSessionListener)
     ->register('startup',   new \CMS\Event\StartupListener)
