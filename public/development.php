@@ -22,21 +22,21 @@ $kernel->registerBundle('CMS');
 
 // Register Kernel/Application Events
 $dispatcher
-    ->register('exception', new ExceptionLogListener)
-    ->register('exception', new ExceptionDisplayListener)
-    ->register('router',    new RouteDbListener)
-    ->register('router',    new RoutePathListener)
-    ->register('router',    new RouteErrorListener)
-    ->register('startup',   new StartupLoggerListener)
-    ->register('startup',   new StartupViewManagerListener)
-    ->register('startup',   new StartupDatabaseListener)
-    ->register('startup',   new StartupSessionListener)
-    ->register('startup',   new StartupListener)
-    ->register('request',   new RequestListener)
-    ->register('response',  new ResponseDbListener)
-    ->register('response',  new ResponsePathListener)
-    ->register('response',  new ResponseCatchListener)
-    ->register('shutdown',  new ShutdownListener);
+    ->register('exception', new \CMS\Event\ExceptionLogListener)
+    ->register('exception', new \CMS\Event\ExceptionDisplayListener)
+    ->register('router',    new \CMS\Event\RouteDatabaseListener)
+    ->register('router',    new \CMS\Event\RoutePathListener)
+    ->register('router',    new \CMS\Event\RouteCatchListener)
+    ->register('startup',   new \CMS\Event\StartupLoggerListener)
+    ->register('startup',   new \CMS\Event\StartupViewManagerListener)
+    ->register('startup',   new \CMS\Event\StartupDatabaseListener)
+    ->register('startup',   new \CMS\Event\StartupSessionListener)
+    ->register('startup',   new \CMS\Event\StartupListener)
+    ->register('request',   new \CMS\Event\RequestListener)
+    ->register('response',  new \CMS\Event\ResponseDatabaseListener)
+    ->register('response',  new \CMS\Event\ResponsePathListener)
+    ->register('response',  new \CMS\Event\ResponseCatchListener)
+    ->register('shutdown',  new \CMS\Event\ShutdownListener);
 
 $baseEvent = new Event('base', $dispatcher);
 $baseEvent->setArgument('kernel',      $kernel);
