@@ -235,6 +235,16 @@ class Page
 		$this->changeFrequency = $frequency;
 	}
 
+	public function getCreatedAt()
+	{
+		return $this->createdAt;
+	}
+
+	public function getUpdatedAt()
+	{
+		return $this->updatedAt;
+	}
+
 	/**
 	 * Site association
 	 */

@@ -39,6 +39,7 @@ class ResponseDatabaseListener extends ListenerAbstract
         ];
 
         $event->response->setContent($template->render($data));
+        $event->response->setLastModified($page->getUpdatedAt());
 
         $event->stopPropogation();
     }
