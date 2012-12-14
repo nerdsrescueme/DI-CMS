@@ -19,6 +19,22 @@ class RoutePathListener extends ListenerAbstract
 {
     protected $priority = 2;
 
+    public function determine(EventInterface $event)
+    {
+        // User must be authenticated to access this resource, also
+        // we need to add role checking to ensure we can get here...
+        $allowed = (bool) $event->container->currentUser;
+
+        // Tag this response as forbidden and stop routing...
+        if (!$allowed) {
+            $event->response->setStatusCode(403);
+            $event->application->setType(Application::ROUTE_ERROR);
+            $event->stopPropogation();
+        }
+
+        return $allowed;
+    }
+
     public function __invoke(EventInterface $event)
     {
         $router = new Map(new DefinitionFactory, new RouteFactory);
