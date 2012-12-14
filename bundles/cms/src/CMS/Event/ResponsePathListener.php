@@ -46,7 +46,9 @@ class ResponsePathListener extends ListenerAbstract
             throw new \InvalidArgumentException("Action [$action] does not exist in controller [$controller]");
         }
 
+        $controller->before();
         $controllerResponse = $controller->{$action}($id);
+        $controller->after();
 
         // We only stop propogating if a secondary response object is returned
         if (is_object($controllerResponse)) {

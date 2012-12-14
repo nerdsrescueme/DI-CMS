@@ -14,9 +14,9 @@ class User extends ControllerAbstract
     public function logoutAction()
     {
         $currentUser = $this->event->container->currentUser;
-        $request     = $this->event->request;
+        $request = $this->event->request;  
 
-        $currentUser->logout();
+        $currentUser->logout($area);
 
         return new RedirectResponse(
             $request->getBaseUrl().'/'.$this->getParam('area', 'user').'/login'

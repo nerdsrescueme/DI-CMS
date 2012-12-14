@@ -15,6 +15,16 @@ abstract class ControllerAbstract
 		$this->params = $params;
 	}
 
+	public function before()
+	{
+
+	}
+
+	public function after()
+	{
+		
+	}
+
 	protected function getParam($name, $default = null)
 	{
 		if (!isset($this->params[$name])) {
