@@ -16,7 +16,6 @@
 
     "require": {
         "nerdsrescueme/core": "*",
-        "nerdsrescueme/view": "*",
         "symfony/http-foundation": "2.2.x-dev",
         "symfony/finder": "2.2.x-dev",
         "symfony/filesystem": "2.2.x-dev",
@@ -25,7 +24,8 @@
         "doctrine/orm": "*",
         "doctrine/migrations": "*",
         "aura/router": "dev-master",
-        "aura/view": "dev-master"
+        "aura/view": "dev-master",
+        "twig/twig": "1.*"
     },
 
     "repositories": [

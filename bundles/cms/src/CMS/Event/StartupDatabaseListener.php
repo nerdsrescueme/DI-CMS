@@ -5,6 +5,7 @@ namespace CMS\Event;
 use Nerd\Core\Event\ListenerAbstract
   , Nerd\Core\Event\EventInterface
   , Doctrine\Common\Cache\ApcCache
+  , Doctrine\Common\Cache\ArrayCache
   , Doctrine\ORM\EntityManager
   , Doctrine\ORM\Configuration;
 
@@ -20,7 +21,7 @@ class StartupDatabaseListener extends ListenerAbstract
 
     public function __invoke(EventInterface $event)
     {
-        $cache  = new ApcCache;
+        $cache  = new ApcCache; // new ArrayCache;
         $config = new Configuration;
         $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../Model');
         $config->setMetadataDriverImpl($driver);

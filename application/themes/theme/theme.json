@@ -1,0 +1,21 @@
+{
+	"name": "Nerds, Rescue Me! theme",
+	"version": "1.0 beta",
+
+	"organization": "Nerds, Rescue Me!",
+
+	"author": {
+		"name": "Frank Bardon Jr.",
+		"email": "frankbardon@gmail.com"
+	},
+
+	"templates": {
+		"main": "template.html",
+		"minimal": "template-minimal.html",
+		"store": "template-store.html"
+	},
+
+	"layouts": {
+		"home": "home.html"
+	}
+}

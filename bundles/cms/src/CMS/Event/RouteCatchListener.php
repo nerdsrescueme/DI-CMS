@@ -14,7 +14,7 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class RouteCatchListener extends ListenerAbstract
 {
-    protected $priority = 10;
+    protected $priority = 100;
 
     public function __invoke(EventInterface $event)
     {

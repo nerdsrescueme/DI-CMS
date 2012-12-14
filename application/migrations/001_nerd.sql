@@ -98,7 +98,7 @@ DROP TABLE IF EXISTS `nerd_pages`;
 CREATE TABLE IF NOT EXISTS `nerd_pages` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
   `site_id` int(2) unsigned NOT NULL,
-  `layout_id` char(32) NOT NULL DEFAULT 'default' COMMENT 'min(3)',
+  `layout` char(32) NOT NULL DEFAULT 'default' COMMENT 'min(3)',
   `title` char(160) NOT NULL COMMENT 'min(3)',
   `subtitle` char(160) DEFAULT NULL,
   `uri` char(200) NOT NULL COMMENT 'uri',

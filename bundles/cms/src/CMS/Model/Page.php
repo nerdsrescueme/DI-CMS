@@ -39,9 +39,9 @@ class Page
 		 private $site;
 
 	/**
-	 * @Column(name="layout_id", type="string", length=32, nullable=false)
+	 * @Column(type="string", length=32, nullable=false)
 	 */
-	private $layoutId = 'default';
+	private $layout = 'default';
 
 	/**
 	 * @Column(type="string", length=160, nullable=false)
@@ -147,14 +147,14 @@ class Page
 		$this->id = $siteId;
 	}
 
-	public function getLayoutId()
+	public function getLayout()
 	{
-		return $this->layoutId;
+		return $this->layout;
 	}
 
-	public function setLayoutId($layoutId)
+	public function setLayout($layout)
 	{
-		$this->layoutId = $layoutId;
+		$this->layout = $layout;
 	}
 
 	public function getTitle()
@@ -233,26 +233,6 @@ class Page
 		}
 
 		$this->changeFrequency = $frequency;
-	}
-
-	public function getCreatedAt()
-	{
-		return $this->createdAt;
-	}
-
-	public function setCreatedAt()
-	{
-		throw new \RuntimeException('Created at is automatically set by the database');
-	}
-
-	public function getUpdatedAt()
-	{
-		return $this->updatedAt;
-	}
-
-	public function setUpdatedAt()
-	{
-		throw new \RuntimeException('Updated at is automatically set by the database');
 	}
 
 	/**

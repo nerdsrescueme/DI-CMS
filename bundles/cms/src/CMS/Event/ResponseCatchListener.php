@@ -13,10 +13,11 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class ResponseCatchListener extends ListenerAbstract
 {
-    protected $priority = 10;
+    protected $priority = 100;
 
     public function __invoke(EventInterface $event)
     {
+    	// Need to format a 404 page somehow...
         $event->response->setContent('Page could not be found');
     }
 }

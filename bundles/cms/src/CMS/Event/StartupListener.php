@@ -11,7 +11,7 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class StartupListener extends ListenerAbstract
 {
-    protected $priority = 10;
+    protected $priority = 9;
 
     public function __invoke(EventInterface $event)
     {

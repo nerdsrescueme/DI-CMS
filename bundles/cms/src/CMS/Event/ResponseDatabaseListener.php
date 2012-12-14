@@ -14,16 +14,32 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class ResponseDatabaseListener extends ListenerAbstract
 {
-    protected $priority = 1;
+    protected $priority = 5;
 
     public function determine(EventInterface $event)
     {
-        return $event->application->getType() === Application::ROUTE_DB;
+        return $event->response->isSuccessful()
+           and $event->application->getType() === Application::ROUTE_DB;
     }
 
     public function __invoke(EventInterface $event)
     {
-        $event->response->setContent('Page loaded and rendered from database');
+        $page     = $event->container->activePage;
+        $twig     = $event->container->twig;
+        $info     = $event->container->themeInfo;
+        $template = $twig->loadTemplate('template.html.twig');
+
+        $twig->addGlobal('site', $event->container->activeSite);
+        $twig->addGlobal('user', $event->container->currentUser->getUser());
+        $twig->addGlobal('page', $page);
+        $twig->addGlobal('theme', $info);
+
+        $data = [
+            'layout' => 'home',
+        ];
+
+        $event->response->setContent($template->render($data));
+
         $event->stopPropogation();
     }
 }

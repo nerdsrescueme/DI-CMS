@@ -1,5 +1,5 @@
 {
-    "hash": "a782aa433c946333143f9855a962f83d",
+    "hash": "34a658eefe445fea3300b3e83e9fda7a",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -26,7 +26,7 @@
                     "Aura\\Composer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
@@ -69,7 +69,7 @@
                     "Aura\\Router": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD"
             ],
@@ -123,7 +123,7 @@
                     "Aura\\View": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
@@ -420,12 +420,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog",
-                "reference": "b67085dc769de26348f08ad21f43220a156161dc"
+                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/Seldaek/monolog/archive/b67085dc769de26348f08ad21f43220a156161dc.zip",
-                "reference": "b67085dc769de26348f08ad21f43220a156161dc",
+                "url": "https://github.com/Seldaek/monolog/archive/0df12342ef6c5efc748b27bb9ef92e1c95631058.zip",
+                "reference": "0df12342ef6c5efc748b27bb9ef92e1c95631058",
                 "shasum": ""
             },
             "require": {
@@ -439,7 +439,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
-            "time": "2012-12-13 21:14:03",
+            "time": "2012-12-14 11:27:44",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -452,7 +452,7 @@
                     "Monolog": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -480,12 +480,6 @@
                 "url": "https://github.com/nerdsrescueme/DI.git",
                 "reference": "d71374c9f130977410476f1d349a62aedea65428"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/d71374c9f130977410476f1d349a62aedea65428",
-                "reference": "d71374c9f130977410476f1d349a62aedea65428",
-                "shasum": ""
-            },
             "time": "2012-12-13 21:06:45",
             "type": "library",
             "installation-source": "source",
@@ -500,11 +494,7 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Core Library",
-            "support": {
-                "source": "https://github.com/nerdsrescueme/DI/tree/master",
-                "issues": "https://github.com/nerdsrescueme/DI/issues"
-            }
+            "description": "Nerd Core Library"
         },
         {
             "name": "nerdsrescueme/view",
@@ -514,12 +504,6 @@
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI-View.git",
                 "reference": "34ac445355e96fb33cb12400e1220cf31c19d363"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI-View/zipball/34ac445355e96fb33cb12400e1220cf31c19d363",
-                "reference": "34ac445355e96fb33cb12400e1220cf31c19d363",
-                "shasum": ""
             },
             "time": "2012-12-12 14:04:05",
             "type": "library",
@@ -535,11 +519,7 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd View component",
-            "support": {
-                "source": "https://github.com/nerdsrescueme/DI-View/tree/master",
-                "issues": "https://github.com/nerdsrescueme/DI-View/issues"
-            }
+            "description": "Nerd View component"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -592,54 +572,6 @@
             ]
         },
         {
-            "name": "symfony/console",
-            "version": "dev-master",
-            "target-dir": "Symfony/Component/Console",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Console",
-                "reference": "4dc07777f5d1247d805a42efbdb4f664c965df26"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/symfony/Console/archive/4dc07777f5d1247d805a42efbdb4f664c965df26.zip",
-                "reference": "4dc07777f5d1247d805a42efbdb4f664c965df26",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "time": "2012-12-13 18:25:06",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Console\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Console Component",
-            "homepage": "http://symfony.com"
-        },
-        {
             "name": "symfony/filesystem",
             "version": "dev-master",
             "target-dir": "Symfony/Component/Filesystem",
@@ -670,7 +602,7 @@
                     "Symfony\\Component\\Filesystem\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -718,7 +650,7 @@
                     "Symfony\\Component\\Finder\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -785,6 +717,56 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "http://symfony.com"
+        },
+        {
+            "name": "twig/twig",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Twig.git",
+                "reference": "2757f482c679aa00bb8c7fdfcb337f2bb922fa5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Twig/archive/2757f482c679aa00bb8c7fdfcb337f2bb922fa5a.zip",
+                "reference": "2757f482c679aa00bb8c7fdfcb337f2bb922fa5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "time": "2012-12-11 14:30:16",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ]
         }
     ],
     "packages-dev": null,

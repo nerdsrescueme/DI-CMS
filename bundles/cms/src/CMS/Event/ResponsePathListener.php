@@ -14,11 +14,12 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class ResponsePathListener extends ListenerAbstract
 {
-    protected $priority = 2;
+    protected $priority = 6;
 
     public function determine(EventInterface $event)
     {
-        return $event->application->getType() === Application::ROUTE_PATH;
+        return $event->response->isSuccessful()
+           and $event->application->getType() === Application::ROUTE_PATH;
     }
 
     public function __invoke(EventInterface $event)

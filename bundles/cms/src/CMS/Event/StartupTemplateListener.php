@@ -4,10 +4,9 @@ namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
   , Nerd\Core\Event\EventInterface
-  , Aura\View\Template
-  , Aura\View\EscaperFactory
-  , Aura\View\TemplateFinder
-  , Aura\View\HelperLocator;
+  , Twig_Loader_Filesystem
+  , Twig_Extension_Debug
+  , Twig_Environment;
 
 /**
  * View listener
@@ -17,16 +16,28 @@ use Nerd\Core\Event\ListenerAbstract
  */
 class StartupTemplateListener extends ListenerAbstract
 {
-    protected $priority = 2;
+    protected $priority = 10;
 
     public function __invoke(EventInterface $event)
     {
-        $template = new Template(
-            new EscaperFactory,
-            new TemplateFinder,
-            new HelperLocator
-        );
+        $site      = $event->container->activeSite;
+        $path      = $event->application->getDirectory();
+        $themePath = join(DIRECTORY_SEPARATOR, [$path, 'themes', $site->getTheme(), 'views']);
+        $themeInfo = json_decode(file_get_contents(join(DIRECTORY_SEPARATOR, [$themePath, '..', 'theme.json'])));
 
-        $event->container->template = $template;
+        $loader = new Twig_Loader_Filesystem([
+            $themePath,
+            join(DIRECTORY_SEPARATOR, [$path, 'themes', 'default', 'views']),
+        ]);
+        $twig   = new Twig_Environment($loader, [
+            'debug' => true,
+            'cache' => join(DIRECTORY_SEPARATOR, [$path, 'storage', 'cache']),
+        ]);
+
+        $twig->addExtension(new Twig_Extension_Debug());
+
+        $event->container->themeInfo = $themeInfo;
+        $event->container->twigLoader = $loader;
+        $event->container->twig = $twig;
     }
 }
