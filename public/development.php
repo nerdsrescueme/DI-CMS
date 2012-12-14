@@ -1,15 +1,15 @@
 <?php
 
-define('START', microtime(true));
-
 use Nerd\Core\Kernel\Kernel
   , Nerd\Core\Environment\Environment
   , Nerd\Core\Event\Event
-  , Symfony\Component\HttpFoundation\Request;
+  , Symfony\Component\HttpFoundation\Request
+  , CMS\Application;
 
 // Register all needed variables
-$kernel      = require '../application/bootstrap.php';
-               require '../application/Test.php';
+$kernel = require '../application/bootstrap.php';
+$kernel->registerBundle('CMS');
+
 $environment = new Environment('development');
 $request     = Request::createFromGlobals();
 $application = new Application($kernel, $request);
@@ -18,7 +18,6 @@ $dispatcher  = $kernel->getDispatcher();
 
 // Pre-application configuration and environment loading
 $kernel->setEnvironment($environment);
-$kernel->registerBundle('CMS');
 
 // Register Kernel/Application Events
 $dispatcher

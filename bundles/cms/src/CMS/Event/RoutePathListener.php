@@ -6,7 +6,8 @@ use Nerd\Core\Event\ListenerAbstract
   , Nerd\Core\Event\EventInterface
   , Aura\Router\Map
   , Aura\Router\DefinitionFactory
-  , Aura\Router\RouteFactory;
+  , Aura\Router\RouteFactory
+  , CMS\Application;
 
 /**
  * Path route listener
@@ -29,7 +30,7 @@ class RoutePathListener extends ListenerAbstract
             $event->stopPropogation();
             $event->container->router = $router;
             $event->container->route  = $route;
-            $event->application->setType(\Application::ROUTE_PATH);
+            $event->application->setType(Application::ROUTE_PATH);
         }
     }
 }

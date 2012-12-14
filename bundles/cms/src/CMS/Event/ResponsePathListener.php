@@ -3,7 +3,8 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
+  , Nerd\Core\Event\EventInterface
+  , CMS\Application;
 
 /**
  * Path response listener
@@ -17,7 +18,7 @@ class ResponsePathListener extends ListenerAbstract
 
     public function determine(EventInterface $event)
     {
-        return $event->application->getType() === \Application::ROUTE_PATH;
+        return $event->application->getType() === Application::ROUTE_PATH;
     }
 
     public function __invoke(EventInterface $event)

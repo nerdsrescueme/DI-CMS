@@ -3,7 +3,8 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
+  , Nerd\Core\Event\EventInterface
+  , CMS\Application;
 
 /**
  * Database response listener
@@ -17,7 +18,7 @@ class ResponseDatabaseListener extends ListenerAbstract
 
     public function determine(EventInterface $event)
     {
-        return $event->application->getType() === \Application::ROUTE_DB;
+        return $event->application->getType() === Application::ROUTE_DB;
     }
 
     public function __invoke(EventInterface $event)

@@ -3,7 +3,8 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
+  , Nerd\Core\Event\EventInterface
+  , CMS\Application;
 
 /**
  * Catch-all route listener
@@ -17,6 +18,6 @@ class RouteCatchListener extends ListenerAbstract
 
     public function __invoke(EventInterface $event)
     {
-        $event->application->setType(\Application::ROUTE_ERROR);
+        $event->application->setType(Application::ROUTE_ERROR);
     }
 }

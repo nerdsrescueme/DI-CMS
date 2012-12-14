@@ -3,7 +3,8 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
+  , Nerd\Core\Event\EventInterface
+  , CMS\Application;
 
 /**
  * Database route listener
@@ -21,7 +22,7 @@ class RouteDatabaseListener extends ListenerAbstract
 
         switch($uri) {
             case '/' :
-                $uri = \Application::PAGE_HOME;
+                $uri = Application::PAGE_HOME;
                 break;
         }
 
@@ -30,7 +31,7 @@ class RouteDatabaseListener extends ListenerAbstract
         if ($page) {
             $event->stopPropogation();
             $event->container->activePage = $page;
-            $event->application->setType(\Application::ROUTE_DB);
+            $event->application->setType(Application::ROUTE_DB);
         }
     }
 }
