@@ -16,10 +16,6 @@ class CurrentUser
 
     public function getUser()
     {
-    	if ($this->user === null) {
-    		throw new \RuntimeException('No current user is authenticated');
-    	}
-
         return $this->user;
     }
 

@@ -23,7 +23,15 @@ class StartupTemplateListener extends ListenerAbstract
         $site      = $event->container->activeSite;
         $path      = $event->application->getDirectory();
         $themePath = join(DIRECTORY_SEPARATOR, [$path, 'themes', $site->getTheme(), 'views']);
-        $themeInfo = json_decode(file_get_contents(join(DIRECTORY_SEPARATOR, [$themePath, '..', 'theme.json'])));
+
+        $themeInfoFile = join(DIRECTORY_SEPARATOR, [$themePath, '..', 'theme.json']);
+
+        if (file_exists($themeInfoFile)) {
+            $themeInfo = file_get_contents($themeInfoFile);
+            $themeInfo = json_decode($themeInfo);
+        } else {
+            throw new \RuntimeException("No theme info file exists for this theme [$site->theme]");
+        }
 
         $loader = new Twig_Loader_Filesystem([
             $themePath,
