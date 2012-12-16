@@ -261,6 +261,18 @@ class Page
         return $this->keywords;
     }
 
+    public function getKeywordsAsText()
+    {
+        $keywords = $this->getKeywords();
+        $text = '';
+
+        foreach ($keywords as $keyword) {
+            $text .= $keyword->getKeyword().', ';
+        }
+
+        return substr($text, 0, -2);
+    }
+
 	/**
 	 * Component association
 	 */

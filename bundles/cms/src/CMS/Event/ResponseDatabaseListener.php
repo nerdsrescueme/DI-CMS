@@ -29,13 +29,12 @@ class ResponseDatabaseListener extends ListenerAbstract
         $info     = $event->container->themeInfo;
         $template = $twig->loadTemplate('template.html.twig');
 
-        $twig->addGlobal('site', $event->container->activeSite);
-        $twig->addGlobal('user', $event->container->currentUser->getUser());
-        $twig->addGlobal('page', $page);
-        $twig->addGlobal('theme', $info);
-
         $data = [
             'layout' => 'home',
+            'site' => $event->container->activeSite,
+            'user' => $event->container->currentUser->getUser(),
+            'page' => $page,
+            'theme' => $info,
         ];
 
         $event->response->setContent($template->render($data));

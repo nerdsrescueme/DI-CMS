@@ -38,4 +38,9 @@ class Keyword
         $this->pages = new ArrayCollection();
         $this->sites = new ArrayCollection();
     }
+
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
 }

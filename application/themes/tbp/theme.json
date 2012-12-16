@@ -1,0 +1,19 @@
+{
+	"name": "Team Builders Plus theme",
+	"version": "1.0 beta",
+
+	"organization": "Team Builders Plus",
+
+	"author": {
+		"name": "Frank Bardon Jr.",
+		"email": "frankbardon@gmail.com"
+	},
+
+	"templates": {
+		"main": "template.html"
+	},
+
+	"layouts": {
+		"home": "home.html"
+	}
+}

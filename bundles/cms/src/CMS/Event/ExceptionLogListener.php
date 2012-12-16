@@ -26,7 +26,8 @@ class ExceptionLogListener extends ListenerAbstract
         $message = $event->exception->getMessage();
         $line    = $event->exception->getLine();
         $file    = $event->exception->getFile();
+        $stack   = $event->exception->getTrace();
 
-        $logger->addWarning($message, [$file, $line]);
+        $logger->addWarning($message, [$file, $line, $trace]);
     }
 }
