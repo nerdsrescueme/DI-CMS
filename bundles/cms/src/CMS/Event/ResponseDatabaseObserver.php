@@ -30,7 +30,38 @@ class ResponseDatabaseObserver extends ObserverAbstract
             'theme' => $info,
         ];
 
-        $container->response->setContent($template->render($data));
+        // Temporary
+        $content = $template->render($data);
+        $content = str_replace(
+            '</html>', 
+            '<script src="/di/public/assets/cms.js"></script>
+<script src="/di/public/assets/plugins.js"></script>
+<script>$(\'p\').editor({
+    autoEnable: false,
+    replace: true,
+    enableUi: true,
+    draggable: false,
+    ui: {
+        textBold: true,
+        textItalic: true,
+        textUnderline: true,
+        textStrike: true,
+        quoteBlock: true,
+        fontSizeInc: true,
+        fontSizeDec: true
+    },
+    plugins: {
+        dock: {
+            docked: true,
+            dockToElement: false
+        }
+    }
+});</script>
+             </html>', 
+            $content
+        );
+
+        $container->response->setContent($content);
         $container->response->setLastModified($page->getUpdatedAt());
         $event->handled = true;
     }

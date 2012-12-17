@@ -1,5 +1,5 @@
 {
-    "hash": "e2c68eb8499181611ca4843b7a63d024",
+    "hash": "23b595e290c4330397d2caca7d4f8b69",
     "packages": [
         {
             "name": "aura/installer-default",
@@ -95,63 +95,6 @@
                 "route",
                 "routing",
                 "router"
-            ]
-        },
-        {
-            "name": "aura/view",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/auraphp/Aura.View",
-                "reference": "1.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/auraphp/Aura.View/archive/1.0.0.zip",
-                "reference": "1.0.0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0",
-                "aura/installer-default": ">=1.0.0"
-            },
-            "time": "2012-11-30 08:40:49",
-            "type": "aura-package",
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Aura\\View": "src/"
-                }
-            },
-            "notification-url": "http://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Paul M. Jones",
-                    "email": "pmjones88@gmail.com",
-                    "homepage": "http://paul-m-jones.com"
-                },
-                {
-                    "name": "Hari KT",
-                    "email": "kthari85@gmail.com",
-                    "homepage": "http://harikt.com"
-                },
-                {
-                    "name": "Aura.View Contributors",
-                    "homepage": "https://github.com/auraphp/Aura.View/contributors"
-                }
-            ],
-            "description": "The Aura View package provides an implementation of the TemplateView and TwoStepView patterns, with support for helpers and path stacks, using PHP itself as the templating language.",
-            "homepage": "http://auraphp.github.com/Aura.View",
-            "keywords": [
-                "template",
-                "template view",
-                "two step view",
-                "two-step view",
-                "twostep view",
-                "view"
             ]
         },
         {
@@ -289,61 +232,6 @@
             ]
         },
         {
-            "name": "doctrine/migrations",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/migrations",
-                "reference": "c1d875ce7d092dd1bc7508c3867b5c6b97431e43"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/doctrine/migrations/archive/c1d875ce7d092dd1bc7508c3867b5c6b97431e43.zip",
-                "reference": "c1d875ce7d092dd1bc7508c3867b5c6b97431e43",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "doctrine/dbal": ">=2.0,<2.5.x-dev"
-            },
-            "require-dev": {
-                "symfony/console": "2.*",
-                "symfony/yaml": "2.*"
-            },
-            "suggest": {
-                "symfony/console": "to run the migration from the console"
-            },
-            "time": "2012-10-19 10:37:24",
-            "type": "library",
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\DBAL\\Migrations": "lib"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                }
-            ],
-            "description": "Database Schema migrations using Doctrine DBAL",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "database",
-                "migrations"
-            ]
-        },
-        {
             "name": "doctrine/orm",
             "version": "dev-master",
             "source": {
@@ -412,6 +300,73 @@
             "keywords": [
                 "database",
                 "orm"
+            ]
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "dev-node-visitor",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/assetic.git",
+                "reference": "96168e26fef02ad1757a917a450f80255c8aa5a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/assetic/archive/96168e26fef02ad1757a917a450f80255c8aa5a0.zip",
+                "reference": "96168e26fef02ad1757a917a450f80255c8aa5a0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "symfony/process": ">=2.1.0,<2.3-dev"
+            },
+            "require-dev": {
+                "twig/twig": ">=1.6.0,<2.0",
+                "leafo/lessphp": "*",
+                "leafo/scssphp": "*",
+                "ptachoire/cssembed": "*",
+                "leafo/scssphp-compass": "*"
+            },
+            "suggest": {
+                "twig/twig": "Assetic provides the integration with the Twig templating engine",
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin"
+            },
+            "time": "2012-12-14 18:32:20",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
             ]
         },
         {
@@ -694,6 +649,54 @@
             "homepage": "http://symfony.com"
         },
         {
+            "name": "symfony/process",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process",
+                "reference": "30993c352e5b471404b481b87df8d803fd35c0f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Process/archive/30993c352e5b471404b481b87df8d803fd35c0f5.zip",
+                "reference": "30993c352e5b471404b481b87df8d803fd35c0f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2012-12-14 22:27:02",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com"
+        },
+        {
             "name": "twig/twig",
             "version": "dev-master",
             "source": {
@@ -755,7 +758,7 @@
         "symfony/filesystem": 20,
         "swiftmailer/swiftmailer": 20,
         "aura/router": 20,
-        "aura/view": 20,
+        "kriswallsmith/assetic": 20,
         "phpunit/phpunit": 20,
         "symfony/console": 20
     }

@@ -45,6 +45,7 @@ $dispatcher
     ->register('setup',    new \CMS\Event\SetupSessionListener)
     ->register('setup',    new \CMS\Event\SetupListener)
     ->register('setup',    new \CMS\Event\SetupTemplateListener)
+    ->register('setup',    new \CMS\Event\SetupAssetListener)
     ->register('teardown', new \CMS\Event\TeardownListener);
 
 

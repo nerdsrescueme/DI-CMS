@@ -22,10 +22,9 @@
         "monolog/monolog": "*",
         "swiftmailer/swiftmailer": "4.3.x-dev",
         "doctrine/orm": "*",
-        "doctrine/migrations": "*",
         "aura/router": "dev-master",
-        "aura/view": "dev-master",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "kriswallsmith/assetic": "dev-node-visitor"
     },
 
     "repositories": [
