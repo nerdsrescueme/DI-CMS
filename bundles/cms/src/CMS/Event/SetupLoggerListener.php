@@ -14,7 +14,7 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class StartupLoggerListener extends ListenerAbstract
+class SetupLoggerListener extends ListenerAbstract
 {
     protected $priority = 1;
 
@@ -29,6 +29,6 @@ class StartupLoggerListener extends ListenerAbstract
 
         //$logger->pushProcessor(new WebProcessor());
 
-        $event->container->logger = $logger;
+        $event->container->set('logger', $logger);
     }
 }

@@ -15,6 +15,7 @@ class Application
     const ROUTE_ERROR = 3;
 
     protected $type;
+    protected $userStatus;
 
     public function __construct(KernelInterface $kernel, Request $request, Response $response = null)
     {
@@ -36,6 +37,16 @@ class Application
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    public function getUserStatus()
+    {
+        return $this->userStatus;
+    }
+
+    public function setUserStatus($status)
+    {
+        $this->userStatus = $status;
     }
 
     public function getDirectory()

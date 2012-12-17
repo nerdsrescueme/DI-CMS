@@ -14,14 +14,14 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class StartupTemplateListener extends ListenerAbstract
+class SetupTemplateListener extends ListenerAbstract
 {
     protected $priority = 10;
 
     public function __invoke(EventInterface $event)
     {
         $site      = $event->container->activeSite;
-        $path      = $event->application->getDirectory();
+        $path      = $event->container->application->getDirectory();
         $themePath = join(DIRECTORY_SEPARATOR, [$path, 'themes', $site->getTheme(), 'views']);
 
         $themeInfoFile = join(DIRECTORY_SEPARATOR, [$themePath, '..', 'theme.json']);

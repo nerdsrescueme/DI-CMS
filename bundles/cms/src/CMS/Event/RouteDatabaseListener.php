@@ -16,9 +16,14 @@ class RouteDatabaseListener extends ListenerAbstract
 {
     protected $priority = 1;
 
+    public function determine(EventInterface $event)
+    {
+        return $event->container->has('em');
+    }
+
     public function __invoke(EventInterface $event)
     {
-        $uri = $event->uri;
+        $uri = $event->container->request->getPathInfo();
 
         switch($uri) {
             case '/' :
@@ -26,12 +31,12 @@ class RouteDatabaseListener extends ListenerAbstract
                 break;
         }
 
-        $page = $event->em->getRepository('\\CMS\\Model\\Page')->findOneByUri($uri);
+        $page = $event->container->em->getRepository('\\CMS\\Model\\Page')->findOneByUri($uri);
 
         if ($page) {
             $event->stopPropogation();
             $event->container->activePage = $page;
-            $event->application->setType(Application::ROUTE_DB);
+            $event->container->application->setType(Application::ROUTE_DB);
         }
     }
 }

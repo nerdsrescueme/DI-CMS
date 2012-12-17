@@ -8,18 +8,38 @@ class User extends ControllerAbstract
 {
     public function loginAction()
     {
-        return 'loggin in';
+        if (!($area = $this->getParam('area'))) {
+            throw new \InvalidArgumentException('Area has not been set for this login request');
+        }
+
+        return "Logging into $area area";
     }
 
     public function logoutAction()
     {
-        $currentUser = $this->event->container->currentUser;
-        $request = $this->event->request;  
-
-        $currentUser->logout($area);
+        $this->currentUser->logout($area);
 
         return new RedirectResponse(
-            $request->getBaseUrl().'/'.$this->getParam('area', 'user').'/login'
+            $this->request->getBaseUrl().'/'.$this->getParam('area', 'user').'/login'
         );
+    }
+
+    public function registerAction()
+    {
+        $this->currentUser->logout();
+
+        return 'Form for registration goes here!';
+    }
+
+    public function confirmAction()
+    {
+        $this->currentUser->logout;
+
+        return 'Confirmation area, enter your confirmation code.';
+    }
+
+    public function passwordAction()
+    {
+        return 'Enter information to reset your password.';
     }
 }

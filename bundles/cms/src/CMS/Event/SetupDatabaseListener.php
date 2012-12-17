@@ -15,19 +15,20 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class StartupDatabaseListener extends ListenerAbstract
+class SetupDatabaseListener extends ListenerAbstract
 {
     protected $priority = 3;
 
     public function __invoke(EventInterface $event)
     {
-        $cache  = new ApcCache; // new ArrayCache;
+        // $cache  = new ApcCache;
+        $cache  = new ArrayCache;
         $config = new Configuration;
         $driver = $config->newDefaultAnnotationDriver(__DIR__.'/../Model');
         $config->setMetadataDriverImpl($driver);
         $config->setMetadataCacheImpl($cache);
         $config->setQueryCacheImpl($cache);
-        $config->setProxyDir($event->application->getDirectory().'/storage/proxies');
+        $config->setProxyDir($event->container->application->getDirectory().'/storage/proxies');
         $config->setProxyNamespace('Proxies');
         $config->setAutoGenerateProxyClasses(true);
 
@@ -38,6 +39,6 @@ class StartupDatabaseListener extends ListenerAbstract
             'dbname' => 'new_nerd',
         ], $config);
 
-        $event->container->entityManager = $em;
+        $event->container->em = $em;
     }
 }

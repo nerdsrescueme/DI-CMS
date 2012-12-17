@@ -2,6 +2,8 @@
 
 namespace CMS;
 
+use CMS\Model\User;
+
 class CurrentUser
 {
     private $em;
@@ -92,6 +94,17 @@ class CurrentUser
 			$this->session->remove('auth.hash');
 			$this->session->remove('auth.valid');
 			$this->session->remove('auth.id');
+		}
+	}
+
+	public function getLevel()
+	{
+		if ($this->user->isBanned()) {
+			return User::LEVEL_BANNED;
+		}
+
+		if (!$this->user->isActivated()) {
+			return User::LEVEL_GUEST;
 		}
 	}
 

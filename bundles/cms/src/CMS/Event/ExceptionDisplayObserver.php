@@ -2,22 +2,12 @@
 
 namespace CMS\Event;
 
-use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
+use Nerd\Core\Event\ObserverAbstract
   , Symfony\Component\HttpFoundation\Response;
 
-/**
- * Display exceptions to user
- * 
- * @todo Make environment aware? Or simply setup different listeners per env?
- * @package Application
- * @subpackage Listeners
- */
-class ExceptionDisplayListener extends ListenerAbstract
+class ExceptionDisplayObserver extends ObserverAbstract
 {
-    protected $priority = 10;
-
-    public function __invoke(EventInterface $event)
+    public function update(\SplSubject $event)
     {
         $response = new Response();
 

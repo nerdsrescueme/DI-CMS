@@ -43,4 +43,9 @@ class Keyword
     {
         return $this->keyword;
     }
+
+    public function __toString()
+    {
+        return $this->getKeyword();
+    }
 }

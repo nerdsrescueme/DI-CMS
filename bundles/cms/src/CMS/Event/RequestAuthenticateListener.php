@@ -11,12 +11,14 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class RequestListener extends ListenerAbstract
+class RequestAuthenticateListener extends ListenerAbstract
 {
-    protected $priority = 1;
+    protected $priority = 2;
 
     public function __invoke(EventInterface $event)
     {
+    	$user = $event->container->currentUser;
 
+    	
     }
 }

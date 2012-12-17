@@ -30,19 +30,20 @@ class RoutePathListener extends ListenerAbstract
 
     public function __invoke(EventInterface $event)
     {
-        $router = new Map(new DefinitionFactory, new RouteFactory);
-        $mapper = require join(DIRECTORY_SEPARATOR, [$event->application->getDirectory(), 'config', 'routes.php']);
+        $request = $event->container->request;
+        $router  = new Map(new DefinitionFactory, new RouteFactory);
+        $mapper  = require join(DIRECTORY_SEPARATOR, [$event->container->application->getDirectory(), 'config', 'routes.php']);
 
         // Closure returned above sets routes on the router object
         $mapper($router); // Cache object
 
-        $route = $router->match($event->uri, $_SERVER);
+        $route = $router->match($request->getPathInfo(), $request->server->all());
 
         if ($route) {
             $event->stopPropogation();
             $event->container->router = $router;
             $event->container->route  = $route;
-            $event->application->setType(Application::ROUTE_PATH);
+            $event->container->application->setType(Application::ROUTE_PATH);
         }
     }
 }

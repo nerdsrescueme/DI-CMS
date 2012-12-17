@@ -152,4 +152,15 @@ class Site
 	{
 		return $this->keywords;
 	}
+
+	public function getKeywordsAsString()
+	{
+		$keywords = '';
+
+		foreach ($this->getKeywords() as $keyword) {
+			$keywords .= $keyword.', ';
+		}
+
+		return substr($keywords, 0, -2);
+	}
 }

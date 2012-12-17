@@ -18,6 +18,6 @@ class RouteCatchListener extends ListenerAbstract
 
     public function __invoke(EventInterface $event)
     {
-        $event->application->setType(Application::ROUTE_ERROR);
+        $event->container->application->setType(Application::ROUTE_ERROR);
     }
 }

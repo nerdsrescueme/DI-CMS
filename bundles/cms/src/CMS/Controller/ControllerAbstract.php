@@ -8,11 +8,15 @@ abstract class ControllerAbstract
 {
 	protected $event;
 	protected $params;
+	protected $request;
+	protected $currentUser;
 
 	final public function __construct(EventInterface $event, array $params = [])
 	{
 		$this->event  = $event;
 		$this->params = $params;
+		$this->request = $event->request;
+		$this->currentUser = $event->container->currentUser;
 	}
 
 	public function before()

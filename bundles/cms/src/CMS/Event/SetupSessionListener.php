@@ -13,20 +13,21 @@ use Nerd\Core\Event\ListenerAbstract
  * @package Application
  * @subpackage Listeners
  */
-class StartupSessionListener extends ListenerAbstract
+class SetupSessionListener extends ListenerAbstract
 {
     protected $priority = 4;
 
     public function __invoke(EventInterface $event)
     {
+        $request      = $event->container->request;
         $sessionStore = new NativeSessionStorage([
-            'save_path' => '4;'.$event->application->getDirectory().'/storage/sessions/',
+            'save_path' => '4;'.$event->container->application->getDirectory().'/storage/sessions/',
             'name' => 'NERDSESS',
         ]);
 
-        $event->request->setSession(new Session($sessionStore));
-        $event->request->getSession()->start();
+        $request->setSession(new Session($sessionStore));
+        $request->getSession()->start();
 
-        $event->container->session = $event->request->getSession();
+        $event->container->session = $request->getSession();
     }
 }

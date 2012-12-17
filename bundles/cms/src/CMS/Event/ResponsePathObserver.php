@@ -2,32 +2,18 @@
 
 namespace CMS\Event;
 
-use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
-  , Symfony\Components\HttpFoundation\Response
-  , Symfony\Components\HttpFoundation\RedirectResponse
+use Nerd\Core\Event\ObserverAbstract
   , CMS\Application;
 
-/**
- * Path response listener
- *
- * @package Application
- * @subpackage Listeners
- */
-class ResponsePathListener extends ListenerAbstract
+class ResponsePathObserver extends ObserverAbstract
 {
-    protected $priority = 6;
-    protected $params;
-
-    public function determine(EventInterface $event)
+    public function qualify(\SplSubject $event)
     {
-        $params = $event->container->route->values;
-
-        return $event->response->isSuccessful()
-           and $event->application->getType() === Application::ROUTE_PATH;
+        return $event->container->response->isSuccessful()
+           and $event->container->application->getType() === Application::ROUTE_PATH;
     }
 
-    public function __invoke(EventInterface $event)
+    public function update(\SplSubject $event)
     {
         $params = $event->container->route->values;
         extract($params); // $controller, $action, $area...
@@ -52,10 +38,11 @@ class ResponsePathListener extends ListenerAbstract
 
         // We only stop propogating if a secondary response object is returned
         if (is_object($controllerResponse)) {
-            $event->response = $controllerResponse;
+            $event->container->response = $controllerResponse;
         } else {
-            $event->response->setContent($controllerResponse);
-            $event->stopPropogation();
+            $event->container->response->setContent($controllerResponse);
         }
+
+        $event->handled = true;
     }
 }

@@ -9,15 +9,20 @@ use Nerd\Core\Event\ListenerAbstract
 /**
  * Startup listener
  */
-class StartupListener extends ListenerAbstract
+class SetupListener extends ListenerAbstract
 {
     protected $priority = 9;
 
+    public function determine(EventInterface $event)
+    {
+        return $event->container->has('em');
+    }
+
     public function __invoke(EventInterface $event)
     {
-        $em   = $event->container->entityManager;
+        $em   = $event->container->em;
         $site = $em->getRepository('\\CMS\\Model\\Site')
-                   ->findOneByHost($event->request->getHost());
+                   ->findOneByHost($event->container->request->getHost());
 
         if (!$site) {
             throw new \RuntimeException('Site not found');

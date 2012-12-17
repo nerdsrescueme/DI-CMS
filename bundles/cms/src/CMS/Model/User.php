@@ -5,7 +5,7 @@ namespace CMS\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="CMS\Model\UserRepository")
  * @Table(name="nerd_users")
  */
 class User
@@ -15,6 +15,12 @@ class User
 	const STATUS_INACTIVE = 'inactive';
 	const STATUS_ACTIVE   = 'active';
 	const STATUS_BANNED   = 'banned';
+
+	const LEVEL_SUPER  = 'super';
+    const LEVEL_ADMIN  = 'admin';
+    const LEVEL_USER   = 'user';
+    const LEVEL_GUEST  = 'guest';
+    const LEVEL_BANNED = 'banned';
 
 	/**
 	 * @Id
@@ -281,6 +287,11 @@ class User
 	public function setLastLogin($lastLogin)
 	{
 		$this->lastLogin = $lastLogin;
+	}
+
+	public function isBanned()
+	{
+		return $this->getStatus() === self::STATUS_BANNED;
 	}
 
 	/**
