@@ -25923,7 +25923,7 @@ $.widget('ui.editor',
             ['colorPickerBasic'],
             ['clearFormatting'],
             ['link', 'unlink'],
-            ['embed'],
+            ['embed', 'image'],
             ['floatLeft', 'floatNone', 'floatRight'],
             ['tagMenu'],
             ['i18n'],
@@ -33638,7 +33638,46 @@ $.ui.editor.registerPlugin('toolbarTip', /** @lends $.editor.plugin.toolbarTip.p
             });
         }
     }
-});/**
+});
+
+
+
+
+
+ $.ui.editor.registerUi({
+
+    /**
+     * @name $.editor.ui.image
+     * @augments $.ui.editor.defaultUi
+     * @class Shows a message at the center of an editable block,
+     * informing the user that they may click to edit the block contents
+     */
+    image: /** @lends $.editor.ui.hr.prototype */ {
+
+        /**
+         * @see $.ui.editor.defaultUi#init
+         */
+        init: function(editor) {
+            return editor.uiButton({
+                title: _('Insert Image'),
+                click: function() {
+                    selectionReplace('<img />');
+                }
+            });
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+/**
  * @fileOverview Cleaning helper functions.
  * @author David Neilsen - david@panmedia.co.nz
  * @author Michael Robinson - michael@panmedia.co.nz

@@ -34,13 +34,13 @@ class ResponseDatabaseObserver extends ObserverAbstract
         $content = $template->render($data);
         $content = str_replace(
             '</html>', 
-            '<script src="/di/public/assets/cms.js"></script>
-<script src="/di/public/assets/plugins.js"></script>
-<script>$(\'p\').editor({
+            '<script src="/assets/cms.js"></script>
+<script src="/assets/plugins.js"></script>
+<script>$(\'[data-editable]\').editor({
     autoEnable: false,
     replace: true,
-    enableUi: true,
-    draggable: false,
+    enableUi: false,
+    draggable: true,
     ui: {
         textBold: true,
         textItalic: true,
@@ -48,12 +48,13 @@ class ResponseDatabaseObserver extends ObserverAbstract
         textStrike: true,
         quoteBlock: true,
         fontSizeInc: true,
-        fontSizeDec: true
+        fontSizeDec: true,
+        image: true
     },
     plugins: {
         dock: {
             docked: true,
-            dockToElement: false
+            dockToElement: true
         }
     }
 });</script>
