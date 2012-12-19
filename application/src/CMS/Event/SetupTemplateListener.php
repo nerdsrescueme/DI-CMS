@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Twig_Loader_Filesystem
   , Twig_Extension_Debug
   , Twig_Environment;
@@ -18,7 +17,7 @@ class SetupTemplateListener extends ListenerAbstract
 {
     protected $priority = 10;
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $site      = $event->container->activeSite;
         $path      = $event->container->application->getDirectory();

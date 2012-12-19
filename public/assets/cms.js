@@ -33661,7 +33661,7 @@ $.ui.editor.registerPlugin('toolbarTip', /** @lends $.editor.plugin.toolbarTip.p
             return editor.uiButton({
                 title: _('Insert Image'),
                 click: function() {
-                    selectionReplace('<img />');
+                    selectionReplace('<img src="test.jpg" width="200" height="200" />');
                 }
             });
         }

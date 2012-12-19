@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Aura\Router\Map
   , Aura\Router\DefinitionFactory
   , Aura\Router\RouteFactory
@@ -19,7 +18,7 @@ class RoutePathListener extends ListenerAbstract
 {
     protected $priority = 2;
 
-    public function determine(EventInterface $event)
+    public function qualify(\SplSubject $event)
     {
         // User must be authenticated to access this resource, also
         // we need to add role checking to ensure we can get here...
@@ -28,7 +27,7 @@ class RoutePathListener extends ListenerAbstract
         return $allowed;
     }
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $request = $event->container->request;
         $router  = new Map(new DefinitionFactory, new RouteFactory);

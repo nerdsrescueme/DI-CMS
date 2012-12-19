@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , CMS\Application;
 
 /**
@@ -16,12 +15,12 @@ class RouteDatabaseListener extends ListenerAbstract
 {
     protected $priority = 1;
 
-    public function determine(EventInterface $event)
+    public function qualify(\SplSubject $event)
     {
         return $event->container->has('em');
     }
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $uri = $event->container->request->getPathInfo();
 

@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Assetic\Asset\FileAsset;
 
 /**
@@ -17,10 +16,10 @@ class SetupAssetListener extends ListenerAbstract
     protected $priority = 11;
 
     // We need to ignore the cms assets unless you're logged in as admin...
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
-        $root  = $event->kernel->getRoot();
-        $asset = new FileAsset($root.'/bundles/cms/assets/js/cms.js');
+        $root  = $event->container->application->getDirectory();
+        $asset = new FileAsset($root.'/assets/js/cms.js');
 
         $event->container->set('cmsJs', $asset->dump());
     }

@@ -10,7 +10,7 @@ use Nerd\Core\Kernel\Kernel
 
 // Bootstrap the kernel and CMS bundle
 $kernel = require '../application/bootstrap.php';
-$kernel->registerBundle('CMS');
+$kernel->getContainer()->loader->add('CMS', __DIR__.'/../application/src/');
 
 
 // Register exception handlers for this application
@@ -37,16 +37,16 @@ $notifier->handled = false;
 
 // Register Kernel/Application Events
 $dispatcher
-    ->register('router',   new \CMS\Event\RouteDatabaseListener)
-    ->register('router',   new \CMS\Event\RoutePathListener)
-    ->register('router',   new \CMS\Event\RouteCatchListener)
-    ->register('setup',    new \CMS\Event\SetupLoggerListener)
-    ->register('setup',    new \CMS\Event\SetupDatabaseListener)
-    ->register('setup',    new \CMS\Event\SetupSessionListener)
-    ->register('setup',    new \CMS\Event\SetupListener)
-    ->register('setup',    new \CMS\Event\SetupTemplateListener)
-    ->register('setup',    new \CMS\Event\SetupAssetListener)
-    ->register('teardown', new \CMS\Event\TeardownListener);
+    ->attach('router',   new \CMS\Event\RouteDatabaseListener)
+    ->attach('router',   new \CMS\Event\RoutePathListener)
+    ->attach('router',   new \CMS\Event\RouteCatchListener)
+    ->attach('setup',    new \CMS\Event\SetupLoggerListener)
+    ->attach('setup',    new \CMS\Event\SetupDatabaseListener)
+    ->attach('setup',    new \CMS\Event\SetupSessionListener)
+    ->attach('setup',    new \CMS\Event\SetupListener)
+    ->attach('setup',    new \CMS\Event\SetupTemplateListener)
+    ->attach('setup',    new \CMS\Event\SetupAssetListener)
+    ->attach('teardown', new \CMS\Event\TeardownListener);
 
 
 // Register all response observers
@@ -66,9 +66,12 @@ $notifier->setArgument('container', $container);
 
 
 // Run events and notify event observers
-$event->setName('startup')->dispatch();
-$event->setName('setup')->dispatch();
-$event->setName('router')->dispatch();
+$event->setName('startup');
+$dispatcher->dispatch('startup', $event);
+$event->setName('setup');
+$dispatcher->dispatch('setup', $event);
+$event->setName('router');
+$dispatcher->dispatch('router', $event);
 
 $notifier->notify();
 
@@ -78,4 +81,5 @@ $container->response->prepare($request)->send();
 
 
 // Shutdown
-$event->setName('teardown')->dispatch();
+$event->setName('teardown');
+$dispatcher->dispatch('teardown', $event);

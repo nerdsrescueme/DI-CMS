@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Doctrine\Common\Cache\ApcCache
   , Doctrine\Common\Cache\ArrayCache
   , Doctrine\ORM\EntityManager
@@ -19,7 +18,7 @@ class SetupDatabaseListener extends ListenerAbstract
 {
     protected $priority = 3;
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         // $cache  = new ApcCache;
         $cache  = new ArrayCache;

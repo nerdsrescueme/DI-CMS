@@ -2,8 +2,7 @@
 
 namespace CMS\Event;
 
-use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface;
+use Nerd\Core\Event\ListenerAbstract;
 
 /**
  * Shutdown listener
@@ -15,7 +14,7 @@ class TeardownListener extends ListenerAbstract
 {
     protected $priority = 10;
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $container = $event->container;
 

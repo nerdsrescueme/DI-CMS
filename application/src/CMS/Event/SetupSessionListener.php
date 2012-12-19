@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Symfony\Component\HttpFoundation\Session\Session
   , Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 
@@ -17,7 +16,7 @@ class SetupSessionListener extends ListenerAbstract
 {
     protected $priority = 4;
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $request      = $event->container->request;
         $sessionStore = new NativeSessionStorage([

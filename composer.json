@@ -31,10 +31,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/nerdsrescueme/DI.git"
-        },
-        {
-        	"type": "vcs",
-        	"url": "https://github.com/nerdsrescueme/DI-View.git"
         }
     ]
 }

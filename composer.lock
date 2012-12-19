@@ -26,7 +26,7 @@
                     "Aura\\Composer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
@@ -69,7 +69,7 @@
                     "Aura\\Router": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD"
             ],
@@ -127,7 +127,7 @@
                     "Doctrine\\Common\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -198,7 +198,7 @@
                     "Doctrine\\DBAL\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -271,7 +271,7 @@
                     "Doctrine\\ORM\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -350,7 +350,7 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -407,7 +407,7 @@
                     "Monolog": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -433,18 +433,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI.git",
-                "reference": "46dd32327997153d051e516f87939a32325b090d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/46dd32327997153d051e516f87939a32325b090d",
-                "reference": "46dd32327997153d051e516f87939a32325b090d",
-                "shasum": ""
+                "reference": "c4a9e8df006e0e1386b1d20f60dc0e449d142bee"
             },
             "require-dev": {
                 "phpunit/phpunit": "3.7.*"
             },
-            "time": "2012-12-18 21:05:47",
+            "time": "2012-12-19 04:50:45",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -458,11 +452,7 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Core Library",
-            "support": {
-                "source": "https://github.com/nerdsrescueme/DI/tree/master",
-                "issues": "https://github.com/nerdsrescueme/DI/issues"
-            }
+            "description": "Nerd Core Library"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -515,54 +505,6 @@
             ]
         },
         {
-            "name": "symfony/console",
-            "version": "dev-master",
-            "target-dir": "Symfony/Component/Console",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Console",
-                "reference": "92cd0e84022f31287337ab17842bbfff47d2fc79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/symfony/Console/archive/92cd0e84022f31287337ab17842bbfff47d2fc79.zip",
-                "reference": "92cd0e84022f31287337ab17842bbfff47d2fc79",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "time": "2012-12-14 09:43:16",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "installation-source": "source",
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Console\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Console Component",
-            "homepage": "http://symfony.com"
-        },
-        {
             "name": "symfony/filesystem",
             "version": "dev-master",
             "target-dir": "Symfony/Component/Filesystem",
@@ -593,7 +535,7 @@
                     "Symfony\\Component\\Filesystem\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -617,18 +559,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder",
-                "reference": "12aa1bbd5fe80a813323967df10e33a3e57ca9ac"
+                "reference": "ef0dba8f542860f902592c415d7c46de85e55358"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Finder/archive/12aa1bbd5fe80a813323967df10e33a3e57ca9ac.zip",
-                "reference": "12aa1bbd5fe80a813323967df10e33a3e57ca9ac",
+                "url": "https://github.com/symfony/Finder/archive/ef0dba8f542860f902592c415d7c46de85e55358.zip",
+                "reference": "ef0dba8f542860f902592c415d7c46de85e55358",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2012-12-14 22:27:02",
+            "time": "2012-12-19 07:39:37",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -641,7 +583,7 @@
                     "Symfony\\Component\\Finder\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -665,18 +607,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation",
-                "reference": "a18fd6c453fd9b3b4d6c78dd37e78268539474a0"
+                "reference": "58a1dad8d23c97c009b33303f9c3511a40a5464e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/HttpFoundation/archive/a18fd6c453fd9b3b4d6c78dd37e78268539474a0.zip",
-                "reference": "a18fd6c453fd9b3b4d6c78dd37e78268539474a0",
+                "url": "https://github.com/symfony/HttpFoundation/archive/58a1dad8d23c97c009b33303f9c3511a40a5464e.zip",
+                "reference": "58a1dad8d23c97c009b33303f9c3511a40a5464e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2012-12-15 16:49:38",
+            "time": "2012-12-19 07:09:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -692,7 +634,7 @@
                     "Symfony/Component/HttpFoundation/Resources/stubs"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -716,18 +658,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process",
-                "reference": "30993c352e5b471404b481b87df8d803fd35c0f5"
+                "reference": "284d8cd8f83df258cc34e02b564e3310cee22408"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Process/archive/30993c352e5b471404b481b87df8d803fd35c0f5.zip",
-                "reference": "30993c352e5b471404b481b87df8d803fd35c0f5",
+                "url": "https://github.com/symfony/Process/archive/284d8cd8f83df258cc34e02b564e3310cee22408.zip",
+                "reference": "284d8cd8f83df258cc34e02b564e3310cee22408",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2012-12-14 22:27:02",
+            "time": "2012-12-19 07:09:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -740,7 +682,7 @@
                     "Symfony\\Component\\Process\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -787,7 +729,7 @@
                     "Twig_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3"
             ],

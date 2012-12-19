@@ -3,7 +3,6 @@
 namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
-  , Nerd\Core\Event\EventInterface
   , Monolog\Logger
   , Monolog\Handler\StreamHandler
   , Monolog\Processor\WebProcessor;
@@ -18,7 +17,7 @@ class SetupLoggerListener extends ListenerAbstract
 {
     protected $priority = 1;
 
-    public function __invoke(EventInterface $event)
+    public function run(\SplSubject $event)
     {
         $loggerStore = new StreamHandler(
             $event->kernel->getRoot().'/application/storage/logs/log.php'
