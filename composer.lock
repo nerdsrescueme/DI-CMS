@@ -433,15 +433,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI.git",
-                "reference": "d5511809e9c7804096ca566bcb821aa2fbdc919c"
+                "reference": "46dd32327997153d051e516f87939a32325b090d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/d5511809e9c7804096ca566bcb821aa2fbdc919c",
-                "reference": "d5511809e9c7804096ca566bcb821aa2fbdc919c",
+                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/46dd32327997153d051e516f87939a32325b090d",
+                "reference": "46dd32327997153d051e516f87939a32325b090d",
                 "shasum": ""
             },
-            "time": "2012-12-17 18:37:17",
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "time": "2012-12-18 21:05:47",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -760,18 +763,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "6c01c14fd8f42348a032148ebecb6e034e9e18bd"
+                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/6c01c14fd8f42348a032148ebecb6e034e9e18bd.zip",
-                "reference": "6c01c14fd8f42348a032148ebecb6e034e9e18bd",
+                "url": "https://github.com/fabpot/Twig/archive/f095f3a1777431412954e478f92e8a10cb7b6495.zip",
+                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-16 07:55:06",
+            "time": "2012-12-18 10:01:32",
             "type": "library",
             "extra": {
                 "branch-alias": {
