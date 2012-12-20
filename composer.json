@@ -16,6 +16,7 @@
 
     "require": {
         "nerdsrescueme/core": "*",
+        "nerdsrescueme/form": "*",
         "symfony/http-foundation": "dev-master",
         "monolog/monolog": "dev-master",
         "swiftmailer/swiftmailer": "dev-master",
@@ -29,6 +30,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/nerdsrescueme/DI.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nerdsrescueme/DI-Form.git"
         }
     ]
 }
