@@ -66,8 +66,6 @@ $notifier->setArgument('container', $container);
 
 
 // Run events and notify event observers
-$event->setName('startup');
-$dispatcher->dispatch('startup', $event);
 $event->setName('setup');
 $dispatcher->dispatch('setup', $event);
 $event->setName('router');

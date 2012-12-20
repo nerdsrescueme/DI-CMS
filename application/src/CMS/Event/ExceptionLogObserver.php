@@ -17,8 +17,10 @@ class ExceptionLogObserver extends ObserverAbstract
         $message = $event->exception->getMessage();
         $line    = $event->exception->getLine();
         $file    = $event->exception->getFile();
-        // $trace   = $event->exception->getTrace();
+        $trace   = $event->exception->getTraceAsString();
 
-        $event->container->logger->addError($message, [$file, $line]);
+        $trace = "\t".str_replace("\n", "\n\t", $trace)."\n\t"; // Format trace string.
+
+        $event->container->logger->addError($message.PHP_EOL.$trace, [$file, $line]);
     }
 }

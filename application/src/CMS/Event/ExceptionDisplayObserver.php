@@ -12,9 +12,9 @@ class ExceptionDisplayObserver extends ObserverAbstract
         try {
             $response = new Response();
 
-            $message = '<b>'.$event->exception->getMessage().'</b> in '.
-                       $event->exception->getFile().' on line '.
-                       $event->exception->getLine();
+            $message = '<h1>'.$event->exception->getMessage().'</h1>'.
+                       '<h3>'.$event->exception->getFile().' on line '.
+                       $event->exception->getLine().'</h3>';
 
             $message .= '<pre>'.$event->exception->getTraceAsString().'</pre>';
 

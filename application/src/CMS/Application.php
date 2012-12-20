@@ -54,6 +54,11 @@ class Application
         return $this->kernel->getRoot().DIRECTORY_SEPARATOR.'application';
     }
 
+    public function getTempDirectory()
+    {
+        return sys_get_temp_dir();
+    }
+
     public function getResponse()
     {
         return $this->response;
