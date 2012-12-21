@@ -16,9 +16,9 @@ $exception
 
 $form = new \Nerd\Form\Form;
 $form->wrap('<p>', '</p>');
-  $un = $form->field('text');
+  $un = $form->addField('text');
   $un->label('Username');
-  $pw = $form->field('password');
+  $pw = $form->addField('password');
   $pw->label('Password');
 echo $form;
 
