@@ -47,7 +47,22 @@
       if (confirm) this.editor.setValue(this.original)
     },
     save: function() {
-      alert('saving...')
+      $.ajax({
+        type: 'post',
+        url: window.location.href,
+        data: {
+          save: true,
+          content: this.editor.getValue()
+        },
+        dataType: 'json',
+        success: function(result) {
+          if (result.success) {
+            alert('Content saved successfully')
+          } else {
+            alert('Content could not be saved: '.result.message)
+          }
+        }
+      })
     }
   }
 

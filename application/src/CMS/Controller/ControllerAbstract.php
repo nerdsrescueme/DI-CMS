@@ -33,6 +33,12 @@ abstract class ControllerAbstract
 
     public function after($response)
     {
+        if (is_array($response)) {
+            $this->response->setContent(json_encode($response));
+            $this->response->headers->set('Content-type', 'application/json; charset=UTF-8');
+            return;
+        }
+
         $data = [
             'content' => $response,
         ];

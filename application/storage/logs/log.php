@@ -173,3 +173,21 @@
 	#4 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
 	#5 {main}
 	 ["/Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php",26] []
+[2012-12-22 14:06:31] App.ERROR: htmlentities() expects at least 1 parameter, 0 given
+	#0 [internal function]: Nerd\{closure}(2, 'htmlentities() ...', '/Users/frankbar...', 33, Array)
+	#1 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(33): htmlentities()
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#5 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#6 {main}
+	 ["/Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php",33] []
+[2012-12-22 14:07:38] App.ERROR: file_put_contents(/Users/frankbardon/Work/Nerd/application/themes/tbp/views/default.html.twig): failed to open stream: Permission denied
+	#0 [internal function]: Nerd\{closure}(2, 'file_put_conten...', '/Users/frankbar...', 27, Array)
+	#1 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(27): file_put_contents('/Users/frankbar...', 'This is the def...')
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#5 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#6 {main}
+	 ["/Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php",27] []
