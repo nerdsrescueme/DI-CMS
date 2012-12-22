@@ -35,10 +35,12 @@ class SetupTemplateListener extends ListenerAbstract
         $loader = new Twig_Loader_Filesystem([
             $themePath,
             join(DIRECTORY_SEPARATOR, [$path, 'themes', 'default', 'views']),
+            join(DIRECTORY_SEPARATOR, [$path, 'views']),
         ]);
         $twig   = new Twig_Environment($loader, [
             'debug' => true,
             'cache' => join(DIRECTORY_SEPARATOR, [$path, 'storage', 'cache']),
+            'autoescape' => false,
         ]);
 
         $twig->addExtension(new Twig_Extension_Debug());

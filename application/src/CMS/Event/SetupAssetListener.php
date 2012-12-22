@@ -19,8 +19,8 @@ class SetupAssetListener extends ListenerAbstract
     public function run(\SplSubject $event)
     {
         $root  = $event->container->application->getDirectory();
-        $asset = new FileAsset($root.'/assets/js/cms.js');
+        //$asset = new FileAsset($root.'/assets/js/cms.js');
 
-        $event->container->set('cmsJs', $asset->dump());
+        //$event->container->set('cmsJs', $asset->dump());
     }
 }

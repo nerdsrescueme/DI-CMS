@@ -34,13 +34,11 @@ class ResponsePathObserver extends ObserverAbstract
 
         $controller->before();
         $controllerResponse = $controller->{$action}($id);
-        $controller->after();
+        $controller->after($controllerResponse);
 
         // We only stop propogating if a secondary response object is returned
         if (is_object($controllerResponse)) {
             $event->container->response = $controllerResponse;
-        } else {
-            $event->container->response->setContent($controllerResponse);
         }
 
         $event->handled = true;

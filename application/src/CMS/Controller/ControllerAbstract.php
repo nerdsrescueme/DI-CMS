@@ -6,35 +6,44 @@ use Nerd\Core\Event\EventInterface;
 
 abstract class ControllerAbstract
 {
-	protected $event;
-	protected $params;
-	protected $request;
-	protected $currentUser;
+    protected $event;
+    protected $params;
+    protected $request;
+    protected $response;
+    protected $currentUser;
+    protected $twig;
+    protected $template;
 
-	final public function __construct(EventInterface $event, array $params = [])
-	{
-		$this->event  = $event;
-		$this->params = $params;
-		$this->request = $event->request;
-		$this->currentUser = $event->container->currentUser;
-	}
+    final public function __construct(EventInterface $event, array $params = [])
+    {
+        $this->event  = $event;
+        $this->params = $params;
+        $this->request = $event->container->request;
+        $this->response = $event->container->response;
+        $this->currentUser = $event->container->currentUser;
+        $this->twig = $event->container->twig;
+    }
 
-	public function before()
-	{
+    public function before()
+    {
+        $this->template = $this->twig->loadTemplate('template.app.twig');
+    }
 
-	}
+    public function after($response)
+    {
+        $data = [
+            'content' => $response,
+        ];
 
-	public function after()
-	{
-		
-	}
+        $this->response->setContent($this->template->render($data));
+    }
 
-	protected function getParam($name, $default = null)
-	{
-		if (!isset($this->params[$name])) {
-			return $default;
-		}
+    protected function getParam($name, $default = null)
+    {
+        if (!isset($this->params[$name])) {
+            return $default;
+        }
 
-		return $this->params[$name];
-	}
+        return $this->params[$name];
+    }
 }
