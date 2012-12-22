@@ -34,6 +34,16 @@ return function(Router $router) {
         ]
     );
 
+    $router->add(
+        'editor', '/{:area:(admin|super)}/editor/{:layout}',
+        [
+            'values' => [
+                'controller' => 'editor',
+                'action' => 'edit',
+            ]
+        ]
+    );
+
     $router->add(null, '/{:area:(user|admin|super)}/{:controller}/{:id:(\d+)}/{:action}');
     $router->add(null, '/{:area:(user|admin|super)}/{:controller}/{:action}(/)?{:id:(\d+)?}');
 

@@ -13,6 +13,7 @@ abstract class ControllerAbstract
     protected $currentUser;
     protected $twig;
     protected $template;
+    protected $theme;
 
     final public function __construct(EventInterface $event, array $params = [])
     {
@@ -22,6 +23,7 @@ abstract class ControllerAbstract
         $this->response = $event->container->response;
         $this->currentUser = $event->container->currentUser;
         $this->twig = $event->container->twig;
+        $this->theme = $event->container->themeInfo;
     }
 
     public function before()

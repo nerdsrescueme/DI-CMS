@@ -32,6 +32,26 @@
       editor.getSession().setUseWrapMode(false)
       editor.setHighlightActiveLine(true)
       editor.setShowPrintMargin(false)
+
+  var ActionsObj = function(editor) {
+    this.editor = editor
+    this.original = editor.getValue()
+  }
+
+  ActionsObj.prototype = {
+    debug: function() {
+      console.log(this.editor.getValue())
+    },
+    revert: function() {
+      var confirm = window.confirm('Are you sure you wish to discard all of your changes?')
+      if (confirm) this.editor.setValue(this.original)
+    },
+    save: function() {
+      alert('saving...')
+    }
+  }
+
+  var actions = new ActionsObj(editor)
 </script>
 
 </html>
