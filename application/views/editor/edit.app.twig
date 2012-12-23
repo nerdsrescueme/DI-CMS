@@ -10,13 +10,15 @@
           <li class="dropdown-submenu">
             <a href="#">Templates</a>
             <ul class="dropdown-menu">
-              <li><a href="#">Main</a></li>
-              <li><a href="#">Limited</a></li>
+              {% for name, file in templates %}
+              <li><a href="/admin/editor/{{ name }}">{{ name|title }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="divider"></li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Blog</a></li>
+          {% for name, file in layouts %}
+          <li><a href="/admin/editor/{{ name }}">{{ name|title }}</a></li>
+          {% endfor %}
         </ul>
       </div>
       <div class="btn-group">

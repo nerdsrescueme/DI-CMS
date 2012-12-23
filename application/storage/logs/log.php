@@ -191,3 +191,205 @@
 	#5 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
 	#6 {main}
 	 ["/Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php",27] []
+[2012-12-22 20:12:52] App.ERROR: Argument 1 passed to Twig_Function_Method::__construct() must implement interface Twig_ExtensionInterface, instance of CMS\Twig\Functions given, called in /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php on line 50 and defined
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Function/Method.php(27): Nerd\{closure}(4096, 'Argument 1 pass...', '/Users/frankbar...', 27, Array)
+	#1 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php(50): Twig_Function_Method->__construct(Object(CMS\Twig\Functions), 'random')
+	#2 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(70): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Function/Method.php",27] []
+[2012-12-22 20:12:53] App.ERROR: Argument 1 passed to Twig_Function_Method::__construct() must implement interface Twig_ExtensionInterface, instance of CMS\Twig\Functions given, called in /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php on line 50 and defined
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Function/Method.php(27): Nerd\{closure}(4096, 'Argument 1 pass...', '/Users/frankbar...', 27, Array)
+	#1 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php(50): Twig_Function_Method->__construct(Object(CMS\Twig\Functions), 'random')
+	#2 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(70): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Function/Method.php",27] []
+[2012-12-22 20:18:10] App.ERROR: A function must be an instance of Twig_FunctionInterface or Twig_SimpleFunction
+	#0 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php(48): Twig_Environment->addFunction('alphabet', 'twig_alphabet')
+	#1 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#2 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/public/development.php(70): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#6 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php",888] []
+[2012-12-22 20:18:10] App.ERROR: A function must be an instance of Twig_FunctionInterface or Twig_SimpleFunction
+	#0 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/SetupTemplateListener.php(48): Twig_Environment->addFunction('alphabet', 'twig_alphabet')
+	#1 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#2 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#3 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#4 /Users/frankbardon/Work/Nerd/public/development.php(70): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#6 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php",888] []
+[2012-12-22 20:36:04] App.ERROR: An exception has been thrown during the rendering of a template ("Undefined variable: kernel") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:37:24] App.ERROR: An exception has been thrown during the rendering of a template ("Undefined variable: kernel") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:37:40] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:38:08] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:38:09] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(74): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:40:04] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:40:25] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:40:26] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:40:29] App.ERROR: An exception has been thrown during the rendering of a template ("Corrupt member variable name") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:44:49] App.ERROR: An exception has been thrown during the rendering of a template ("Class alias [activePage] has not been registered") in "editor/edit.app.twig" at line 1.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/application/src/CMS/Controller/Editor.php(45): Twig_Template->render(Array)
+	#3 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponsePathObserver.php(36): CMS\Controller\Editor->editAction(NULL)
+	#4 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#5 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#6 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#7 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 20:56:43] App.ERROR: An exception has been thrown during the rendering of a template ("Undefined variable: region") in "template.html.twig" at line 57.
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 /Users/frankbardon/Work/Nerd/application/storage/cache/1d/96/38cc03040008f66f4bfb6f45089d.php(95): Twig_Template->display(Array)
+	#2 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(265): __TwigTemplate_1d9638cc03040008f66f4bfb6f45089d->doDisplay(Array, Array)
+	#3 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#4 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#5 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponseDatabaseObserver.php(34): Twig_Template->render(Array)
+	#6 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponseDatabaseObserver->update(Object(Nerd\Core\Event\Event))
+	#7 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#8 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#9 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php",280] []
+[2012-12-22 21:14:04] App.ERROR: An array element must be followed by a comma. Unexpected token "operator" of value "=" ("punctuation" expected with value ",") in "default.html.twig" at line 10
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(217): Twig_TokenStream->expect(9, ',', 'An array elemen...')
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(167): Twig_ExpressionParser->parseArrayExpression()
+	#2 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(85): Twig_ExpressionParser->parsePrimaryExpression()
+	#3 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(42): Twig_ExpressionParser->getPrimary()
+	#4 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(463): Twig_ExpressionParser->parseExpression()
+	#5 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(334): Twig_ExpressionParser->parseArguments(true)
+	#6 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(148): Twig_ExpressionParser->getFunctionNode('cms_component', 10)
+	#7 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(85): Twig_ExpressionParser->parsePrimaryExpression()
+	#8 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(42): Twig_ExpressionParser->getPrimary()
+	#9 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Parser.php(146): Twig_ExpressionParser->parseExpression()
+	#10 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Parser->subparse(NULL, false)
+	#11 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(480): Twig_Parser->parse(Object(Twig_TokenStream))
+	#12 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(530): Twig_Environment->parse(Object(Twig_TokenStream))
+	#13 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(324): Twig_Environment->compileSource('<div>??{{ cms_l...', 'default.html.tw...')
+	#14 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(374): Twig_Environment->loadTemplate('default.html.tw...')
+	#15 /Users/frankbardon/Work/Nerd/application/storage/cache/1d/96/38cc03040008f66f4bfb6f45089d.php(94): Twig_Environment->resolveTemplate('default.html.tw...')
+	#16 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(265): __TwigTemplate_1d9638cc03040008f66f4bfb6f45089d->doDisplay(Array, Array)
+	#17 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#18 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#19 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponseDatabaseObserver.php(34): Twig_Template->render(Array)
+	#20 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponseDatabaseObserver->update(Object(Nerd\Core\Event\Event))
+	#21 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#22 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#23 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/TokenStream.php",77] []
+[2012-12-22 21:14:30] App.ERROR: A hash key must be followed by a colon (:). Unexpected token "operator" of value "=" ("punctuation" expected with value ":") in "default.html.twig" at line 10
+	#0 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(268): Twig_TokenStream->expect(9, ':', 'A hash key must...')
+	#1 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(169): Twig_ExpressionParser->parseHashExpression()
+	#2 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(85): Twig_ExpressionParser->parsePrimaryExpression()
+	#3 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(42): Twig_ExpressionParser->getPrimary()
+	#4 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(463): Twig_ExpressionParser->parseExpression()
+	#5 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(334): Twig_ExpressionParser->parseArguments(true)
+	#6 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(148): Twig_ExpressionParser->getFunctionNode('cms_component', 10)
+	#7 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(85): Twig_ExpressionParser->parsePrimaryExpression()
+	#8 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/ExpressionParser.php(42): Twig_ExpressionParser->getPrimary()
+	#9 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Parser.php(146): Twig_ExpressionParser->parseExpression()
+	#10 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Parser->subparse(NULL, false)
+	#11 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(480): Twig_Parser->parse(Object(Twig_TokenStream))
+	#12 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(530): Twig_Environment->parse(Object(Twig_TokenStream))
+	#13 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(324): Twig_Environment->compileSource('<div>??{{ cms_l...', 'default.html.tw...')
+	#14 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Environment.php(374): Twig_Environment->loadTemplate('default.html.tw...')
+	#15 /Users/frankbardon/Work/Nerd/application/storage/cache/1d/96/38cc03040008f66f4bfb6f45089d.php(94): Twig_Environment->resolveTemplate('default.html.tw...')
+	#16 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(265): __TwigTemplate_1d9638cc03040008f66f4bfb6f45089d->doDisplay(Array, Array)
+	#17 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#18 /Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/Template.php(250): Twig_Template->display(Array)
+	#19 /Users/frankbardon/Work/Nerd/application/src/CMS/Event/ResponseDatabaseObserver.php(34): Twig_Template->render(Array)
+	#20 /Users/frankbardon/Work/Nerd/vendor/nerdsrescueme/core/Nerd/Core/Event/Event.php(92): CMS\Event\ResponseDatabaseObserver->update(Object(Nerd\Core\Event\Event))
+	#21 /Users/frankbardon/Work/Nerd/public/development.php(75): Nerd\Core\Event\Event->notify()
+	#22 /Users/frankbardon/Work/Nerd/public/index.php(3): include('/Users/frankbar...')
+	#23 {main}
+	 ["/Users/frankbardon/Work/Nerd/vendor/twig/twig/lib/Twig/TokenStream.php",77] []

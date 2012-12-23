@@ -281,6 +281,15 @@ class Page
 		return $this->components;
 	}
 
+	public function getComponent($name)
+	{
+		foreach ($this->getComponents() as $component) {
+			if ($component->getKey() == $name) {
+				return $component;
+			}
+		}
+	}
+
 	/**
 	 * Region association
 	 */
@@ -289,11 +298,29 @@ class Page
 		return $this->regions;
 	}
 
+	public function getRegion($name)
+	{
+		foreach ($this->getRegions() as $region) {
+			if ($region->getKey() == $name) {
+				return $region;
+			}
+		}
+	}
+
 	/**
 	 * Snippet association
 	 */
 	public function getSnippets()
 	{
 		return $this->snippets;
+	}
+
+	public function getSnippet($name)
+	{
+		foreach ($this->getSnippets() as $snippet) {
+			if ($snippet->getKey() == $name) {
+				return $snippet;
+			}
+		}
 	}
 }

@@ -12,6 +12,7 @@ use Nerd\Core\Kernel\Kernel
 $kernel = require '../application/bootstrap.php';
 $kernel->getContainer()->loader->add('CMS', __DIR__.'/../application/src/');
 
+$GLOBALS['kernel'] = $kernel;
 
 // Register exception handlers for this application
 $exception = $kernel->getContainer()->exceptionNotifier;

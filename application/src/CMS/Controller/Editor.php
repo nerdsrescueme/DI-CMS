@@ -38,6 +38,8 @@ class Editor extends ControllerAbstract
         
         $data = [
             'code' => htmlentities($source),
+            'templates' => (array) $this->theme->templates,
+            'layouts' => (array) $this->theme->layouts,
         ];
 
         return $view->render($data);

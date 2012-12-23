@@ -1,1 +1,11 @@
-<div>This is the default layout's content!!!</div>
+<div>
+	{{ cms_local('main-content') }}
+</div>
+
+<div>
+	{{ cms_global('footer') }}
+</div>
+
+<div>
+	{{ cms_component('navigation', { option: 'value' })}}
+</div>
