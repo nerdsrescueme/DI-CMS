@@ -6,8 +6,8 @@
 	<title>{{ page.title }} &mdash; {{ page.subtitle }}</title>
 	<meta name="description" content="{{ page.description }}">
 	<meta name="keywords" content="{{ page.getKeywordsAsText() }}">
-	<link rel="stylesheet" href="/themes/tbp/assets/css/bootstrap.css?v=1" media="screen">
-	<link rel="stylesheet" href="/themes/tbp/assets/css/style1.css?v=1" media="screen">
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=1" media="screen">
+	<link rel="stylesheet" href="/assets/css/style1.css?v=1" media="screen">
 	<link rel="shortcut icon" href="/themes/tbp/assets/favicon.ico" type="image/x-icon" />
 
 	<!-- Open Graph Meta -->
@@ -17,8 +17,6 @@
 	<meta property="og:image" content="http://www.teambuildersplus.com/themes/tbp/assets/img/tbp-social-media.png">
 	<meta property="og:site_name" content="Team Builders Plus">
 	<meta property="fb:admins" content="1303954771">
-
-	<script src="/themes/tbp/assets/js/modernizr.js"></script>
 </head>
 
 <body>
@@ -27,13 +25,11 @@
 
 <header id="header" class="row">
 	<div id="info" class="span12">
-		<p id="top-message" class="pull-left" data-editable="global"><!-- start top-message -->Header message<a href="#">Read more</a>.<!-- end top-message --></p>
-		<p id="social" class="pull-right">
-			<a target="_blank" href="http://twitter.com/TeamBuildrsPlus" title="Follow us on Twitter"><img src="/themes/tbp/assets/img/icons-social/twitter_32.png"></a>
-			<a target="_blank" href="http://www.facebook.com/TeamBuildersPlus?ref=hl" title="Fan us on Facebook"><img src="/themes/tbp/assets/img/icons-social/facebook_32.png"></a>
-			<a target="_blank" href="http://www.linkedin.com/groups/Lessons-from-Leaders-1889482/about?trk=anet_ug_grppro" title="Connect with us on LinkedIn"><img src="/themes/tbp/assets/img/icons-social/linkedin_32.png"></a>
-			<a target="_blank" href="https://plus.google.com/107788092826192612342/about?hl=en#107788092826192612342/about?hl=en" title="Google +1"><img src="/themes/tbp/assets/img/icons-social/google_plus_32.png"></a>
-			<a target="_blank" href="http://www.youtube.com/user/TeamBuildersPlus" title="Visit our YouTube Channel"><img src="/themes/tbp/assets/img/icons-social/youtube_32.png"></a>
+		<p class="pull-left">
+			{{ cms.region('global', 'tbp-top-message') }}
+		</p>
+		<p class="pull-right">
+			{{ cms.region('global', 'tbp-social') }}
 		</p>
 	</div>
 	<div id="logo" class="span4"><a href="#">Team Builders Plus</a></div>
@@ -58,25 +54,14 @@
 
 <footer id="footer">
 	<div class="row">
-		<div class="span4">
-		<div id="footer-1" class="bump-right" data-editable="global"><!-- start footer-1 -->
-			<h4 class="underlined">Featured Program: {Program}</h4>
-			<p>Enter a program description.</p>
-		<!-- end footer-1 --></div>
+		<div class="span4 bump-right">
+			{{ cms.region('global', 'tbp-footer-1') }}
 		</div>
-		<div id="footer-2" class="span4" data-editable="global"><!-- start footer-2 -->
-			<h4 class="underlined">From the Blog</h4>
-			<ol>
-				<li><a href="#">Post One Here</a> &mdash; 20 minutes ago</li>
-				<li><a href="#">Second Posting</a> &mdash; 2 days ago</li>
-			</ol>
-		<!-- end footer-2 --></div>
 		<div class="span4">
-		<div id="footer-3" class="bump-left" data-editable="global"><!-- start footer-3 -->
-			<h4 class="underlined">Our Newsletter</h4>
-			<p>Sign up to receive our monthly newsletter.</p>
-			<p>{A sign up form goes here}</p>
-		<!-- end footer-3 --></div>
+			{{ cms.region('global', 'tbp-footer-2') }}
+		</div>
+		<div class="span4">
+			{{ cms.region('global', 'tbp-footer-3') }}
 		</div>
 	</div>
 	<div class="row"> </div>
@@ -85,11 +70,8 @@
 </div><!--!/#container -->
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:400,700|Shanti">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="/themes/tbp/assets/js/bootstrap-transition.js"></script>
-<script src="/themes/tbp/assets/js/bootstrap-tooltip.js"></script>
-<script src="/themes/tbp/assets/js/bootstrap-carousel.js"></script>
-<script src="/themes/tbp/assets/js/bootstrap-dropdown.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -106,17 +88,9 @@ $(document).ready(function() {
 			$(this).animate({width: '18px', height: '18px'})
 		})
 })
-
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-972486-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
 </script>
+
+{{ cms.component('google-analytics', { ua: "UA-972486-1" }) }}
 
 </body>
 </html>

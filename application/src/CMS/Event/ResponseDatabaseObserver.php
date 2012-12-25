@@ -19,23 +19,18 @@ class ResponseDatabaseObserver extends ObserverAbstract
 
         $page     = $container->activePage;
         $twig     = $container->twig;
-        $info     = $container->themeInfo;
         $template = $twig->loadTemplate('template.html.twig');
 
         $data = [
             'layout' => 'home',
-            'site' => $container->activeSite,
-            'user' => $container->currentUser->getUser(),
             'page' => $page,
-            'theme' => $info,
         ];
 
         // Temporary
         $content = $template->render($data);
         $content = str_replace(
             '</html>', 
-            '<script src="/di/public/assets/cms.js"></script>
-<script src="/di/public/assets/plugins.js"></script>
+            '<script src="/assets/js/cms.js"></script>
 <script>$(\'[data-editable]\').editor({
     autoEnable: false,
     replace: true,
@@ -60,7 +55,7 @@ class ResponseDatabaseObserver extends ObserverAbstract
             classes: ["bordered", "left", "right"]
         }
     }
-});</script>
+})</script>
              </html>', 
             $content
         );

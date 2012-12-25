@@ -3,6 +3,7 @@
 namespace CMS\Event {
 
     use Nerd\Core\Event\ListenerAbstract
+      , CMS\CMS
       , Twig_Loader_Filesystem
       , Twig_Extension_Debug
       , Twig_Environment
@@ -45,10 +46,12 @@ namespace CMS\Event {
                 'autoescape' => false,
             ]);
 
+            $twig->addGlobal('cms', new CMS($event->kernel));
+            $twig->addGlobal('site', $site);
+            $twig->addGlobal('user', $event->container->currentUser->getUser());
+            $twig->addGlobal('theme', $themeInfo);
+
             $twig->addExtension(new Twig_Extension_Debug());
-            $twig->addFunction(new Twig_SimpleFunction('cms_global', 'cms_global', ['is_safe' => ['html', 'javascript']]));
-            $twig->addFunction(new Twig_SimpleFunction('cms_local', 'cms_local', ['is_safe' => ['html', 'javascript']]));
-            $twig->addFunction(new Twig_SimpleFunction('cms_component', 'cms_component', ['is_safe' => ['html', 'javascript']]));
 
             $event->container->themeInfo = $themeInfo;
             $event->container->twigLoader = $loader;
@@ -59,27 +62,14 @@ namespace CMS\Event {
 
 namespace {
 
-    function cms_global($name) {
-        $kernel = $GLOBALS['kernel'];
-        $page = $kernel->getContainer()->get('activePage');
-        $region = $page->getRegion($name);
-
-        return $region ? $region->getData() : "Global content area: $name";
+    function cms_asset($asset = null) {
+        return $asset;        
     }
 
-    function cms_local($name) {
+    function cms_baseurl() {
         $kernel = $GLOBALS['kernel'];
-        $page = $kernel->getContainer()->get('activePage');
-        $region = $page->getRegion($name);
+        $request = $kernel->getContainer()->get('request');
 
-        return $region ? $region->getData() : "Local content area: $name";
-    }
-
-    function cms_component($name, $options = []) {
-        $kernel = $GLOBALS['kernel'];
-        $page = $kernel->getContainer()->get('activePage');
-        $component = $page->getComponent($name);
-
-        return $component ? $component->getData() : "Component: $name";
+        return $request->getBaseUrl();
     }
 }
