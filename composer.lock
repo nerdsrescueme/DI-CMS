@@ -26,7 +26,7 @@
                     "Aura\\Composer\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
@@ -69,7 +69,7 @@
                     "Aura\\Router": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD"
             ],
@@ -127,7 +127,7 @@
                     "Doctrine\\Common\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -173,19 +173,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal",
-                "reference": "6ace93c92ebfa2411b7c763607057baf069fb0d6"
+                "reference": "63b7ef12a51fab0df4588dbd21bd1a3613bc0362"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/dbal/archive/6ace93c92ebfa2411b7c763607057baf069fb0d6.zip",
-                "reference": "6ace93c92ebfa2411b7c763607057baf069fb0d6",
+                "url": "https://github.com/doctrine/dbal/archive/63b7ef12a51fab0df4588dbd21bd1a3613bc0362.zip",
+                "reference": "63b7ef12a51fab0df4588dbd21bd1a3613bc0362",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2",
                 "doctrine/common": ">=2.3-dev,<2.5-dev"
             },
-            "time": "2012-12-17 11:53:37",
+            "time": "2012-12-23 21:25:15",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -198,7 +198,7 @@
                     "Doctrine\\DBAL\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "8b5e4a9a52670992b85e7223d255b98cf77a35a3"
+                "reference": "90b6d5e293147a0268ca005362ff50343bc6dc0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/8b5e4a9a52670992b85e7223d255b98cf77a35a3.zip",
-                "reference": "8b5e4a9a52670992b85e7223d255b98cf77a35a3",
+                "url": "https://github.com/doctrine/doctrine2/archive/90b6d5e293147a0268ca005362ff50343bc6dc0f.zip",
+                "reference": "90b6d5e293147a0268ca005362ff50343bc6dc0f",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "2012-12-21 11:45:07",
+            "time": "2012-12-24 09:40:52",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -271,7 +271,7 @@
                     "Doctrine\\ORM\\": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -350,7 +350,7 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -407,7 +407,7 @@
                     "Monolog": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -435,12 +435,6 @@
                 "url": "https://github.com/nerdsrescueme/DI.git",
                 "reference": "2398e3c69d3058666c4de651e064e6124635a7af"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI/zipball/2398e3c69d3058666c4de651e064e6124635a7af",
-                "reference": "2398e3c69d3058666c4de651e064e6124635a7af",
-                "shasum": ""
-            },
             "require-dev": {
                 "phpunit/phpunit": "3.7.*"
             },
@@ -458,11 +452,7 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Core Library",
-            "support": {
-                "source": "https://github.com/nerdsrescueme/DI/tree/master",
-                "issues": "https://github.com/nerdsrescueme/DI/issues"
-            }
+            "description": "Nerd Core Library"
         },
         {
             "name": "nerdsrescueme/form",
@@ -472,12 +462,6 @@
                 "type": "git",
                 "url": "https://github.com/nerdsrescueme/DI-Form.git",
                 "reference": "1759ffbcc4d44a94e1cdb29d0b658b8f098d86dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nerdsrescueme/DI-Form/zipball/1759ffbcc4d44a94e1cdb29d0b658b8f098d86dc",
-                "reference": "1759ffbcc4d44a94e1cdb29d0b658b8f098d86dc",
-                "shasum": ""
             },
             "require": {
                 "nerdsrescueme/core": "*"
@@ -499,11 +483,7 @@
                     "email": "frankbardon@gmail.com"
                 }
             ],
-            "description": "Nerd Form Builder Library",
-            "support": {
-                "source": "https://github.com/nerdsrescueme/DI-Form/tree/master",
-                "issues": "https://github.com/nerdsrescueme/DI-Form/issues"
-            }
+            "description": "Nerd Form Builder Library"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -535,7 +515,7 @@
                     "lib/swift_required.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "LGPL"
             ],
@@ -586,7 +566,7 @@
                     "Symfony\\Component\\Console\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -637,7 +617,7 @@
                     "Symfony/Component/HttpFoundation/Resources/stubs"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -685,7 +665,7 @@
                     "Symfony\\Component\\Process\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -708,18 +688,18 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/fabpot/Twig.git",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495"
+                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/fabpot/Twig/archive/f095f3a1777431412954e478f92e8a10cb7b6495.zip",
-                "reference": "f095f3a1777431412954e478f92e8a10cb7b6495",
+                "url": "https://github.com/fabpot/Twig/archive/a65e7e4e2e5726a42a29e609fad008f8a9600594.zip",
+                "reference": "a65e7e4e2e5726a42a29e609fad008f8a9600594",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "2012-12-18 10:01:32",
+            "time": "2012-12-25 10:06:30",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -732,7 +712,7 @@
                     "Twig_": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3"
             ],
@@ -786,7 +766,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -833,7 +813,7 @@
                     "File/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -879,7 +859,7 @@
                     "Text/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -924,7 +904,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -970,7 +950,7 @@
                     "PHP/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1039,7 +1019,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 "",
                 "../../symfony/yaml/"
@@ -1091,7 +1071,7 @@
                     "PHPUnit/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "include-path": [
                 ""
             ],
@@ -1143,7 +1123,7 @@
                     "Symfony\\Component\\Yaml\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],

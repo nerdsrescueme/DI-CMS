@@ -15,6 +15,8 @@ abstract class ControllerAbstract
     protected $template;
     protected $theme;
 
+    protected $renderTemplate = true;
+
     final public function __construct(EventInterface $event, array $params = [])
     {
         $this->event  = $event;
@@ -39,11 +41,14 @@ abstract class ControllerAbstract
             return;
         }
 
-        $data = [
-            'content' => $response,
-        ];
-
-        $this->response->setContent($this->template->render($data));
+        if ($this->renderTemplate) {
+            $data = [
+                'content' => $response,
+            ];
+            $this->response->setContent($this->template->render($data));
+        } else {
+            $this->response->setContent($response);
+        }
     }
 
     protected function getParam($name, $default = null)

@@ -11,13 +11,13 @@
             <a href="#">Templates</a>
             <ul class="dropdown-menu">
               {% for name, file in templates %}
-              <li><a href="/admin/editor/{{ name }}">{{ name|title }}</a></li>
+              <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
               {% endfor %}
             </ul>
           </li>
           <li class="divider"></li>
           {% for name, file in layouts %}
-          <li><a href="/admin/editor/{{ name }}">{{ name|title }}</a></li>
+          <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
           {% endfor %}
         </ul>
       </div>

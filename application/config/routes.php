@@ -44,6 +44,16 @@ return function(Router $router) {
         ]
     );
 
+    $router->add(
+        'content', '/{:area:(admin|super)}/cotnent/save',
+        [
+            'values' => [
+                'controller' => 'content',
+                'action' => 'save',
+            ]
+        ]
+    );
+
     $router->add(null, '/{:area:(user|admin|super)}/{:controller}/{:id:(\d+)}/{:action}');
     $router->add(null, '/{:area:(user|admin|super)}/{:controller}/{:action}(/)?{:id:(\d+)?}');
 
