@@ -104,3 +104,49 @@
 	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
 	#6 {main}
 	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Controller\\Content.php",23] []
+[2012-12-27 09:17:18] App.ERROR: Class alias [entityManager] has not been registered
+	#0 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Container\Container.php(42): Nerd\Core\Container\Container->get('entityManager')
+	#1 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Content.php(13): Nerd\Core\Container\Container->__get('entityManager')
+	#2 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Content->saveAction(NULL)
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\nerdsrescueme\\core\\Nerd\\Core\\Container\\Container.php",34] []
+[2012-12-27 09:43:30] App.ERROR: An exception occurred while executing 'INSERT INTO nerd_regions (page_id, `key`, data) VALUES (?, ?, ?)' with params {"1":null,"2":"main","3":"{\"main\":\"<p>Region: main (local)&nbsp;<\/p>\"}"}:
+
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'page_id' cannot be null
+	#0 C:\XAMPP\htdocs\di\vendor\doctrine\dbal\lib\Doctrine\DBAL\Statement.php(144): Doctrine\DBAL\DBALException::driverExceptionDuringQuery(Object(PDOException), 'INSERT INTO ner...', Array)
+	#1 C:\XAMPP\htdocs\di\vendor\doctrine\orm\lib\Doctrine\ORM\Persisters\BasicEntityPersister.php(278): Doctrine\DBAL\Statement->execute()
+	#2 C:\XAMPP\htdocs\di\vendor\doctrine\orm\lib\Doctrine\ORM\UnitOfWork.php(935): Doctrine\ORM\Persisters\BasicEntityPersister->executeInserts()
+	#3 C:\XAMPP\htdocs\di\vendor\doctrine\orm\lib\Doctrine\ORM\UnitOfWork.php(313): Doctrine\ORM\UnitOfWork->executeInserts(Object(Doctrine\ORM\Mapping\ClassMetadata))
+	#4 C:\XAMPP\htdocs\di\vendor\doctrine\orm\lib\Doctrine\ORM\EntityManager.php(373): Doctrine\ORM\UnitOfWork->commit(NULL)
+	#5 C:\XAMPP\htdocs\di\application\src\CMS\Event\TeardownListener.php(26): Doctrine\ORM\EntityManager->flush()
+	#6 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\ListenerAbstract.php(36): CMS\Event\TeardownListener->run(Object(Nerd\Core\Event\Event))
+	#7 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#8 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('teardown', Object(Nerd\Core\Event\Event))
+	#9 C:\XAMPP\htdocs\di\public\development.php(75): Nerd\Core\Event\Dispatcher->dispatch('teardown', Object(Nerd\Core\Event\Event))
+	#10 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#11 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\doctrine\\dbal\\lib\\Doctrine\\DBAL\\DBALException.php",47] []
+[2012-12-27 09:56:16] App.ERROR: Undefined property: CMS\Model\Page::$_entityPersister
+	#0 C:\XAMPP\htdocs\di\application\src\CMS\Model\Page.php(317): Nerd\{closure}(8, 'Undefined prope...', 'C:\XAMPP\htdocs...', 317, Array)
+	#1 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Content.php(23): CMS\Model\Page->getGlobal('tbp-footer-1')
+	#2 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Content->saveAction(NULL)
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Model\\Page.php",317] []
+[2012-12-27 10:12:59] App.ERROR: An exception has been thrown during the rendering of a template ("Undefined variable: key") in "template.html.twig" at line 53.
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#1 C:\XAMPP\htdocs\di\application\storage\cache\71\1a\7a59339512478f1cd1d0cdc6738d.php(103): Twig_Template->display(Array)
+	#2 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(265): __TwigTemplate_711a7a59339512478f1cd1d0cdc6738d->doDisplay(Array, Array)
+	#3 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(239): Twig_Template->displayWithErrorHandling(Array, Array)
+	#4 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(250): Twig_Template->display(Array)
+	#5 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponseDatabaseObserver.php(30): Twig_Template->render(Array)
+	#6 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponseDatabaseObserver->update(Object(Nerd\Core\Event\Event))
+	#7 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#8 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#9 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Template.php",280] []

@@ -14,13 +14,13 @@ class UserRepository extends EntityRepository
 
     public function getBannedUsers()
     {
-    	return $this->_em->createQuery('SELECT u FROM CMS\Model\User u WHERE u.status = \'banned\'')
+        return $this->_em->createQuery('SELECT u FROM CMS\Model\User u WHERE u.status = \'banned\'')
                          ->getResult();
     }
 
     public function getInactiveUsers()
     {
-    	return $this->_em->createQuery('SELECT u FROM CMS\Model\User u WHERE u.activated = 0')
+        return $this->_em->createQuery('SELECT u FROM CMS\Model\User u WHERE u.activated = 0')
                          ->getResult();
     }
 }

@@ -220,12 +220,112 @@ DROP TABLE IF EXISTS `nerd_regions`;
 CREATE TABLE IF NOT EXISTS `nerd_regions` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `page_id` int(8) unsigned NOT NULL,
-  `key` char(32) COLLATE utf8_bin NOT NULL COMMENT 'min(3)',
+  `key` char(32) COLLATE utf8_bin NOT NULL,
   `data` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
 
+
+DROP TABLE IF EXISTS `nerd_region_history`;
+CREATE TABLE IF NOT EXISTS `nerd_region_history` (
+  `region_id` int(11) unsigned NOT NULL,
+  `data` text COLLATE utf8_bin NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`region_id`, `created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Versioning trigger
+--
+-- Automatically add old data into the versioning table before updating an
+-- older page record.
+--
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `before_nerd_regions`;
+CREATE TRIGGER `before_nerd_regions`
+  BEFORE UPDATE ON `nerd_regions` FOR EACH ROW
+  BEGIN
+ -- INSERT old data into the region history
+    INSERT INTO `nerd_region_history` (
+      `region_id`,
+      `data`
+    ) VALUES (
+      OLD.`id`,
+      OLD.`data`);
+
+ -- DELETE all but the last 10 versions of this region.
+    DELETE FROM `nerd_region_history` WHERE `created_at` NOT IN (
+      SELECT `created_at`
+      FROM (
+        SELECT `created_at`
+          FROM `nerd_region_history`
+          WHERE `region_id` = OLD.`id`
+          ORDER BY `created_at` DESC
+          LIMIT 10
+      ) `history`
+    );
+  END
+$$
+DELIMITER ;
+
+
+--
+-- Nerd Globals
+--
+
+DROP TABLE IF EXISTS `nerd_globals`;
+CREATE TABLE IF NOT EXISTS `nerd_globals` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `key` char(32) COLLATE utf8_bin NOT NULL,
+  `data` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
+
+
+DROP TABLE IF EXISTS `nerd_global_history`;
+CREATE TABLE IF NOT EXISTS `nerd_global_history` (
+  `global_id` int(11) unsigned NOT NULL,
+  `data` text COLLATE utf8_bin NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`global_id`, `created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Versioning trigger
+--
+-- Automatically add old data into the versioning table before updating an
+-- older page record.
+--
+
+DELIMITER $$
+DROP TRIGGER IF EXISTS `before_nerd_globals`;
+CREATE TRIGGER `before_nerd_globals`
+  BEFORE UPDATE ON `nerd_globals` FOR EACH ROW
+  BEGIN
+ -- INSERT old data into the global history
+    INSERT INTO `nerd_global_history` (
+      `global_id`,
+      `data`
+    ) VALUES (
+      OLD.`id`,
+      OLD.`data`);
+
+ -- DELETE all but the last 10 versions of this global.
+    DELETE FROM `nerd_global_history` WHERE `created_at` NOT IN (
+      SELECT `created_at`
+      FROM (
+        SELECT `created_at`
+          FROM `nerd_global_history`
+          WHERE `global_id` = OLD.`id`
+          ORDER BY `created_at` DESC
+          LIMIT 10
+      ) `history`
+    );
+  END
+$$
+DELIMITER ;
 
 --
 -- Nerd Sites

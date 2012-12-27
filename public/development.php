@@ -7,7 +7,6 @@ use Nerd\Core\Kernel\Kernel
   , Symfony\Component\HttpFoundation\RedirectResponse
   , CMS\Application;
 
-
 // Bootstrap the kernel and CMS bundle
 $kernel = require '../application/bootstrap.php';
 $kernel->getContainer()->loader->add('CMS', __DIR__.'/../application/src/');
@@ -20,7 +19,6 @@ $exception
     ->attach(new \CMS\Event\ExceptionLogObserver)
     ->attach(new \CMS\Event\ExceptionDisplayObserver);
 
-
 // Register needed variables and aliases
 $environment = new Environment('development');
 $container   = $kernel->getContainer();
@@ -30,11 +28,9 @@ $response    = $container->set('response', $application->getResponse());
 $event       = new Event('base', $kernel->getDispatcher());
 $notifier    = new Event('response');
 
-
 // Pre-application configuration and environment loading
 $kernel->setEnvironment($environment);
 $notifier->handled = false;
-
 
 // Register Kernel/Application Events
 $dispatcher
@@ -49,7 +45,6 @@ $dispatcher
     ->attach('setup',    new \CMS\Event\SetupAssetListener)
     ->attach('teardown', new \CMS\Event\TeardownListener);
 
-
 // Register all response observers
 $notifier
   ->attach(new \CMS\Event\ResponseDatabaseObserver)
@@ -58,13 +53,11 @@ $notifier
   ->attach(new \CMS\Event\ResponseRedirectObserver)
   ->attach(new \CMS\Event\ResponseCatchObserver);
 
-
 // Setup events for injection
 $event->setArgument('kernel', $kernel);
 $event->setArgument('container',   $container);
 $notifier->setArgument('kernel', $kernel);
 $notifier->setArgument('container', $container);
-
 
 // Run events and notify event observers
 $event->setName('setup');
@@ -74,10 +67,8 @@ $dispatcher->dispatch('router', $event);
 
 $notifier->notify();
 
-
 // Send the response gathered from above events
 $container->response->prepare($request)->send();
-
 
 // Shutdown
 $event->setName('teardown');
