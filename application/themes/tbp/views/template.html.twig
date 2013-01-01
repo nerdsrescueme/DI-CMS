@@ -1,22 +1,23 @@
 <!DOCTYPE html>   
 <html lang="en" class="no-js">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>{{ page.title }} &mdash; {{ page.subtitle }}</title>
-	<meta name="description" content="{{ page.description }}">
-	<meta name="keywords" content="{{ page.getKeywordsAsText() }}">
-	<link rel="stylesheet" href="{{ cms.asset('assets/css/bootstrap.min.css') }}" media="screen">
-	<link rel="stylesheet" href="{{ cms.asset('assets/css/style1.css') }}" media="screen">
-	<link rel="shortcut icon" href="/themes/tbp/assets/favicon.ico" type="image/x-icon" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ page.title }} &mdash; {{ page.subtitle }}</title>
+    <meta name="description" content="{{ page.description }}">
+    <meta name="keywords" content="{{ page.getKeywordsAsText() }}">
+    <link rel="stylesheet" href="{{ cms.asset('assets/css/bootstrap.min.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ cms.asset('assets/css/style1.css') }}" media="screen">
+    <link rel="shortcut icon" href="/themes/tbp/assets/favicon.ico" type="image/x-icon" />
 
-	<!-- Open Graph Meta -->
-	<meta property="og:title" content="Team Builders Plus">
-	<meta property="og:type" content="company">
-	<meta property="og:url" content="http://www.teambuildersplus.com">
-	<meta property="og:image" content="http://www.teambuildersplus.com/themes/tbp/assets/img/tbp-social-media.png">
-	<meta property="og:site_name" content="Team Builders Plus">
-	<meta property="fb:admins" content="1303954771">
+    {{ cms.component('open-graph', {
+        title: 'Team Builders Plus', 
+        url: 'http://teambuildersplus.com',
+        name: 'Team Builders Plus',
+        type: 'company', 
+        image: 'http://www.teambuildersplus.com/themes/tbp/assets/img/tbp-social-media.png', 
+        admins: '1303954771' })
+    }}
 </head>
 
 <body>
@@ -24,47 +25,47 @@
 <div id="container" class="container">
 
 <header id="header" class="row">
-	<div id="info" class="span12">
-		<div class="pull-left">
-			{{ cms.region('global', 'tbp-top-message') }}
-		</div>
-		<div class="pull-right">
-			{{ cms.region('global', 'tbp-social') }}
-		</div>
-	</div>
-	<div id="logo" class="span4"><a href="#">Team Builders Plus</a></div>
-	<nav id="main-nav" class="span8">
-		Navigation!!!
-	</nav>
-	<div class="span12" class="bottom-border"> </div><!-- Nasty hack -->
+    <div id="info" class="span12">
+        <div class="pull-left">
+            {{ cms.region('global', 'tbp-top-message') }}
+        </div>
+        <div class="pull-right">
+            {{ cms.region('global', 'tbp-social') }}
+        </div>
+    </div>
+    <div id="logo" class="span4"><a href="#">Team Builders Plus</a></div>
+    <nav id="main-nav" class="span8">
+        {{ cms.component('navigation', { name: 'tbp-main' }) }}
+    </nav>
+    <div class="span12" class="bottom-border"> </div><!-- Nasty hack -->
 </header>
 
 <section id="tagline" class="row home">
-	<div id="tagline-content" class="span12">
-		<div id="rfp" class="pull-right">
-			<a href="http://teambuildersplus.wufoo.com/forms/request-for-proposal-team-builders-plus/" target="_blank" class="btn btn-warning" rel="tooltip" title="Want to know more?"><i class="icon-comment icon-white"></i> Request a Proposal</a>
-		</div>
+    <div id="tagline-content" class="span12">
+        <div id="rfp" class="pull-right">
+            <a href="http://teambuildersplus.wufoo.com/forms/request-for-proposal-team-builders-plus/" target="_blank" class="btn btn-warning" rel="tooltip" title="Want to know more?"><i class="icon-comment icon-white"></i> Request a Proposal</a>
+        </div>
 
-		<h1>{{ page.title }}</h1>
-		<p>{{ page.subtitle }}</p>
-	</div>
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.subtitle }}</p>
+    </div>
 </section>
 
 {% include page.layout ~ '.html.twig' %}
 
 <footer id="footer">
-	<div class="row">
-		<div class="span4 bump-right">
-			{{ cms.region('global', 'tbp-footer-1') }}
-		</div>
-		<div class="span4">
-			{{ cms.region('global', 'tbp-footer-2') }}
-		</div>
-		<div class="span4">
-			{{ cms.region('global', 'tbp-footer-3') }}
-		</div>
-	</div>
-	<div class="row"> </div>
+    <div class="row">
+        <div class="span4 bump-right">
+            {{ cms.region('global', 'tbp-footer-1') }}
+        </div>
+        <div class="span4">
+            {{ cms.region('global', 'tbp-footer-2') }}
+        </div>
+        <div class="span4">
+            {{ cms.region('global', 'tbp-footer-3') }}
+        </div>
+    </div>
+    <div class="row"> </div>
 </footer>
 
 </div><!--!/#container -->
@@ -75,18 +76,18 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#slider').carousel({ interval: 9000 })
-	$('#social a[title]').tooltip({ placement: 'bottom' })
-	$('a[rel=tooltip]').tooltip({ placement: 'top' })
-	$('#testimonials').carousel({ interval: 6000 })
-	
-	$('#social img')
-		.mouseover(function(event) {
-			$(this).animate({width: '20px', height: '20px'})
-		})
-		.mouseout(function(event) {
-			$(this).animate({width: '18px', height: '18px'})
-		})
+    $('#slider').carousel({ interval: 9000 })
+    $('#social a[title]').tooltip({ placement: 'bottom' })
+    $('a[rel=tooltip]').tooltip({ placement: 'top' })
+    $('#testimonials').carousel({ interval: 6000 })
+    
+    $('#social img')
+        .mouseover(function(event) {
+            $(this).animate({width: '20px', height: '20px'})
+        })
+        .mouseout(function(event) {
+            $(this).animate({width: '18px', height: '18px'})
+        })
 })
 </script>
 

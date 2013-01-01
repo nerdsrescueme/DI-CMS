@@ -30,7 +30,7 @@ class ResponseDatabaseObserver extends ObserverAbstract
         $content = $template->render($data);
         $content = str_replace(
             '</html>', 
-            '<script src="/di/public/assets/js/cms.js"></script>
+            '<script src="/assets/js/cms.js"></script>
 <script>$(\'[data-editable]\').editor({
     autoEnable: false,
     replace: true,
@@ -61,7 +61,7 @@ class ResponseDatabaseObserver extends ObserverAbstract
             },
             postName: "content",
             ajax: {
-                url: "/di/public/admin/content/save"
+                url: "/admin/content/save"
             }
         }
     }

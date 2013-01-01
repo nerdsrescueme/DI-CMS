@@ -6,11 +6,6 @@ class GoogleAnalytics extends ComponentAbstract
 {
 	protected $name = 'google-analytics';
 
-	public function getName()
-	{
-		return $this->name;
-	}
-
 	public function render()
 	{
 		$ua = $this->getOption('ua');
