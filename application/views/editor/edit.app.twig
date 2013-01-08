@@ -11,13 +11,13 @@
             <a href="#">Templates</a>
             <ul class="dropdown-menu">
               {% for name, file in templates %}
-              <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
+              <li><a href="{{ cms.url('/super/editor/' ~ name) }}">{{ name|title }}</a></li>
               {% endfor %}
             </ul>
           </li>
           <li class="divider"></li>
           {% for name, file in layouts %}
-          <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
+          <li><a href="{{ cms.url('/super/editor/' ~ name) }}">{{ name|title }}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -65,7 +65,7 @@
           <li><a href="#" onclick="actions.revert()">Revert changes</a></li>
           <li><a href="#" onclick="actions.debug()">Show in console</a></li>
           <li class="divider"></li>
-          <li><a href="/admin/editor">Return to index</a></li>
+          <li><a href="/super/editor">Return to index</a></li>
         </ul>
       </div>
     </div>
