@@ -35,7 +35,6 @@ class Editor extends ControllerAbstract
         }
 
         $view = $this->twig->loadTemplate('editor/edit.app.twig');
-        
         $data = [
             'code' => htmlentities($source),
             'templates' => (array) $this->theme->templates,

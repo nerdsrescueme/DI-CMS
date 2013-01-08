@@ -150,3 +150,84 @@ SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'page_id' cannot be
 	#8 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
 	#9 {main}
 	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Template.php",280] []
+[2013-01-08 12:00:50] App.ERROR: Undefined property: CMS\Model\Site::$getTheme
+	#0 C:\XAMPP\htdocs\di\application\src\CMS\Event\SetupTemplateListener.php(34): Nerd\{closure}(8, 'Undefined prope...', 'C:\XAMPP\htdocs...', 34, Array)
+	#1 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#2 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(64): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Event\\SetupTemplateListener.php",34] []
+[2013-01-08 12:03:29] App.ERROR: C:\XAMPP\htdocs\di\application\themes\tbp\views
+	#0 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\ListenerAbstract.php(36): CMS\Event\SetupTemplateListener->run(Object(Nerd\Core\Event\Event))
+	#1 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(69): Nerd\Core\Event\ListenerAbstract->__invoke(Object(Nerd\Core\Event\Event))
+	#2 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Dispatcher.php(15): Nerd\Core\Event\Dispatcher->_dispatch('setup', Object(Nerd\Core\Event\Event))
+	#3 C:\XAMPP\htdocs\di\public\development.php(64): Nerd\Core\Event\Dispatcher->dispatch('setup', Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#5 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Event\\SetupTemplateListener.php",27] []
+[2013-01-08 14:43:13] App.ERROR: Object of class CMS\Controller\Site could not be converted to string
+	#0 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(32): Nerd\{closure}(4096, 'Object of class...', 'C:\XAMPP\htdocs...', 32, Array)
+	#1 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#2 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#3 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#4 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Event\\ResponsePathObserver.php",32] []
+[2013-01-08 14:44:23] App.ERROR: Action [1Action] does not exist in controller
+	#0 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#1 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#2 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#3 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\application\\src\\CMS\\Event\\ResponsePathObserver.php",32] []
+[2013-01-08 14:46:58] App.ERROR: Unable to find template "site/edit.app.twig" (looked into: C:\XAMPP\htdocs\di\application\themes\tbp\views, C:\XAMPP\htdocs\di\application\themes\default\views, C:\XAMPP\htdocs\di\application\views).
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Loader\Filesystem.php(134): Twig_Loader_Filesystem->findTemplate('site/edit.app.t...')
+	#1 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Environment.php(266): Twig_Loader_Filesystem->getCacheKey('site/edit.app.t...')
+	#2 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Environment.php(313): Twig_Environment->getTemplateClass('site/edit.app.t...', NULL)
+	#3 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php(9): Twig_Environment->loadTemplate('site/edit.app.t...')
+	#4 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Site->editAction('1')
+	#5 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#6 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#7 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#8 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Loader\\Filesystem.php",198] []
+[2013-01-08 14:47:10] App.ERROR: Argument 1 passed to Twig_Template::render() must be of the type array, none given, called in C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php on line 11 and defined
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(245): Nerd\{closure}(4096, 'Argument 1 pass...', 'C:\XAMPP\htdocs...', 245, Array)
+	#1 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php(11): Twig_Template->render()
+	#2 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Site->editAction('1')
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Template.php",245] []
+[2013-01-08 14:47:26] App.ERROR: Argument 1 passed to Twig_Template::render() must be of the type array, none given, called in C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php on line 12 and defined
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(245): Nerd\{closure}(4096, 'Argument 1 pass...', 'C:\XAMPP\htdocs...', 245, Array)
+	#1 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php(12): Twig_Template->render()
+	#2 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Site->editAction('1')
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Template.php",245] []
+[2013-01-08 14:47:32] App.ERROR: Argument 1 passed to Twig_Template::render() must be of the type array, none given, called in C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php on line 12 and defined
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Template.php(245): Nerd\{closure}(4096, 'Argument 1 pass...', 'C:\XAMPP\htdocs...', 245, Array)
+	#1 C:\XAMPP\htdocs\di\application\src\CMS\Controller\Site.php(12): Twig_Template->render()
+	#2 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(36): CMS\Controller\Site->editAction('1')
+	#3 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#4 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#5 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#6 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Template.php",245] []
+[2013-01-08 14:54:05] App.ERROR: Unclosed "(" in "template.app.twig" at line 40
+	#0 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Lexer.php(217): Twig_Lexer->lexExpression()
+	#1 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Lexer.php(118): Twig_Lexer->lexVar()
+	#2 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Environment.php(444): Twig_Lexer->tokenize('<!DOCTYPE html>...', 'template.app.tw...')
+	#3 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Environment.php(530): Twig_Environment->tokenize('<!DOCTYPE html>...', 'template.app.tw...')
+	#4 C:\XAMPP\htdocs\di\vendor\twig\twig\lib\Twig\Environment.php(324): Twig_Environment->compileSource('<!DOCTYPE html>...', 'template.app.tw...')
+	#5 C:\XAMPP\htdocs\di\application\src\CMS\Controller\ControllerAbstract.php(37): Twig_Environment->loadTemplate('template.app.tw...')
+	#6 C:\XAMPP\htdocs\di\application\src\CMS\Event\ResponsePathObserver.php(35): CMS\Controller\ControllerAbstract->before()
+	#7 C:\XAMPP\htdocs\di\vendor\nerdsrescueme\core\Nerd\Core\Event\Event.php(92): CMS\Event\ResponsePathObserver->update(Object(Nerd\Core\Event\Event))
+	#8 C:\XAMPP\htdocs\di\public\development.php(68): Nerd\Core\Event\Event->notify()
+	#9 C:\XAMPP\htdocs\di\public\index.php(3): include('C:\XAMPP\htdocs...')
+	#10 {main}
+	 ["C:\\XAMPP\\htdocs\\di\\vendor\\twig\\twig\\lib\\Twig\\Lexer.php",265] []

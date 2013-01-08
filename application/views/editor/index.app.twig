@@ -1,18 +1,16 @@
-<div class="row-fluid">
-  <div class=" well span3 offset3">
-    <h4>Templates</h4>
-    <ul class="nav nav-tabs nav-stacked">
-    {% for name, file in templates %}
-      <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
-    {% endfor %}
-    </ul>
-  </div>
-  <div class="well span3">
-    <h4>Layouts</h4>
-    <ul class="nav nav-tabs nav-stacked">
-    {% for name, file in layouts %}
-      <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
-    {% endfor %}
-    </ul>
-  </div>
+<div class=" well span3 offset3">
+  <h4>Templates</h4>
+  <ul class="nav nav-tabs nav-stacked">
+  {% for name, file in templates %}
+    <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
+<div class="well span3">
+  <h4>Layouts</h4>
+  <ul class="nav nav-tabs nav-stacked">
+  {% for name, file in layouts %}
+    <li><a href="{{ cms.url('/admin/editor/' ~ name) }}">{{ name|title }}</a></li>
+  {% endfor %}
+  </ul>
 </div>

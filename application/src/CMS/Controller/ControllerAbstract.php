@@ -26,6 +26,10 @@ abstract class ControllerAbstract
         $this->currentUser = $event->container->currentUser;
         $this->twig = $event->container->twig;
         $this->theme = $event->container->themeInfo;
+
+        $em = $event->container->em;
+
+        $this->twig->addGlobal('sites', $em->getRepository('\\CMS\\Model\\Site')->findAll());
     }
 
     public function before()

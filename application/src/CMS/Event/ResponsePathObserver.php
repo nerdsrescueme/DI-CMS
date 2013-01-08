@@ -29,7 +29,7 @@ class ResponsePathObserver extends ObserverAbstract
         $id         = isset($id) ? $id : null;
 
         if (!method_exists($controller, $action)) {
-            throw new \InvalidArgumentException("Action [$action] does not exist in controller [$controller]");
+            throw new \InvalidArgumentException("Action [$action] does not exist in controller");
         }
 
         $controller->before();

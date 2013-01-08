@@ -5,8 +5,7 @@ use Aura\Router\Map as Router;
 return function(Router $router) {
 
     $router->add(
-        'login', '/{:area}/login',
-        [
+        'login', '/{:area}/login', [
             'values' => [
                 'controller' => 'user',
                 'action' => 'login',
@@ -15,8 +14,7 @@ return function(Router $router) {
     );
 
     $router->add(
-        'login', '/{:area}/logout',
-        [
+        'login', '/{:area}/logout', [
             'values' => [
                 'controller' => 'user',
                 'action' => 'logout',
@@ -25,8 +23,7 @@ return function(Router $router) {
     );
 
     $router->add(
-        'editor', '/{:area:(admin|super)}/editor',
-        [
+        'editor', '/{:area:(super)}/editor', [
             'values' => [
                 'controller' => 'editor',
                 'action' => 'index',
@@ -35,21 +32,10 @@ return function(Router $router) {
     );
 
     $router->add(
-        'editor', '/{:area:(admin|super)}/editor/{:layout}',
-        [
+        'editor', '/{:area:(super)}/editor/{:layout}', [
             'values' => [
                 'controller' => 'editor',
                 'action' => 'edit',
-            ]
-        ]
-    );
-
-    $router->add(
-        'content', '/{:area:(admin|super)}/cotnent/save',
-        [
-            'values' => [
-                'controller' => 'content',
-                'action' => 'save',
             ]
         ]
     );

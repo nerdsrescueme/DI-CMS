@@ -8,31 +8,9 @@
 -- PHP Version: 5.4.4
 
 SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT=0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
-
-DROP TABLE IF EXISTS `nerd_countries`;
-CREATE TABLE IF NOT EXISTS `nerd_countries` (
-  `short` char(2) NOT NULL,
-  `long` char(3) NOT NULL,
-  `numeric` varchar(3) NOT NULL,
-  `name` char(50) NOT NULL,
-  PRIMARY KEY (`short`),
-  UNIQUE KEY `long` (`long`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Nerd Countries - Data
---
 
 INSERT INTO `nerd_countries` (`short`, `long`, `numeric`, `name`) VALUES
 ('ao', 'ago', '024', 'Angola'),
