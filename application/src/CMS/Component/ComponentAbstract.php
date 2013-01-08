@@ -19,9 +19,14 @@ abstract class ComponentAbstract
 
 	public function getOption($name)
 	{
-		if (isset($this->option[$name])) {
-			return $this->option[$name];
+		if (isset($this->options[$name])) {
+			return $this->options[$name];
 		}
+	}
+
+	public function getOptions()
+	{
+		return $this->options;
 	}
 
 	abstract public function  render();

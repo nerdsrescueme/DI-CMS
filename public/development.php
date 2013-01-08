@@ -14,8 +14,8 @@ $kernel->getContainer()->loader->add('CMS', __DIR__.'/../application/src/');
 $GLOBALS['kernel'] = $kernel;
 
 // Register exception handlers for this application
-$exception = $kernel->getContainer()->exceptionNotifier;
-$exception
+$exceptionNotifier = $kernel->getContainer()->get('exceptionNotifier');
+$exceptionNotifier
     ->attach(new \CMS\Event\ExceptionLogObserver)
     ->attach(new \CMS\Event\ExceptionDisplayObserver);
 

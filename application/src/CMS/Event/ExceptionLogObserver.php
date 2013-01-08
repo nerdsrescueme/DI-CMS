@@ -14,6 +14,7 @@ class ExceptionLogObserver extends ObserverAbstract
 
     public function update(\SplSubject $event)
     {
+        $logger  = $event->container->get('logger');
         $message = $event->exception->getMessage();
         $line    = $event->exception->getLine();
         $file    = $event->exception->getFile();
@@ -21,6 +22,6 @@ class ExceptionLogObserver extends ObserverAbstract
 
         $trace = "\t".str_replace("\n", "\n\t", $trace)."\n\t"; // Format trace string.
 
-        $event->container->logger->addError($message.PHP_EOL.$trace, [$file, $line]);
+        $logger->addError($message.PHP_EOL.$trace, [$file, $line]);
     }
 }

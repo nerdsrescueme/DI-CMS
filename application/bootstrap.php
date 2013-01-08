@@ -33,10 +33,17 @@ set_error_handler(function ($no, $str, $file, $line) {
 // Register exception handler
 set_exception_handler(function($e) use ($container) {
     $notifier = $container->get('exceptionNotifier');
-    $notifier->exception = $e;
-    $notifier->container = $container;
 
-    $notifier->notify();
+    if ($notifier->hasObservers()) {
+	    $notifier->exception = $e;
+	    $notifier->container = $container;
+    	$notifier->notify();
+    } else {
+    	// Die immediately and do no further processing,
+    	// this request died before it began.
+    	echo $e->getMessage();
+    	exit(0);
+    }
 });
 
 return $kernel;
