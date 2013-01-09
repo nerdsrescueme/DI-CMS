@@ -15,6 +15,7 @@
 
 	"layouts": {
 		"default": "default.html",
-		"home": "home.html"
+		"home": "home.html",
+		"two-column": "two-column.html"
 	}
 }
