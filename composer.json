@@ -18,6 +18,7 @@
         "nerdsrescueme/core": "*",
         "nerdsrescueme/form": "*",
         "symfony/http-foundation": "dev-master",
+        "symfony/validator": "dev-master",
         "monolog/monolog": "dev-master",
         "swiftmailer/swiftmailer": "dev-master",
         "doctrine/orm": "dev-master",
