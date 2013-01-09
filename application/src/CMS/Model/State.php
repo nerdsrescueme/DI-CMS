@@ -2,27 +2,33 @@
 
 namespace CMS\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection
+  , Doctrine\ORM\Mapping AS ORM
+  , Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @Entity(readOnly=true)
- * @Table(name="nerd_states")
+ * @ORM\Entity(readOnly=true)
+ * @ORM\Table(name="nerd_states")
  */
 class State
 {
     /**
-	 * @Id
-	 * @Column(type="string", length=2, nullable=false)
+	 * @ORM\Id
+	 * @ORM\Column(type="string", length=2, nullable=false)
+     * @Assert\Length(min=2, max=2)
+     * @Assert\NotBlank
 	 */
 	private $code;
 
         /**
-         * @OneToMany(targetEntity="City", mappedBy="stateObject")
+         * @ORM\OneToMany(targetEntity="City", mappedBy="stateObject")
          */
         private $cities;
 
     /**
-     * @Column(type="string", length=32, nullable=false, unique=true)
+     * @ORM\Column(type="string", length=32, nullable=false, unique=true)
+     * @Assert\Length(min=4, max=32)
+     * @Assert\NotBlank
      */
     private $name;
 
@@ -37,9 +43,19 @@ class State
         return $this->code;
     }
 
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     public function getCities()

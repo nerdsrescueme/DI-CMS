@@ -55,6 +55,11 @@ abstract class ControllerAbstract
         }
     }
 
+    protected function getValidator()
+    {
+        return $this->event->container->validator;
+    }
+
     protected function getParam($name, $default = null)
     {
         if (!isset($this->params[$name])) {

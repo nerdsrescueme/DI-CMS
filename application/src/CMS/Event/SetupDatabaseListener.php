@@ -8,6 +8,9 @@ use Nerd\Core\Event\ListenerAbstract
   , Doctrine\ORM\EntityManager
   , Doctrine\ORM\Configuration;
 
+//use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+
 /**
  * Database listener
  *
@@ -20,6 +23,9 @@ class SetupDatabaseListener extends ListenerAbstract
 
     public function run(\SplSubject $event)
     {
+        $dir = $event->container->application->getDirectory();
+        $root = $event->kernel->getRoot();
+
         // $cache  = new ApcCache;
         $cache  = new ArrayCache;
         $config = new Configuration;
@@ -27,7 +33,7 @@ class SetupDatabaseListener extends ListenerAbstract
         $config->setMetadataDriverImpl($driver);
         $config->setMetadataCacheImpl($cache);
         $config->setQueryCacheImpl($cache);
-        $config->setProxyDir($event->container->application->getDirectory().'/storage/proxies');
+        $config->setProxyDir($dir.'/storage/proxies');
         $config->setProxyNamespace('Proxies');
         $config->setAutoGenerateProxyClasses(true);
 
@@ -37,6 +43,10 @@ class SetupDatabaseListener extends ListenerAbstract
             'password' => '',
             'dbname' => 'new_nerd',
         ], $config);
+
+        // Register symfony annotations in annotations.
+        $constraintPath = join(DIRECTORY_SEPARATOR, [$root, 'vendor', 'symfony', 'validator']);
+        AnnotationRegistry::registerAutoloadNamespace("Symfony\Component\Validator\Constraint", $constraintPath);
 
         $event->container->em = $em;
     }

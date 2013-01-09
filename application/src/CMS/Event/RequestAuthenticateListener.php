@@ -17,7 +17,5 @@ class RequestAuthenticateListener extends ListenerAbstract
     public function run(\SplSubject $event)
     {
     	$user = $event->container->currentUser;
-
-    	
     }
 }

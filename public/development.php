@@ -5,6 +5,7 @@ use Nerd\Core\Kernel\Kernel
   , Nerd\Core\Event\Event
   , Symfony\Component\HttpFoundation\Request
   , Symfony\Component\HttpFoundation\RedirectResponse
+  , Symfony\Component\Validator\Validation
   , CMS\Application;
 
 // Bootstrap the kernel and CMS bundle
@@ -22,6 +23,7 @@ $exceptionNotifier
 // Register needed variables and aliases
 $environment = new Environment('development');
 $container   = $kernel->getContainer();
+$validator   = $container->set('validator', Validation::createValidatorBuilder()->enableAnnotationMapping()->getValidator());
 $request     = $container->set('request', Request::createFromGlobals());
 $application = $container->set('application', new Application($kernel, $request));
 $response    = $container->set('response', $application->getResponse());
