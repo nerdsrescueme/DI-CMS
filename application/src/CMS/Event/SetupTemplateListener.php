@@ -4,10 +4,12 @@ namespace CMS\Event;
 
 use Nerd\Core\Event\ListenerAbstract
   , CMS\CMS
+  , CMS\Form
   , Twig_Loader_Filesystem
   , Twig_Extension_Debug
   , Twig_Environment
-  , Twig_SimpleFunction;
+  , Twig_SimpleFunction
+  , Twig_SimpleFilter;
 
 /**
  * View listener
@@ -46,11 +48,17 @@ class SetupTemplateListener extends ListenerAbstract
         ]);
 
         $twig->addGlobal('cms', new CMS($event->kernel));
+        $twig->addGlobal('form', new Form);
         $twig->addGlobal('site', $site);
         $twig->addGlobal('user', $event->container->currentUser->getUser());
         $twig->addGlobal('theme', $themeInfo);
 
         $twig->addExtension(new Twig_Extension_Debug());
+
+        $twig->addFilter(new Twig_SimpleFilter('boolean', function($value) { return (bool) $value; }));
+        $twig->addFilter(new Twig_SimpleFilter('integer', function($value) { return (int) $value; }));
+        $twig->addFilter(new Twig_SimpleFilter('string',  function($value) { return (string) $value; }));
+        $twig->addFilter(new Twig_SimpleFilter('array',   function($value) { return (array) $value; }));
 
         $event->container->themeInfo = $themeInfo;
         $event->container->twigLoader = $loader;

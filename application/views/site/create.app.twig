@@ -1,1 +1,18 @@
 <h3>Create a new site</h3>
+
+{{ form.open(cms.url('super/site/create'), { method: 'post', class: 'form-stacked' }) }}
+
+  {{ form.text('Host', site.host, { name: 'site[host]', id: 'site_host', placeholder: 'example.com', required: true }) }}
+
+  {{ form.textarea('Description', site.description, { name: 'site[description]', id: 'site_description' }) }}
+
+  {{ form.text('Theme', site.theme, { name: 'site[theme]', id: 'site_theme', required: true }) }}
+
+  {{ form.checkboxes([
+    { label: 'Site is currently active', name: 'site[active]', id: 'site_active', value: 1, checked: site.active|boolean },
+    { label: 'Site is under maintanence', name: 'site[maintaining]', id: 'site_maintaining', value: 1, checked: false }
+  ]) }}
+
+  {{ form.actions }}
+
+{{ form.close }}
